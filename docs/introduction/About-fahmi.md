@@ -10,7 +10,7 @@ If you're looking to contact Fahmi regarding his personal or project source code
 
 - :fontawesome-brands-linkedin: : [fahmiwiradika96](https://www.linkedin.com/in/fahmiwiradika96/)
 - :simple-gmail: : [fahmi.wiradika96@gmail.com](mailto:fahmi.wiradika96@gmail.com)
-- :simple-github: : [fahmiwazu](https://github.com/fahmiwazu)
+- :simple-github: : [fahmi-wiradika](https://github.com/fahmi-wiradika)
 - :simple-postman: : [fahmi-wiradika](https://www.postman.com/fahmi-wiradika)
 
 </div>
