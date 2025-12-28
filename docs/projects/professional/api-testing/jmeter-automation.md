@@ -35,8 +35,8 @@ performance-test/
 - **HTML Reporting**: Beautiful, interactive performance reports
 - **Custom Test Runners**: Windows batch scripts for easy local execution
 - **GitHub Pages Deployment**: Automated report publishing
-- **Performance Test Repository**: [JMeter Automation](https://github.com/fahmiwazu/performance-test)
-- **Performance Test Live Report**: [Performance Test](https://fahmiwazu.github.io/performance-test/)
+- **Performance Test Repository**: [JMeter Automation](https://github.com/fahmi-wiradika/performance-test)
+- **Performance Test Live Report**: [Performance Test](https://fahmi-wiradika.github.io/performance-test/)
 
 
 ## 📊 Test Configuration

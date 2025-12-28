@@ -347,8 +347,8 @@ EventReporter listener = new EventReporter(
 
 ## 🔗 Quick Links
 
-- **Framework Repository**: [https://github.com/fahmiwazu/java-automation](https://github.com/fahmiwazu/java-automation)
-- **Live Test Results**: [https://fahmiwazu.github.io/java-automation](https://fahmiwazu.github.io/java-automation)
+- **Framework Repository**: [https://github.com/fahmi-wiradika/java-automation](https://github.com/fahmi-wiradika/java-automation)
+- **Live Test Results**: [https://fahmi-wiradika.github.io/java-automation](https://fahmi-wiradika.github.io/java-automation)
 
 
 ## 📄 License
