@@ -8,7 +8,7 @@ If you're looking to contact Fahmi regarding his personal or project source code
 
 <div class="grid cards" markdown>
 
-- :fontawesome-brands-linkedin: : [fahmiwiradika96](https://www.linkedin.com/in/fahmiwiradika96/)
+- :fontawesome-brands-linkedin: : [fahmiwiradika96](https://www.linkedin.com/in/fahmi-wiradika/)
 - :simple-gmail: : [fahmi.wiradika96@gmail.com](mailto:fahmi.wiradika96@gmail.com)
 - :simple-github: : [fahmi-wiradika](https://github.com/fahmi-wiradika)
 - :simple-postman: : [fahmi-wiradika](https://www.postman.com/fahmi-wiradika)
