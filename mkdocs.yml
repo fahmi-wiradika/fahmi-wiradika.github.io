@@ -4,7 +4,7 @@ site_name: Fahmi's Project Library
 site_description : Project tech stacks and description detailed by fahmi wahyu wiradika 
 
 copyright: |
-  Copyright &copy; 2025 <a href="https://github.com/fahmiwazu/docs-portfolio?tab=MIT-1-ov-file#" target="_blank" rel="noopener"> Fahmi Wahyu Wiradika</a>
+  Copyright &copy; 2026 <a href="https://github.com/fahmi-wiradika.github.io?tab=MIT-1-ov-file#" target="_blank" rel="noopener"> Fahmi Wahyu Wiradika</a>
 
 ### Site Settings ###
 #theme : readthedocs --- Optional to use if we don't like to use material theme
@@ -56,11 +56,11 @@ theme:
 extra:
   social:
   - icon: fontawesome/brands/github-alt
-    link: https://github.com/fahmiwazu
+    link: https://github.com/fahmi-wiradika
   - icon: simple/postman
     link: https://www.postman.com/fahmi-wiradika
   - icon: fontawesome/brands/linkedin
-    link: https://www.linkedin.com/in/fahmiwiradika96/
+    link: https://www.linkedin.com/in/fahmi-wiradika
   - icon: fontawesome/brands/instagram
     link: https://www.instagram.com/fahmiwazu
   # alternate:
