@@ -612,7 +612,7 @@ postman-api-automation/
 - **YouTube Tutorial**: [Postman API Test Automation for Beginners](https://www.youtube.com/watch?v=zp5Jh2FIpF0)
 - **Course Notes**: [Postman Course Repository](https://github.com/vdespa/automation-with-postman-course)
 - **Postman Workspace**: [API Test Automation Collection](https://www.postman.com/fahmi-wiradika/freecodecamp-api-test-automation-with-postman/overview)
-- **GitHub Repository**: [Automation Implementation](https://github.com/fahmiwazu/Postman-API)
+- **GitHub Repository**: [Automation Implementation](https://github.com/fahmi-wiradika/Postman-API)
 - **Instructor**: Valentin Despa - Postman Community Expert
 - **Platform**: freeCodeCamp API Testing Certification
 

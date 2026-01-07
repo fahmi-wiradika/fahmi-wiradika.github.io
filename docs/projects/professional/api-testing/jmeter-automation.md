@@ -72,7 +72,7 @@ The test plan supports the following configurable parameters:
 
 1. **Clone the Repository**
 ```bash
-git clone https://github.com/fahmiwazu/performance-test.git
+git clone https://github.com/fahmi-wiradika/performance-test.git
 cd performance-test
 ```
 
@@ -283,8 +283,8 @@ type reports\jmeter.log
 ## 🔗 Related Resources
 
 - **Target API**: [Simple CRUD Apps](https://simple-crud-apps.vercel.app)
-- **API Repository**: [GitHub - simple-crud-apps](https://github.com/fahmiwazu/simple-crud-apps)
-- **API Testing Suite**: [Newman Automation](https://github.com/fahmiwazu/newman-automation)
+- **API Repository**: [GitHub - simple-crud-apps](https://github.com/fahmi-wiradika/simple-crud-apps)
+- **API Testing Suite**: [Newman Automation](https://github.com/fahmi-wiradika/newman-automation)
 - **JMeter Documentation**: [Apache JMeter User Manual](https://jmeter.apache.org/usermanual/index.html)
 
 ## 🤝 Contributing

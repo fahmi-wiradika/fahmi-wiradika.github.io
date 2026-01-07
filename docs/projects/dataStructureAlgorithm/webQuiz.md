@@ -247,17 +247,17 @@ flowchart TB
             Congratulation! your record are 1.652 seconds
 
 === "Logfile output"
-    The output are quite long to show in here, you can take a look on [App.log](https://github.com/fahmiwazu/1to50/blob/master/app.log)
+    The output are quite long to show in here, you can take a look on [App.log](https://github.com/fahmi-wiradika/1to50/blob/master/app.log)
 
 
 ### Repository
 How to clone the Project
 
-1. Go to [the Project Repository](https://github.com/fahmiwazu/1to50) on GitHub.
+1. Go to [the Project Repository](https://github.com/fahmi-wiradika/1to50) on GitHub.
 2. Clone the repository on your local machine:
     ``` bash title="bash"
     git init
-    git clone https://github.com/fahmiwazu/1to50.git
+    git clone https://github.com/fahmi-wiradika/1to50.git
     git add .
     git commit -m "Initial Commit"
     git remote add origin https://github.com/<username>/<repository>.git

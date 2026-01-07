@@ -30,8 +30,8 @@ A comprehensive online portfolio showcasing projects, certifications, and profes
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/fahmiwazu/docs-portfolio.git
-   cd docs-portfolio
+   git clone https://github.com/fahmi-wiradika/fahmi-wiradika.github.io.git
+   cd fahmi-wiradika.github.io
    ```
 
 2. **Install dependencies**

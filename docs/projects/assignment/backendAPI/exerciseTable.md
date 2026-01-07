@@ -44,7 +44,7 @@ This project demonstrates proficiency in:
 
 - Base URL
     ```
-    https://github.com/fahmiwazu/fcc-exercise-tracker
+    https://github.com/fahmi-wiradika/fcc-exercise-tracker
     ```
 
 - API Endpoints
@@ -638,7 +638,7 @@ Request/Response Examples
 ## 📚 Resources and References
 
 - **freeCodeCamp Project**: [Exercise Tracker](https://www.freecodecamp.org/learn/back-end-development-and-apis/back-end-development-and-apis-projects/exercise-tracker)
-- **GitHub Repository**: [fcc-exercise-tracker](https://github.com/fahmiwazu/fcc-exercise-tracker)
+- **GitHub Repository**: [fcc-exercise-tracker](https://github.com/fahmi-wiradika/fcc-exercise-tracker)
 - **MongoDB Documentation**: [Mongoose ODM](https://mongoosejs.com/)
 - **Express.js Guide**: [Express Framework](https://expressjs.com/)
 - **Node.js Documentation**: [Node.js Official Docs](https://nodejs.org/docs/)

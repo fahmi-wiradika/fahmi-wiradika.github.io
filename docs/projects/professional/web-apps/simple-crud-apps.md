@@ -240,8 +240,8 @@ The application provides a complete REST API for product management:
 
 For comprehensive API testing and automation, check out the dedicated testing repository:
 
-- **GitHub Repository**: [https://github.com/fahmiwazu/newman-automation](https://github.com/fahmiwazu/newman-automation)
-- **Live Test Results**: [https://fahmiwazu.github.io/newman-automation](https://fahmiwazu.github.io/newman-automation)
+- **GitHub Repository**: [https://github.com/fahmi-wiradika/newman-automation](https://github.com/fahmi-wiradika/newman-automation)
+- **Live Test Results**: [https://fahmi-wiradika.github.io/newman-automation](https://fahmi-wiradika.github.io/newman-automation)
 
 The testing repository includes:
 - Automated Newman/Postman test collections
@@ -361,8 +361,8 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 🔗 Quick Links
 
 - **Live API**: [https://simple-crud-apps.vercel.app](https://simple-crud-apps.vercel.app)
-- **API Testing Repository**: [https://github.com/fahmiwazu/newman-automation](https://github.com/fahmiwazu/newman-automation)
-- **Live Test Results**: [https://fahmiwazu.github.io/newman-automation](https://fahmiwazu.github.io/newman-automation)
+- **API Testing Repository**: [https://github.com/fahmi-wiradika/newman-automation](https://github.com/fahmi-wiradika/newman-automation)
+- **Live Test Results**: [https://fahmi-wiradika.github.io/newman-automation](https://fahmi-wiradika.github.io/newman-automation)
 - **YouTube Tutorial**: [Build Node.js API from Scratch](https://youtu.be/_7UQPve99r4?si=KfoqN55VkY3Kg59l)
 - **MongoDB Atlas**: [https://www.mongodb.com/cloud/atlas](https://www.mongodb.com/cloud/atlas)
 - **Vercel**: [https://vercel.com](https://vercel.com)

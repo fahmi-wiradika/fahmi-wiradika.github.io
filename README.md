@@ -30,7 +30,7 @@ A comprehensive online portfolio showcasing projects, certifications, and profes
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/fahmiwazu/docs-portfolio.git
+   git clone https://github.com/fahmi-wiradika/fahmi-wiradika.github.io.git
    cd docs-portfolio
    ```
 
@@ -164,9 +164,9 @@ This project is licensed under the MIT License. See the repository for full lice
 
 ## 🔗 Links
 
-- **Live Site**: [Fahmi's Project Library](https://fahmiwazu.github.io/docs-portfolio/)
-- **GitHub Repository**: [docs-portfolio](https://github.com/fahmiwazu/docs-portfolio)
-- **LinkedIn**: [Fahmi Wahyu Wiradika](https://www.linkedin.com/in/fahmiwiradika96/)
+- **Live Site**: [Fahmi's Project Library](https://fahmi-wiradika.github.io/)
+- **GitHub Repository**: [docs-portfolio](https://github.com/fahmi-wiradika/fahmi-wiradika.github.io/)
+- **LinkedIn**: [Fahmi Wahyu Wiradika](https://www.linkedin.com/in/fahmi-wiradika/)
 - **Postman**: [API Collections](https://www.postman.com/fahmi-wiradika)
 
 ## 📧 Contact

@@ -44,7 +44,7 @@ This project demonstrates proficiency in:
 
 - Base URL
     ```
-    https://github.com/fahmiwazu/fcc-american-british-translator
+    https://github.com/fahmi-wiradika/fcc-american-british-translator
     ```
 
 - API Endpoints
@@ -679,8 +679,7 @@ freeCodeCamp User Stories Compliance
 ## 📚 Resources and References
 
 - **freeCodeCamp Project**: [American British Translator](https://www.freecodecamp.org/learn/quality-assurance/quality-assurance-projects/american-british-translator)
-- **GitHub Repository**: [fcc-american-british-translator](https://github.com/fahmiwazu/fcc-american-british-translator)
-- **Live Demo**: [Replit Implementation](https://replit.com/@fahmiwazu/fcc-american-british-translator)
+- **GitHub Repository**: [fcc-american-british-translator](https://github.com/fahmi-wiradika/fcc-american-british-translator)
 - **Testing Framework**: [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/)
 - **HTTP Testing**: [Chai-HTTP](https://www.chaijs.com/plugins/chai-http/)
 
