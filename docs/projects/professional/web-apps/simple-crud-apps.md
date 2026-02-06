@@ -1,17 +1,17 @@
 # Simple CRUD Apps - Full-Stack Product Management System
 
-A complete full-stack CRUD (Create, Read, Update, Delete) application featuring both a REST API backend and an interactive web frontend. Built with Node.js, Express.js, MongoDB, and vanilla JavaScript, deployed on Vercel. This project demonstrates modern full-stack development practices with a clean MVC architecture.
+A complete full-stack CRUD (Create, Read, Update, Delete) application featuring both a REST API backend and an interactive web frontend. Built with Node.js, Express.js, MongoDB (Mongoose), and vanilla JavaScript, deployed on Vercel. The codebase uses a lightweight separation of concerns (routes → controllers → models) while serving the frontend as static files from the same Express app.
 
 ## 🚀 Overview
 
 This project demonstrates a complete full-stack development workflow:
 
 - **Backend API**: Express.js REST API with MongoDB integration
-- **Frontend Interface**: Interactive web application with modern UI/UX
+- **Frontend Interface**: Vanilla JS web app served from `public/`
 - **Database**: MongoDB Atlas cloud database
 - **Deployment**: Hosted on Vercel at [https://simple-crud-apps.vercel.app](https://simple-crud-apps.vercel.app)
-- **Architecture**: Clean separation of concerns with MVC pattern
-- **Features**: Real-time CRUD operations, responsive design, modal dialogs, notifications
+- **Architecture**: Single Express app serves both API routes and static frontend assets
+- **Features**: Real-time CRUD operations, responsive design, modal dialogs, notifications, basic client/server validation
 
 ## 💡 Inspiration
 
@@ -38,7 +38,7 @@ npm install
 ```
 
 3. **Setup Environment Variables**
-   Create a `.env` file in the root directory:
+Create a `.env` file in the root directory:
 ```env
 SCA_DB_NAME=your_mongodb_username
 SCA_DB_PASSWORD=your_mongodb_password
@@ -68,12 +68,39 @@ npm run serve
 ├── routes/
 │   └── product.route.js         # API route definitions
 ├── public/
-│   └── index.html              # Frontend web application
+│   ├── index.html               # Frontend entry (vanilla JS)
+│   ├── css/
+│   │   └── styles.css           # UI styles
+│   └── js/
+│       └── app.js               # Frontend logic (Fetch API CRUD + modals)
 ├── index.js                     # Application entry point
 ├── package.json                 # Dependencies and scripts
 ├── vercel.json                  # Vercel deployment configuration
 └── README.md
 ```
+
+## 🧩 Architecture (Current)
+
+### Request Flow (Local + Production)
+- **Single runtime**: One Express app (`index.js`) handles both the REST API and the static frontend.
+- **API first**: `/api/products` is mounted before static middleware.
+- **Static frontend**: `express.static('public')` serves `/index.html`, `/css/styles.css`, and `/js/app.js`.
+- **SPA-style fallback**: `GET /` returns `public/index.html` (non-API routes are intended to be handled by the static middleware / fallback).
+- **Frontend ↔ API**: The browser calls relative URLs like `fetch('/api/products')`, so it works on both `localhost` and Vercel without changing base URLs.
+
+### Backend Layering
+- **Routes** (`routes/product.route.js`): Defines REST endpoints for products.
+- **Controllers** (`controllers/product.controller.js`): Implements CRUD using Mongoose and returns JSON responses.
+  - Products list is sorted by newest first: `sort({ createdAt: -1 })`
+  - Basic non-negative validation is enforced for `price` and `quantity` on create/update.
+- **Models** (`models/product.models.js`): `Product` schema with `timestamps: true` and field validation (`min: 0` for `price` and `quantity`).
+
+### Deployment on Vercel (Serverless)
+- **Entrypoint**: `vercel.json` builds `index.js` with `@vercel/node`.
+- **Routing**: All paths are routed to `index.js`, so Express serves both:
+  - **API** under `/api/products`
+  - **Frontend assets** under `/public/*` (via Express static middleware)
+- **Local vs production**: In non-production, the app listens on port `3000`; in production it only exports the Express app for Vercel.
 
 ## 🏗️ CRUD Application Structure
 
@@ -136,9 +163,9 @@ The application provides a complete REST API for product management:
 ### Database Configuration
 - **Provider**: MongoDB Atlas (Cloud)
 - **Connection**: Mongoose ODM
-- **Environment Variables**:
-    - `SCA_DB_NAME`: Database username
-    - `SCA_DB_PASSWORD`: Database password
+- **Environment Variables**: 
+  - `SCA_DB_NAME`: Database username
+  - `SCA_DB_PASSWORD`: Database password
 
 ### Product Schema
 ```javascript
@@ -150,12 +177,14 @@ The application provides a complete REST API for product management:
   quantity: {
     type: Number,
     required: true,
-    default: 0 
+    default: 0,
+    min: [0, "Quantity cannot be negative"]
   },
   price: {
     type: Number,
     required: true,
-    default: 0 
+    default: 0,
+    min: [0, "Price cannot be negative"]
   },
   Image: {
     type: String,
@@ -190,19 +219,6 @@ The application provides a complete REST API for product management:
 - **Update Products**: Pre-filled modal with current values
 - **Delete Products**: Confirmation dialog to prevent accidental deletion
 - **Product Display**: Organized table view with all product details
-- **Search & Filter**: Easy product management interface
-
-!!! abstract "Live App Overview"
-    === "Desktop Overview"
-        <figure markdown="span">
-        ![Screenshot](img/Live-Apps-Desktop-View.jpg){ width="800" }
-        <figcaption>Simple CRUD Apps Desktop Overview</figcaption>
-        </figure>
-    === "Mobile Overview"
-        <figure markdown="span">
-        ![Screenshot](img/Live-Apps-Mobile-View.jpg){ width="250" }
-        <figcaption>Simple CRUD Apps Mobile Overview</figcaption>
-        </figure>
 
 ## 🌐 Deployment on Vercel
 
@@ -214,11 +230,10 @@ The application provides a complete REST API for product management:
 ### Deployment Features
 - **Automatic Deployment**: Triggered by GitHub pushes
 - **Environment Variables**: Securely stored MongoDB credentials
-- **Serverless**: Scalable serverless functions
+- **Serverless**: Express runs as a Vercel Serverless Function (`@vercel/node`)
 - **Global CDN**: Fast worldwide access
-- **Static File Serving**: Frontend files served from `/public` directory
-- **API Routing**: REST API endpoints handled by serverless functions
-- **Mixed Content**: Both API and static content served from single domain
+- **Static File Serving**: Frontend files are served by Express from the `/public` directory
+- **Mixed Content**: Both API and UI are served from the same domain/runtime
 
 ## 🌐 Frontend Application
 
@@ -288,19 +303,19 @@ The testing repository includes:
 ### Common Issues
 
 1. **Database Connection Failed**
-    - Verify MongoDB Atlas credentials
-    - Check IP whitelist in MongoDB Atlas
-    - Ensure environment variables are set correctly
+   - Verify MongoDB Atlas credentials
+   - Check IP whitelist in MongoDB Atlas
+   - Ensure environment variables are set correctly
 
 2. **Local Server Won't Start**
-    - Check if port 3000 is available
-    - Verify Node.js installation
-    - Install dependencies with `npm install`
+   - Check if port 3000 is available
+   - Verify Node.js installation
+   - Install dependencies with `npm install`
 
 3. **Environment Variables Not Loading**
-    - Create `.env` file in root directory
-    - Check `.env` file syntax
-    - Restart server after adding variables
+   - Create `.env` file in root directory
+   - Check `.env` file syntax
+   - Restart server after adding variables
 
 ## 📊 API Usage Examples
 
