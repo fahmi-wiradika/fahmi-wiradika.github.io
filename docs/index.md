@@ -53,9 +53,9 @@ For those interested in exploring Fahmi's project documentation across categorie
      ---
     - [Newman Automation](projects/professional/api-testing/newman-automation.md)
     - [Java Automation Framework](projects/professional/frameworks/java-automation.md)
+    - [Robot Framework](projects/professional/frameworks/robot-framework.md)
     - [JMeter Automation](projects/professional/api-testing/jmeter-automation.md)
     - [Simple CRUD Apps](projects/professional/web-apps/simple-crud-apps.md) 
-    - [Project Documentation](projects/professional/documentation/docs-portfolio.md)
 
 
 [//]: # ( - [:material-school: __Academic Research__]&#40;projects/academic/chapterOne.md&#41; &#40;1&#41;)
