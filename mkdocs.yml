@@ -116,6 +116,7 @@ nav:
       - Fahmi's Project Library: projects/professional/documentation/docs-portfolio.md
     - Framework:
       - Java Automation Test: projects/professional/frameworks/java-automation.md
+      - Robot Framework: projects/professional/frameworks/robot-framework.md
     # - Python Automation Test: projects/workSample/pythonAutomation.md
 #  - Academic Research:
 #    - Bachelor Research:
