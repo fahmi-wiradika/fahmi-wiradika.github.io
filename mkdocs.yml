@@ -117,6 +117,7 @@ nav:
     - Framework:
       - Java Automation Test: projects/professional/frameworks/java-automation.md
       - Robot Framework: projects/professional/frameworks/robot-framework.md
+      - Cypress: projects/professional/frameworks/cypress.md
     # - Python Automation Test: projects/workSample/pythonAutomation.md
 #  - Academic Research:
 #    - Bachelor Research:
