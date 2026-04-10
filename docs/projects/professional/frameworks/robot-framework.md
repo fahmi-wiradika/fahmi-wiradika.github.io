@@ -1,11 +1,17 @@
-# Robot Framework – SauceDemo Test Automation
+# Robot Framework – Web UI + API Test Automation
 
-A web UI test automation suite for [SauceDemo](https://www.saucedemo.com) built with Robot Framework and Selenium Library. Tests run in headless Chrome and results are published automatically to GitHub Pages via GitHub Actions.
+A test automation repository built with Robot Framework covering:
+
+- **Web UI testing** with SeleniumLibrary (headless Chrome)
+- **API testing** with RequestsLibrary
+
+Currently includes suites for **SauceDemo** (`saucedemo.com`) and **Simple CRUD Apps** (`simple-crud-apps.vercel.app`). Results are published automatically to GitHub Pages via GitHub Actions.
 
 ## 🚀 Features
 
 ### Core Capabilities
 - **UI Testing**: Selenium WebDriver through Robot Framework SeleniumLibrary
+- **API Testing**: HTTP API validation through Robot Framework RequestsLibrary
 - **Headless Execution**: Chrome headless mode (`--headless=new`) for CI/CD compatibility
 - **Keyword-Driven**: Modular, reusable keywords separated by responsibility
 - **Reporting**: Built-in Robot Framework HTML report and log, auto-deployed to GitHub Pages
@@ -37,26 +43,39 @@ robot-framework/
 ├── README.md                         # Project documentation
 ├── requirements.txt                  # Python dependencies
 ├── resources/
-│   └── saucedemo/
-│       ├── keywords/                 # Reusable business-logic keywords
-│       │   ├── cart_keywords.robot
-│       │   ├── checkout_keywords.robot
+│   ├── saucedemo/
+│   │   ├── keywords/                 # Reusable business-logic keywords
+│   │   │   ├── cart_keywords.robot
+│   │   │   ├── checkout_keywords.robot
+│   │   │   ├── common_keywords.robot
+│   │   │   ├── login_keywords.robot
+│   │   │   └── product_keywords.robot
+│   │   ├── locators/                 # Element selectors (CSS / ID), separated from logic
+│   │   │   ├── cart_locators.robot
+│   │   │   ├── checkout_locators.robot
+│   │   │   ├── login_locators.robot
+│   │   │   └── product_locators.robot
+│   │   └── variables/               # Centralised test data and configuration
+│   │       └── common_variables.robot
+│   └── simple-crud-apps/
+│       ├── keywords/                 # UI + API reusable keywords
+│       │   ├── api_keywords.robot
 │       │   ├── common_keywords.robot
-│       │   ├── login_keywords.robot
-│       │   └── product_keywords.robot
-│       ├── locators/                 # Element selectors (CSS / ID), separated from logic
-│       │   ├── cart_locators.robot
-│       │   ├── checkout_locators.robot
-│       │   ├── login_locators.robot
-│       │   └── product_locators.robot
-│       └── variables/               # Centralised test data and configuration
+│       │   └── simple_crud_keywords.robot
+│       ├── locators/                 # UI selectors
+│       │   └── simple_crud_locators.robot
+│       └── variables/                # UI + API test data/config
+│           ├── api_variables.robot
 │           └── common_variables.robot
 ├── tests/
-│   └── saucedemo/
-│       ├── cart_tests.robot
-│       ├── checkout_tests.robot
-│       ├── login_tests.robot
-│       └── product_tests.robot
+│   ├── saucedemo/
+│   │   ├── cart_tests.robot
+│   │   ├── checkout_tests.robot
+│   │   ├── login_tests.robot
+│   │   └── product_tests.robot
+│   └── simple-crud-apps/
+│       ├── simple-crud-api.robot
+│       └── simple-crud-ui-e2e.robot
 └── results/                         # Generated after a local run (git-ignored)
     ├── log.html
     ├── output.xml
@@ -68,10 +87,8 @@ robot-framework/
 | Directory | Purpose |
 |---|---|
 | `.github/workflows/` | GitHub Actions pipeline — runs tests on push/PR and deploys the HTML report to GitHub Pages |
-| `resources/keywords/` | Custom keywords that combine SeleniumLibrary calls into readable, business-level steps |
-| `resources/locators/` | CSS and ID selectors for every page element, kept separate from test logic for easy maintenance |
-| `resources/variables/` | Centralised test data: base URL, credentials, timeouts, product names, prices, and checkout data |
-| `tests/` | Test cases organised by feature module (login, product, cart, checkout) |
+| `resources/` | Shared keywords/locators/variables by application (`saucedemo`, `simple-crud-apps`) |
+| `tests/` | Test cases grouped by application |
 | `results/` | Robot Framework output files generated after execution — excluded from version control |
 
 ## 🧪 Test Coverage
@@ -82,6 +99,8 @@ robot-framework/
 | Products | TC_PRD_001 – TC_PRD_008 | smoke, regression |
 | Cart | TC_CART_001 – TC_CART_002 | smoke, regression |
 | Checkout | TC_CHK_001 – TC_CHK_006 | smoke, regression, negative, e2e |
+| Simple CRUD UI (E2E) | TC_CRUD_001 – TC_CRUD_004 | crud, smoke, regression, e2e |
+| Simple CRUD API | TC_API_001 – TC_API_006 | api, smoke, regression, negative |
 
 ## 🛠️ Technologies & Dependencies
 
@@ -89,6 +108,7 @@ robot-framework/
 |---|---|
 | `robotframework` | Core test framework and DSL runner |
 | `robotframework-seleniumlibrary` | Selenium WebDriver bindings for Robot Framework |
+| `robotframework-requests` | API testing via persistent HTTP sessions |
 | `webdriver-manager` | Automatic ChromeDriver version management |
 | `robotframework-pabot` | Parallel test execution support (in development) |
 
@@ -96,7 +116,7 @@ robot-framework/
 
 ### Prerequisites
 
-- **Python 3.7** or higher
+- **Python 3.12** (recommended; CI uses 3.12)
 - **Git**
 - **Google Chrome** (stable)
 
@@ -163,7 +183,18 @@ robot --outputdir results tests/saucedemo/cart_tests.robot
 
 # Checkout tests
 robot --outputdir results tests/saucedemo/checkout_tests.robot
+
+# Simple CRUD UI E2E tests
+robot --outputdir results tests/simple-crud-apps/simple-crud-ui-e2e.robot
+
+# Simple CRUD API tests
+robot --outputdir results tests/simple-crud-apps/simple-crud-api.robot
 ```
+
+### Notes for Simple CRUD Apps suites
+
+- **UI suite state**: `tests/simple-crud-apps/simple-crud-ui-e2e.robot` captures `${PRODUCT_ID}` from the UI notification in `TC_CRUD_002`; the update/delete tests depend on it. Run the suite as a whole.
+- **API suite state**: `tests/simple-crud-apps/simple-crud-api.robot` captures `${PRODUCT_ID}` from the POST response in `TC_API_002`; the remaining tests depend on it. Run the suite as a whole.
 
 ### Run by Tag
 
@@ -213,64 +244,54 @@ https://<your-username>.github.io/<your-repo-name>/
 
 ## 🔧 Framework Components
 
-### Common Keywords (`common_keywords.robot`)
+### Simple CRUD Apps — UI components (SeleniumLibrary)
 
-Core browser lifecycle and element interaction utilities shared across all test suites:
+**Shared browser + interaction helpers**
 
-```robot
-# Browser lifecycle
-Open Browser To Login Page    # Opens headless Chrome and navigates to login
-Close Test Browser            # Captures screenshot on failure, then closes browser
+- File: `resources/simple-crud-apps/keywords/common_keywords.robot`
+- Used by: `tests/simple-crud-apps/simple-crud-ui-e2e.robot`
 
-# Navigation
-Wait Until Page Is Loaded     # Polls document.readyState until complete
-Navigate To URL    ${url}     # Go To + wait for page load
-Verify Current URL Contains   ${fragment}
+Key responsibilities:
 
-# Element interactions
-Wait And Click Element        ${locator}
-Wait And Input Text           ${locator}    ${text}
-Wait And Get Text             ${locator}
-Wait And Select From List By Value    ${locator}    ${value}
-Element Should Be Present     ${locator}
-Element Should Not Be Present ${locator}
-```
+- **Browser lifecycle**: `Open Browser To Simple CRUD App`, `Close Test Browser`
+- **Navigation**: `Wait Until Page Is Loaded`, `Navigate To URL`, `Verify Current URL Contains`
+- **Element helpers**: `Wait And Click Element`, `Wait And Input Text`, `Wait And Get Text`, `Element Should Be Present`, `Element Should Not Be Present`
 
-### Keyword Modules
+**CRUD UI workflow keywords**
 
-| File | Responsibility |
+- File: `resources/simple-crud-apps/keywords/simple_crud_keywords.robot`
+
+| Keyword / Area | Responsibility |
 |---|---|
-| `login_keywords.robot` | Fill and submit the login form, assert success/failure messages, logout |
-| `product_keywords.robot` | Cart badge tracking, add/remove items by locator, sort dropdown, product card assertions |
-| `cart_keywords.robot` | Cart page assertions, proceed to checkout, clear all items between tests |
-| `checkout_keywords.robot` | Multi-step checkout flow, field validation errors, order total math verification |
+| `Open Simple CRUD App`, `Verify Product List Loaded` | Open the app and wait for product list readiness |
+| `Add Product`, `Get Product Id From Notification` | Create a product and capture the generated ID from the UI notification |
+| `Update Product`, `Delete Product` | Update/delete by captured product ID (modal flows) |
+| `Assert Product Details`, `Product Should Not Be Present` | Verify row fields and post-delete absence |
 
-### Variables (`common_variables.robot`)
+**UI locators + variables**
 
-All configuration values are centralised and referenced via Robot Framework variables:
+- Locators: `resources/simple-crud-apps/locators/simple_crud_locators.robot`
+- Variables: `resources/simple-crud-apps/variables/common_variables.robot` (includes `${BASE_URL}`, timeouts, and product test data)
 
-```robot
-# Browser & Timeouts
-${BROWSER}              chrome
-${PAGE_LOAD_TIMEOUT}    30 seconds
-${ELEMENT_TIMEOUT}      15 seconds
+> Note: the UI E2E suite captures `${PRODUCT_ID}` at runtime (in `TC_CRUD_002`). `TC_CRUD_003` and `TC_CRUD_004` depend on that state, so run the suite as a whole.
 
-# Credentials
-${STANDARD_USER}        standard_user
-${VALID_PASSWORD}       secret_sauce
+### Simple CRUD Apps — API components (RequestsLibrary)
 
-# URLs
-${LOGIN_URL}            ${BASE_URL}/
-${PRODUCT_URL}          ${BASE_URL}/inventory.html
+- Keywords: `resources/simple-crud-apps/keywords/api_keywords.robot`
+- Variables: `resources/simple-crud-apps/variables/api_variables.robot`
+- Used by: `tests/simple-crud-apps/simple-crud-api.robot`
 
-# Product data
-${PROD_NAME_BACKPACK}   Sauce Labs Backpack
-${PROD_PRICE_BACKPACK}  $29.99
-```
+API design in this repo:
+
+- **Session management**: `Create Simple CRUD API Session` (suite setup)
+- **Operations**: `API Get All Products`, `API Create Product`, `API Get Product By Id`, `API Update Product`, `API Delete Product`
+- **Assertions**: response status + JSON shape/field assertions (e.g. `Response Body Should Be A List`, `Response Field Should Equal As Numbers`)
+
+> Note: the API suite stores `${PRODUCT_ID}` from `TC_API_002` and all subsequent tests depend on it, so run the suite as a whole.
 
 ## 🌐 Browser Configuration
 
-Tests run in **headless Chrome** with the following arguments configured in `common_keywords.robot`:
+Tests run in **headless Chrome** with the following arguments configured in each app’s `common_keywords.robot` (for example `resources/simple-crud-apps/keywords/common_keywords.robot`):
 
 | Argument | Reason |
 |---|---|
@@ -279,7 +300,7 @@ Tests run in **headless Chrome** with the following arguments configured in `com
 | `--incognito` | Ensures a clean, isolated session for every suite |
 | `--headless=new` | Modern headless mode available from Chrome 112+ |
 
-To run with a **visible browser window** locally, remove `add_argument("--headless=new")` from `Open Browser To Login Page` in `resources/saucedemo/keywords/common_keywords.robot`.
+To run with a **visible browser window** locally, remove `add_argument("--headless=new")` from `Open Browser To Simple CRUD App` in `resources/simple-crud-apps/keywords/common_keywords.robot` (and/or the equivalent browser-open keyword in other suites).
 
 ## 🔄 CI/CD Pipeline
 
