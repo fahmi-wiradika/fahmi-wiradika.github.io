@@ -51,7 +51,7 @@ For those interested in exploring Fahmi's project documentation across categorie
     1. Explore Fahmi's notable contributions to automation tools and script automation, specifically designed to enhance the QA process throughout his professional career, right here for detailed insights.
 
      ---
-    - [Newman Automation](projects/professional/api-testing/newman-automation.md)
+    - [Playwright MCP Framework](projects/professional/frameworks/playwright.md)
     - [Java Automation Framework](projects/professional/frameworks/java-automation.md)
     - [Robot Framework](projects/professional/frameworks/robot-framework.md)
     - [JMeter Automation](projects/professional/api-testing/jmeter-automation.md)
