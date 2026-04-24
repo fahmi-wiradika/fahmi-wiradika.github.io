@@ -1,11 +1,12 @@
 ## Required Python Dependencies ##
 
 # pip install -r requirements.txt
-mkdocs
+mkdocs<2.0
 mkdocs-autorefs
-mkdocs-material
+mkdocs-material<10.0
 mkdocs-glightbox
 mkdocs-git-revision-date-localized-plugin
+mkdocs-static-i18n
 pymdown-extensions
 Pygments
 

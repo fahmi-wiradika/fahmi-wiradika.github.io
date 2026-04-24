@@ -120,13 +120,13 @@ nav:
       - Cypress: projects/professional/frameworks/cypress.md
       - Playwright MCP Framework: projects/professional/frameworks/playwright.md
     # - Python Automation Test: projects/workSample/pythonAutomation.md
-#  - Academic Research:
-#    - Bachelor Research:
-#      - Smart Metering Systems:
+  - Research Project:
+    - Bachelor Research Project:
+      - Smart Metering Systems:
 #        - Overview: projects/academic/overview.md
-#        - Chapter 1: projects/academic/chapterOne.md
-#        - Chapter 2: projects/academic/chapterTwo.md
-#        - Chapter 3: projects/academic/chapterThree.md
+        - Chapter 1: projects/academic/chapter-I.md
+        - Chapter 2: projects/academic/chapter-II.md
+        - Chapter 3: projects/academic/chapter-III.md
 #        - Chapter 4: projects/academic/chapterFour.md
 
 # Extensions  
@@ -159,5 +159,15 @@ markdown_extensions:
 plugins:
   - search
   - autorefs
-  - git-revision-date-localized
+  # - i18n:
+  #     docs_structure: suffix
+  #     languages:
+  #       - locale: en
+  #         name: English
+  #         default: true
+  #         build: true
+  #       - locale: id
+  #         name: Bahasa Indonesia
+  #         build: true
+  # - git-revision-date-localized
   - glightbox
