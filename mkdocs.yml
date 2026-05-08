@@ -124,9 +124,9 @@ nav:
     - Bachelor Research Project:
       - Smart Metering Systems:
 #        - Overview: projects/academic/overview.md
-        - Chapter 1: projects/academic/chapter-I.md
-        - Chapter 2: projects/academic/chapter-II.md
-        - Chapter 3: projects/academic/chapter-III.md
+        - Chapter 1: projects/academic/bachelor-research/chapter-I.md
+        - Chapter 2: projects/academic/bachelor-research/chapter-II.md
+        - Chapter 3: projects/academic/bachelor-research/chapter-III.md
 #        - Chapter 4: projects/academic/chapterFour.md
 
 # Extensions  
