@@ -1,7 +1,7 @@
 # About Fahmi
 
 ## Summary
-A graduate student from Electronic Engineering Polytechnic Institute of Surabaya (EEPIS) in 2019, I am interested and have a Diploma Thesis on Smart Meters with Artificial intelligence (AI) Embedded Devices. 4 years of experience in the Research & Development team as a Tester Engineer & Scrum Master to build Embedded Systems, Desktop & Web Applications.
+QA Automation Engineer with 5+ years of experience in FinTech and embedded systems, specialising in end-to-end test framework development using Playwright, Cypress, Robot Framework, and Java/Selenium. Proven track record in CI/CD-integrated automation pipelines, API and performance testing, and AI-augmented test generation using Playwright MCP and LLM agents. Certified Katalon Expert and Postman API Automation specialist.
 
 ## Contact Information
 If you're looking to contact Fahmi regarding his personal or project source code, you can reach him on this social platform or through specific services.
@@ -35,7 +35,7 @@ Fahmi's tech stack includes programming languages, version control systems (VCS)
     - :simple-pycharm: : PyCharm 
     - :simple-intellijidea: : IntelliJ 
     - :material-microsoft-visual-studio-code: : Visual Code
-    - :simple-eclipseide: : Eclipse 
+    - :material-hexagon: : Cursor 
     - :material-microsoft-visual-studio: : Visual Studio 
 
 - :material-git: Versioning Control System
@@ -55,18 +55,16 @@ Fahmi's tech stack includes programming languages, version control systems (VCS)
 - :material-tools: Development & Testing Tool
 
     ---
-    - :simple-postman: : Postman
-    - :simple-insomnia: : Insomnia
-    - :simple-nodedotjs: : Node.js
-    - :simple-chai: : Chai
-    - :simple-selenium: : Selenium webdriver
+    - :simple-postman: : [Postman](../projects/professional/api-testing/newman-automation.md)
+    - :simple-apachejmeter: : [Apache JMeter](../projects/professional/api-testing/jmeter-automation.md)
+    - :octicons-mcp-24: : [Playwright MCP](../projects/professional/frameworks/playwright.md)
+    - :simple-selenium: : [Selenium webdriver](../projects/professional/frameworks/java-automation.md)
 
 - :material-file-document-alert: Issue Tracking and Documenation
 
     ---
     - :simple-materialformkdocs: : MkDocs
     - :simple-jira: : JIRA
-    - :simple-confluence: : Confluence
     - :simple-kibana: : Kibana
     - :simple-linux: : Hiware
 
@@ -74,12 +72,14 @@ Fahmi's tech stack includes programming languages, version control systems (VCS)
 
     ---
     - :simple-githubactions: : GitHub Action
+    - :simple-jenkins: : Jenkins
 
 - :simple-framework: Testing Framework
 
     ---
-    - :simple-pytest: : PyTest
-    - :simple-junit5: : Junit
+    - :simple-robotframework: : [Robot Framework](../projects/professional/frameworks/robot-framework.md)
+    - :simple-cypress: : [Cypress](../projects/professional/frameworks/cypress.md)
+    - :material-drama-masks: : [Playwright](../projects/professional//frameworks/playwright.md)
 
 </div>
 
