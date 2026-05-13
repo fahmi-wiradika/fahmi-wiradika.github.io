@@ -1242,7 +1242,7 @@ The following instruments were used in the testing procedure:
 </figure>
 
 <figure markdown="span">
-![Screenshot](img/Chapter-IV/Figure%204.2%20Testing%20Scheme%20for%20Signal%20Sampling.jpg){ width="500" }
+![Screenshot](img/Chapter-IV/Figure%204.2%20Testing%20Scheme%20for%20Signal%20Sampling.jpg){ width="250" }
 <figcaption>Figure 4.2 Testing Scheme for Signal Sampling</figcaption>
 </figure>
 
@@ -1454,7 +1454,7 @@ In the execution of the Testing, the following tools were used:
 #### Testing Scheme
 
 <figure markdown="span">
-![Screenshot](img/Chapter-IV/Figure%204.5%20Schematic%20Diagram%20for%20ONLINE%20FFT%20Algorithm%20Testing%20on%20Voltage%20Sensor.jpg){ width="450" }
+![Screenshot](img/Chapter-IV/Figure%204.5%20Schematic%20Diagram%20for%20ONLINE%20FFT%20Algorithm%20Testing%20on%20Voltage%20Sensor.jpg){ width="250" }
 <figcaption>Figure 4.5 Schematic Diagram for ONLINE FFT Algorithm Testing on Voltage Sensor</figcaption>
 </figure>
 
@@ -1621,7 +1621,7 @@ In the execution of the Testing, the following tools were used:
 #### Testing Scheme
 
 <figure markdown="span">
-![Screenshot](img/Chapter-IV/Figure%204.8%20Schematic%20Diagram%20for%20Current%20Sensor%20Testing.jpg){ width="500" }
+![Screenshot](img/Chapter-IV/Figure%204.8%20Schematic%20Diagram%20for%20Current%20Sensor%20Testing.jpg){ width="250" }
 <figcaption>Figure 4.8 Schematic Diagram for Current Sensor Testing</figcaption>
 </figure>
 
@@ -1777,7 +1777,7 @@ In the execution of this test, we used the following tools:
 #### Testing Schema
 
 <figure markdown="span">
-![Screenshot](img/Chapter-IV/Figure%204.11%20Voltage%20Sensor%20Testing%20Schematic.jpg){ width="500" }
+![Screenshot](img/Chapter-IV/Figure%204.11%20Voltage%20Sensor%20Testing%20Schematic.jpg){ width="250" }
 <figcaption>Figure 4.11 Voltage Sensor Testing Schematic</figcaption>
 </figure>
 
@@ -1936,11 +1936,376 @@ Additionally, during this test, observation was made on the results of computati
 <figcaption>Figure 4.13 Voltage Sensor Test Graph</figcaption>
 </figure>
 
+### Harmonic Testing
+
+#### Test Objectives  
+
+The objective of this test is to obtain harmonic components that will later be used as characteristic parameters for the type of load being identified using a mimic neural network algorithm. In addition, these data also serve as an indicator of power quality on a specific load.
+
+#### Testing Equipment
+During this testing, the following equipment are used:
+
+- Variac  
+- Smart Energy Meter Board
+- Test Pen
+- Load
+
+#### Testing Scheme
+
+<figure markdown="span">
+![Screenshot](img/Chapter-IV/Figure%204.14%20Harmonic%20Testing%20Scheme.jpg){ width="250" }
+<figcaption>Figure 4.14 Harmonic Testing Scheme</figcaption>
+</figure>
+Figure 4.14 Harmonic Testing Scheme
+
+#### Test Procedure
+The procedure for conducting this test is as follows: 
+
+1. Prepare the testing equipment
+2. assemble them according to the scheme above
+3. gradually increase the VOutput of the Variac, 
+4. connect it with the Load,
+    - Load 1: Variable Resistor  
+    - Load 2: Variable Resistor + Fan  
+    - Load 3: Fan & Laptop Charger
+5. Record harmonic data using ST-LINK V2
+6. Conduct Analysis and Conclusion.
+
+#### Test Data
+
+Table 4.16. Harmonic Test Data for Load 1  
+
+|Orde| V(m)	    |I(m)   	|Orde|	V(m)	|I(m)|
+|---|-----------|-----------|---|-----------|-------|
+|0	|215	    |527	    |8	|124.81139	|140.666|
+|1	|21219.787	|28847.4	|9	|171.5193   |85.454033|
+|2	|175.2146	|499.01444	|10	|102.84702	|265.17175|
+|3	|207.55821	|433.91785	|11	|15.60149	|138.77361|
+|4	|166.16728	|405.51932	|12	|125.77748	|286.76944|
+|5	|242.47136	|306.35617	|13	|118.07394	|218.5795|
+|6	|191.69894	|245.23137	|14	|101.34453	|301.82465|
+|7	|112.73367	|299.22806	|15	|97.558792	|209.18788|
+
+Table 4.17. Harmonic Test Data for Load 2  
+
+|Orde|	I(m) 	|I(m) HIOKI	|Orde|	I(m)|	I(m) HIOKI|
+|---|-----------|-------|---|-----------|------|
+|1	|0.113102	|0.112	|9	|0.082244	|0.079|
+|2	|0.009005	|0.005	|10	|0.014045	|0.004|
+|3	|0.110327	|0.107	|11	|0.075464	|0.066|
+|4	|0.013875	|0.005	|12	|0.013857	|0.004|
+|5	|0.104316	|0.1	|13	|0.058707	|0.053|
+|6	|0.01499	|0.004	|14	|0.013876	|0.003|
+|7	|0.09341	|0.09	|15	|0.056523	|0.042|
+|8	|0.01271	|0.004	|16	|0.01096	|0.003|
+
+Table 4.18. Harmonic Test Data for Load 3 
+
+|Orde|	I(m)	|I(m) HIOKI	|Orde|	I(m)|	I(m) HIOKI|
+|---|-----------|-------|---|-----------|------|
+|1	|0.350067	|0.349	|9	|0.082244	|0.089|
+|2	|0.011917	|0.005	|10	|0.01147	|0.005|
+|3	|0.128949	|0.126	|11	|0.071242	|0.074|
+|4	|0.016152	|0.004	|12	|0.015555	|0.005|
+|5	|0.11331	|0.113	|13	|0.066646	|0.06|
+|6	|0.0072	    |0.004	|14	|0.008624	|0.005|
+|7	|0.112029	|0.104	|15	|0.043724	|0.048|
+|8	|0.00845	|0.004	|16	|0.021449	|0.005|
+
+Table 4.19. THDv and THDi Data for Load 
+
+| No | Voltage | Current | THDv | THDi | Load |
+|---|----------|------------|-----------|-----------|---|
+| 1 | 50.306572 | 1.1440711 | 12.163322 | 4.7579055 | 1 |
+| 2 | 216.84709 | 0.2199871 | 3.9855971 | 47.779949 | 3 |
+| 3 | 222.70918 | 3.7686863 | 4.2047586 | 4.3894253 | 2 |
+
+#### Analysis of Data
+
+This testing focused on the harmonic orders obtained from the time-domain to frequency-domain conversion using a radix-2 FFT algorithm with a 64-N point, whose results were tested in accordance with what was stated in "Understanding Digital Signal Processing" by Richard G. Lyons. However, during practical application of the radix-2 FFT algorithm in real-time, precise calibration is required. Below are the graphs for Load 1, consisting of a variable resistor, tested under Condition A with a voltage of 50V and an uncalibrated current of 1.14A.
+
+<figure markdown="span">
+![Screenshot](img/Chapter-IV/Figure%204.15%20Voltage%20Spectrum%20of%20Load%201%20under%20Condition%20A.jpg){ width="500" }
+<figcaption>Figure 4.15 Voltage Spectrum of Load 1 under Condition A</figcaption>
+</figure>
+
+
+<figure markdown="span">
+![Screenshot](img/Chapter-IV/Figure%204.16%20Current%20Spectrum%20of%20Load%201%20under%20Condition%20A.jpg){ width="500" }
+<figcaption>Figure 4.16 Current Spectrum of Load 1 under Condition A</figcaption>
+</figure>
+
+
+After testing Load 1 under Condition A, calibration was performed using a HIOKI CM3286-01 AC Clamp
+Power Meter, which can perform harmonic analysis and display the spectrum harmonics from order one
+to order thirty. Here are the notations for the calibrations conducted in C++ program:
+
+``` C++
+/**
+ * Calibrates and normalizes the FFT magnitude spectrum for current harmonic display.
+ *
+ * Calibration constants derived from HIOKI CM3286-01 AC Clamp Power Meter reference measurement.
+ * Converts raw CMSIS radix-2 FFT output into calibrated per-bin RMS harmonic magnitudes.
+ *
+ * Normalization step:
+ *   - Dividing by sqrt(2) converts peak magnitude to RMS per bin
+ *   - Dividing by (FFT_SIZE / 2) accounts for CMSIS radix-2 FFT scaling
+ *
+ * @param fftCurrentOutput    Raw CMSIS radix-2 FFT output array (size = FFT_SIZE)
+ * @param calibratedSpectrum  Output array of calibrated harmonic magnitudes (size = FFT_SIZE)
+ */
+void calibrateCurrentSpectrum(const float* fftCurrentOutput, float* calibratedSpectrum) {
+    const float normFactor  = sqrtf(2.0f) * (FFT_SIZE / 2.0f);  // peak-to-RMS + FFT scaling
+    const float zeroOffset  = 1.39776462244555f;                  // HIOKI calibration offset
+    const float scaleFactor = 254.609739589478f;                  // HIOKI calibration scale
+
+    for (int b = 0; b < FFT_SIZE; b++) {
+        float normalized        = fftCurrentOutput[b] / normFactor;
+        calibratedSpectrum[b]   = (normalized + zeroOffset) / scaleFactor;
+    }
+}
+```
+
+From this function, `fftCurrentOutput[b]` represents the magnitude of each harmonic bin computed
+by the CMSIS radix-2 FFT with 64-point N, which is then normalized and calibrated into physical
+units. Additionally, testing was performed on the harmonic calibration values using Load 2
+consisting of a Laptop Charger and Load 3 consisting of a combination of a Laptop Charger and a
+Fan. Here are the spectra harmonics for Load 2.
+
+<figure markdown="span">
+![Screenshot](img/Chapter-IV/Figure%204.17%20Current%20Spectrum%20of%20Load%202.jpg){ width="500" }
+<figcaption>Figure 4.17 Current Spectrum of Load 2</figcaption>
+</figure>
+
+
+From these graphs, it can be seen that the manual calculation of harmonic orders using CMSIS radix-2 FFT with a 64-N point has an accuracy close to the HIOKI CM3286-01 meter for odd-order calculations. However, as the harmonic order increases, the error in calculations also increases. This is due to three main reasons:
+
+1. The power consumption of the Laptop Charger is relatively small, below 0.2 Amperes, which results in a significant proportion of errors in signal sampling compared to higher current-consuming loads.
+2. In this experiment, signal sampling frequency was set at 3200 Hz, resulting in sixty-four samples per cycle for both the voltage and current waveforms with a frequency of 50 Hz. 
+3. The accuracy of harmonic order calculations is affected by calibration errors.
+
+To address the inaccuracies in harmonic order calculations, this can be mitigated by increasing the sampling frequency, which will add structure to the radix-2 FFT algorithm. However, when analyzing loads with higher current consumption, it can also result in improved precision for higher-order harmonics. Here are the spectra harmonics for Load 3.
+
+<figure markdown="span">
+![Screenshot](img/Chapter-IV/Figure%204.18%20Current%20Spectrum%20of%20Load%203.jpg){ width="500" }
+<figcaption>Figure 4.18 Current Spectrum of Load 3</figcaption>
+</figure>
+
+
+Based on the data from Load 3, the harmonic spectrum for nonlinear operating loads has a distortion characteristic similar to that of calibrated measurement meters. Here is the accuracy data for Load 3's harmonic current calibration.
+
+Table 4.20. Harmonic Current Accuracy for Load 3
+
+|No	|Orde Harmonic	|SEM	|HIOKI	|Error %|
+|---|-----------|-------|-------|-------|
+|1	|1	|0.350067	|0.349	|0.3057307|
+|2	|3	|0.1289487	|0.126	|2.3402381|
+|3	|5	|0.11331	|0.113	|0.2743363|
+|4	|7	|0.112029	|0.104	|7.7201923|
+|5	|9	|0.082244	|0.089	|7.5910112|
+|6	|11	|0.071242	|0.074	|3.7270811|
+|7	|13	|0.066646	|0.06	|11.076667|
+|8	|15	|0.0437238	|0.048	|8.90875|
+|9	|17	|0.0397828	|0.038	|4.6914474|
+|10	|19	|0.0351957	|0.031	|13.534452|
+|11	|21	|0.0310703	|0.027	|15.075141|
+|12	|23	|0.0269435	|0.023	|17.145652|
+
+After harmonic testing, the calculation of Total Harmonic Distortion (THD) was performed, which is the percentage ratio between the total harmonic components and their fundamental component. A higher THD value indicates a greater risk of equipment damage due to harmonics in both current and voltage.
+
+Based on IEEE Standard 519-1992 Voltage Harmonic Limits, for voltages below 69kV, the maximum THD is 5.0%. Here are the equations to calculate THD:
+
+Total Harmonic Distortion for voltage ($THD_v$) and current ($THD_i$) are defined as the ratio
+of harmonic components to the fundamental component:
+
+$$
+THD_v = \frac{\sqrt{V_2^2 + V_3^2 + V_4^2 + \cdots + V_{\frac{N}{2}-1}^2}}
+             {\sqrt{V_1^2 + V_2^2 + V_3^2 + V_4^2 + \cdots + V_{\frac{N}{2}-1}^2}}
+$$
+
+$$
+THD_i = \frac{\sqrt{I_2^2 + I_3^2 + I_4^2 + \cdots + I_{\frac{N}{2}-1}^2}}
+             {\sqrt{I_1^2 + I_2^2 + I_3^2 + I_4^2 + \cdots + I_{\frac{N}{2}-1}^2}}
+$$
+
+| Symbol | Description |
+|--------|-------------|
+| $V_1$, $I_1$ | Fundamental component (50 Hz) of voltage and current |
+| $V_k$, $I_k$ | $k$-th harmonic component of voltage and current |
+| $\frac{N}{2}-1$ | Highest harmonic bin from FFT output ($N$ = FFT size) |
+
+The equations above were translated into C++ program instructions, which can be written as follows:
+
+``` C++
+/**
+ * Computes Total Harmonic Distortion (THD) for both voltage and current.
+ *
+ * Formula:
+ *   THD = 100 × sqrt( Σ(k=2 to N/2-1) X_k² / ( Σ(k=2 to N/2-1) X_k² + X_1² ) )
+ *
+ * Where:
+ *   X_1   = fundamental component magnitude (50 Hz, bin index 1)
+ *   X_k   = k-th harmonic magnitude
+ *
+ * @param fftVoltageOutput  Calibrated FFT magnitude array for voltage (size = FFT_SIZE)
+ * @param fftCurrentOutput  Calibrated FFT magnitude array for current (size = FFT_SIZE)
+ * @param thdVoltage        Output THD voltage in percentage (%)
+ * @param thdCurrent        Output THD current in percentage (%)
+ */
+void computeTHD(const float* fftVoltageOutput,
+                const float* fftCurrentOutput,
+                float* thdVoltage,
+                float* thdCurrent) {
+
+    float sumHarmonicSquaresV = 0.0f;
+    float sumHarmonicSquaresI = 0.0f;
+
+    // Accumulate harmonic power from bin k=2 (excludes DC at k=0 and fundamental at k=1)
+    for (int k = 2; k < FFT_SIZE / 2; k++) {
+        sumHarmonicSquaresV += fftVoltageOutput[k] * fftVoltageOutput[k];
+        sumHarmonicSquaresI += fftCurrentOutput[k] * fftCurrentOutput[k];
+    }
+
+    float fundamentalSquaredV = fftVoltageOutput[1] * fftVoltageOutput[1];
+    float fundamentalSquaredI = fftCurrentOutput[1] * fftCurrentOutput[1];
+
+    *thdVoltage = 100.0f * sqrtf(sumHarmonicSquaresV / (sumHarmonicSquaresV + fundamentalSquaredV));
+    *thdCurrent = 100.0f * sqrtf(sumHarmonicSquaresI / (sumHarmonicSquaresI + fundamentalSquaredI));
+}
+```
+
+Since the THD equation is a ratio between the fundamental component and all harmonic components, this test does not require calibration. As shown in Table 4.20., normally, as the voltage value increases, the THD value decreases, accompanied by an increase in the fundamental component compared to harmonic components. For Load 3 consisting of a fan and Laptop Charger, which has very high current THD due to being composed of nonlinear inductive loads and nonlinear switching-type loads.
+
+### Household Load Identification Testing
+
+#### Test Objectives
+
+This test is conducted as a part of the integration between hardware and software in Smart Energy Meter capable of identifying and distinguishing household loads based on harmonic components of the load using a Genetic Neural Network algorithm. The structure of the Genetic Neural Network architecture can be seen in Chapter III.
+
+#### Test Equipment
+For this test, the following equipment is used:
+
+1. Power Supply from PLN Distribution System
+2. Smart Energy Meter
+3. Household Load
+    - LED TV
+    - Energy-Efficient Lamp
+    - Ceiling Fan
+
+#### Test Scheme
+
+<figure markdown="span">
+![Screenshot](img/Chapter-IV/Figure%204.19%20Households%20Load%20Identification%20Testing%20Scheme.jpg){ width="250" }
+<figcaption>Figure 4.19 Households Load Identification Testing Scheme</figcaption>
+</figure>
+
+
+#### Test Procedure
+
+The steps for conducting this test are as follows:
+
+1. Prepare the testing equipment.
+2. Arrange the equipment according to the scheme above.
+3. Switch the master switch on the Smart Energy Meter to ON.
+4. Switch the MCB (Miniature Circuit Breaker) to ON.
+5. Connect the 3 loads in combination as follows:
+    - Combination 1: Without Load
+    - Combination 2: Ceiling Fan only
+    - Combination 3: LED TV only
+    - Combination 4: Energy-Efficient Lamp only
+    - Combination 5: Ceiling Fan and LED TV combined
+    - Combination 6: Ceiling Fan and Energy-Efficient Lamp combined
+    - Combination 7: LED TV and Energy-Efficient Lamp combined
+    - Combination 8: Ceiling Fan, Energy-Efficient Lamp, and LED TV combined.
+6. Observe the display response and denormalization on the LCD of the Smart Energy Meter.
+7. Analyze the responses and displays shown by the Smart Energy Meter from its integration.
+
+#### Test Data
+
+<figure markdown="span">
+![Screenshot](img/Chapter-IV/Figure%204.20%20System%20Response%20to%20Combination%201.jpg){ width="500" }
+<figcaption>Figure 4.20 System Response to Combination 1</figcaption>
+</figure>
+
+
+<figure markdown="span">
+![Screenshot](img/Chapter-IV/Figure%204.21%20System%20Response%20to%20Combination%202.jpg){ width="500" }
+<figcaption>Figure 4.21 System Response to Combination 2</figcaption>
+</figure>
+
+
+<figure markdown="span">
+![Screenshot](img/Chapter-IV/Figure%204.22%20System%20Response%20to%20Combination%203.jpg){ width="500" }
+<figcaption>Figure 4.22 System Response to Combination 3</figcaption>
+</figure>
+
+
+<figure markdown="span">
+![Screenshot](img/Chapter-IV/Figure%204.23%20System%20Response%20to%20Combination%204.jpg){ width="500" }
+<figcaption>Figure 4.23 System Response to Combination 4</figcaption>
+</figure>
+
+
+<figure markdown="span">
+![Screenshot](img/Chapter-IV/Figure%204.24%20System%20Response%20to%20Combination%205.jpg){ width="500" }
+<figcaption>Figure 4.24 System Response to Combination 5</figcaption>
+</figure>
+
+
+<figure markdown="span">
+![Screenshot](img/Chapter-IV/Figure%204.25%20System%20Response%20to%20Combination%206.jpg){ width="500" }
+<figcaption>Figure 4.25 System Response to Combination 6</figcaption>
+</figure>
+
+
+<figure markdown="span">
+![Screenshot](img/Chapter-IV/Figure%204.26%20System%20Response%20to%20Combination%207.jpg){ width="500" }
+<figcaption>Figure 4.26 System Response to Combination 7</figcaption>
+</figure>
+
+
+<figure markdown="span">
+![Screenshot](img/Chapter-IV/Figure%204.27%20System%20Response%20to%20Combination%208.jpg){ width="500" }
+<figcaption>Figure 4.27 System Response to Combination 8</figcaption>
+</figure>
+
+
+#### Data Analysis
+This test focuses on the accuracy and precision of the output from the Genetic Neural Network (JST) algorithm previously trained with 8 combinations of 3 loads. The training process involved non-linear harmonic-producing loads such as Energy-Efficient Lamps and LED TVs, and a linear load such as a Ceiling Fan.
+To increase the accuracy of the JST algorithm's training, six inputs were introduced in the architecture design: RMS values of current from the frequency domain, fundamental frequency spectrum values, and four odd-frequency spectrum values (150Hz, 250Hz, 350Hz, and 450Hz). In addition to increasing input, data was also collected for training purposes a total of 101 variations per combination, resulting in regression weights with the best one having an R² value close to 1. Here are comparisons between outputs from MATLAB software, Microsoft Excel, and the Smart Energy Meter. Following this is validation of the output results from the trained process.
+
+Table 4.21. Validation for Household Load Identification Testing
+
+| No | Target | MATLAB | Excel | SEM | Error SEM |
+|----|--------|--------|-------|-----|-----------|
+| 1 | 1 | 1 | 1.000000046 | 1 | 0 |
+| 2 | 2 | 2 | 1.999897336 | 1.9999 | 0.005 |
+| 3 | 3 | 3 | 3.000015624 | 3 | 0 |
+| 4 | 4 | 4 | 4.000003897 | 4 | 0 |
+| 5 | 5 | 5 | 4.999995409 | 5 | 0 |
+| 6 | 6 | 6 | 6.000013539 | 6.0006 | 0.01 |
+| 7 | 7 | 7 | 7.000004461 | 7 | 0 |
+| 8 | 8 | 8 | 7.999999986 | 8 | 0 |
+
+From Table 4.21, it can be analyzed that the correct number of input combinations, neuron count, and training data will produce highly precise outputs with a maximum percentage error against target values being as low as 0.01%.
 
 ## Chapter V: Conclusion and Future Work
 
-coming soon
+### Conclusions
+After undergoing several planning, manufacturing, testing equipment, and data collection processes from this Final Project's test, the following conclusions can be drawn:
 
-## References
+1. For the FFT Radix-2 algorithm with a 64-N point, the computational process in the program aligns well with theoretical computations as described in "Understanding Digital Signal Processing" with an error percentage below 0.001%.
+2. Sampling signal voltage and current at a frequency of 3200Hz can accurately represent spectral load signals with an average error rate of 4.78%.
+3. The use of AMC1301 as a clamping device for the voltage sensor has an error rate of 0.048%.
+4. Using AMC1301 as a clamping device for the current sensor results in an error rate of 0.873%.
+5. Applying the Genetic Neural Network algorithm to the Smart Energy Meter with a structure of 6 inputs, 2 layers, 8 neurons and training data totaling 808 samples produces maximum error rates not exceeding 0.01%.
 
-coming soon
+### Improvements and Future Work
+
+During the execution and completion of this Final Project, there have undoubtedly been various shortcomings and errors, both in system design or during equipment manufacturing processes. To rectify these shortcomings and enhance system optimality, the following measures are needed:
+
+1. Increasing frequency sampling can improve analysis accuracy in the frequency domain, but calculations will take longer if the sampling frequencies are too high. Therefore, a suitable frequency must be selected.
+2. Ensure that FFT algorithm outputs match data available in "Understanding Digital Signal Processing" to ensure harmonic component analysis aligns with the composition of analyzed signals.
+3. Verify root mean square (RMS) calculations for both voltage and current against calibrated measuring instruments to achieve precise linear relationships.
+4. Conduct frequency harmonic spectrum comparisons with calibrated measuring devices to obtain accurate distortion calculation results.
+5. Add remote communication equipment to facilitate flexible monitoring of energy usage.

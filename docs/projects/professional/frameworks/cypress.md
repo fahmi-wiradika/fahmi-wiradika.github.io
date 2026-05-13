@@ -208,12 +208,7 @@ https://<your-username>.github.io/<your-repo-name>/
 
 ## 🔗 Quick Links
 
-- **Cypress Docs**: `https://docs.cypress.io`
-- **Applitools Eyes Cypress Docs**: `https://applitools.com/docs/api-ref/sdk-api/cypress/`
-- **Simple CRUD App (production target)**: `https://simple-crud-apps.vercel.app`
-- **Cypress Test Result Liver Report**: `https://fahmi-wiradika.github.io/cypress-basic`
-- **Project Documentation**: `https://fahmi-wiradika.github.io/projects/professional/frameworks/cypress/`
-
-## 📄 License
-
-ISC (see `package.json`)
+- **Cypress Docs**: [Cypress](https://docs.cypress.io)
+- **Applitools Eyes Cypress Docs**: [Applitools Eyes](https://applitools.com/docs/api-ref/sdk-api/cypress/)
+- **Simple CRUD App (production target)**: [Simple CRUD Apps](https://simple-crud-apps.vercel.app)
+- **Cypress Test Result Liver Report**: [Live Report](https://fahmi-wiradika.github.io/cypress-basic)
