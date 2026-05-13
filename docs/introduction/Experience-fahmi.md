@@ -6,7 +6,7 @@ If you're eager to explore Fahmi's professional career and education journey in 
 ## Professinoal Career
 
 ### Quality Assurance Engineer  
-NICPAY Indonesia <br><small>(Aug 2020 - now)</small>
+NICPAY Indonesia <br><small>(Aug 2024 - now)</small>
 
 - Develop and execute comprehensive test plans, test cases, and test scripts for payment gateway applications.
 - Conduct functional, regression, performance, and security testing to identify and resolve issues.
