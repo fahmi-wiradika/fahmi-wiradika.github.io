@@ -4,7 +4,7 @@ site_name: Fahmi's Project Library
 site_description : Project tech stacks and description detailed by fahmi wahyu wiradika 
 
 copyright: |
-  Copyright &copy; 2026 <a href="https://github.com/fahmi-wiradika.github.io?tab=MIT-1-ov-file#" target="_blank" rel="noopener"> Fahmi Wahyu Wiradika</a>
+  Copyright &copy; 2026 <a href="https://github.com/fahmi-wiradika/fahmi-wiradika.github.io/blob/main/LICENSE"> Fahmi Wahyu Wiradika</a>
 
 ### Site Settings ###
 #theme : readthedocs --- Optional to use if we don't like to use material theme
@@ -50,10 +50,14 @@ theme:
     text: Roboto
     code: Roboto Mono
 
-#extra_css:
+# extra_css:
 #  - stylesheets/extra.css
 extra_javascript:
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  - https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js
+  # - https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js
+  # - javascripts/mermaid-init.js
+  # - javascripts/chart-init.js
 
 extra:
   social:
@@ -127,6 +131,8 @@ nav:
       - Bachelor Research: projects/academic/research-project/bachelor-research.md
     - Machine Learning:
       - NILM Load Identification: projects/academic/machine-learning/NILM.md
+    - Signal Processing:
+      - Parseval-Based Power Analysis: projects/academic/signal-processing/frequency-domain-power-analysis.md
 
 
 # Extensions  
@@ -140,7 +146,6 @@ markdown_extensions:
   - md_in_html
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
   - footnotes
   - tables
   - pymdownx.arithmatex:
@@ -154,6 +159,9 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
+        # - name: chart
+        #   class: chart
+        #   format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
