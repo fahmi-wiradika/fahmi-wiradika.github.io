@@ -1,7 +1,7 @@
 # About Fahmi
 
 ## Summary
-QA Automation Engineer with 5+ years of experience in FinTech and embedded systems, specialising in end-to-end test framework development using Playwright, Cypress, Robot Framework, and Java/Selenium. Proven track record in CI/CD-integrated automation pipelines, API and performance testing, and AI-augmented test generation using Playwright MCP and LLM agents. Certified Katalon Expert and Postman API Automation specialist.
+QA Automation Engineer with 5+ years of experience in FinTech and embedded systems. Skilled in building end-to-end test frameworks using Playwright, Appium, Cypress, Robot Framework, and Java/Selenium. Experienced in developing CI/CD automation pipelines, API testing, performance testing, and mobile automation. Also familiar with AI-assisted test generation using Playwright MCP and LLM agents. Certified Katalon Expert and Postman API Automation specialist.
 
 ## Contact Information
 If you're looking to contact Fahmi regarding his personal or project source code, you can reach him on this social platform or through specific services.
@@ -79,7 +79,8 @@ Fahmi's tech stack includes programming languages, version control systems (VCS)
     ---
     - :simple-robotframework: : [Robot Framework](../projects/professional/frameworks/robot-framework.md)
     - :simple-cypress: : [Cypress](../projects/professional/frameworks/cypress.md)
-    - :material-drama-masks: : [Playwright](../projects/professional//frameworks/playwright.md)
+    - :material-drama-masks: : [Playwright](../projects/professional/frameworks/playwright.md)
+    - :simple-appium: : [Appium](../projects/professional/frameworks/appium.md)
 
 </div>
 

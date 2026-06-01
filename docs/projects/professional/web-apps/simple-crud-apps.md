@@ -369,10 +369,6 @@ const newProduct = await fetch('https://simple-crud-apps.vercel.app/api/products
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
 ## 🔗 Quick Links
 
 - **Live API**: [https://simple-crud-apps.vercel.app](https://simple-crud-apps.vercel.app)

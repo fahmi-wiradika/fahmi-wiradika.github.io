@@ -57,19 +57,16 @@ For those interested in exploring Fahmi's project documentation across categorie
     - [JMeter Automation](projects/professional/api-testing/jmeter-automation.md)
     - [Simple CRUD Apps](projects/professional/web-apps/simple-crud-apps.md) 
 
+- [:material-school: __Academic Research__](projects/academic/research-project/bachelor-research.md) (1)
+    { .annotate }
 
-[//]: # ( - [:material-school: __Academic Research__]&#40;projects/academic/chapterOne.md&#41; &#40;1&#41;)
+    1. Explore Fahmi's academic project encompassing embedded systems, digital signal processing, machine learning, and artificial neural networks, which culminated in his Bachelor of Applied Engineering degree. Detailed information on this innovative project is available here.
 
-[//]: # (    { .annotate })
+     ---
+   - [Bachelor of Applied Engineering](projects/academic/research-project/bachelor-research.md)
+   - [PyTorch NN for Machine Learning](projects/academic/machine-learning/NILM.md)
+   - [Perseval-Based Power Analysis](projects/academic/signal-processing/frequency-domain-power-analysis.md)
 
-[//]: # ()
-[//]: # (    1. Explore Fahmi's academic project encompassing embedded systems, digital signal processing, machine learning, and artificial neural networks, which culminated in his Bachelor of Applied Engineering degree. Detailed information on this innovative project is available here.)
-
-[//]: # ()
-[//]: # (    ---)
-
-[//]: # ()
-[//]: # (    - [Smart Metering Systems]&#40;projects/academic/chapterOne.md&#41; )
 
     
 </div>

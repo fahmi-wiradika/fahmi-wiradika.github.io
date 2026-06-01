@@ -122,8 +122,9 @@ nav:
       - Fahmi's Project Library: projects/professional/documentation/docs-portfolio.md
     - Framework:
       - Java Automation Test: projects/professional/frameworks/java-automation.md
-      - Robot Framework: projects/professional/frameworks/robot-framework.md
-      - Cypress: projects/professional/frameworks/cypress.md
+      - Robot Framework Selenium: projects/professional/frameworks/robot-framework.md
+      - Cypress for Visual Testing: projects/professional/frameworks/cypress.md
+      - Robot Framework Appium: projects/professional/frameworks/appium.md
       - Playwright MCP Framework: projects/professional/frameworks/playwright.md
     # - Python Automation Test: projects/workSample/pythonAutomation.md
   - Academic Project:
@@ -179,5 +180,5 @@ plugins:
   #       - locale: id
   #         name: Bahasa Indonesia
   #         build: true
-  - git-revision-date-localized
+  # - git-revision-date-localized
   - glightbox
