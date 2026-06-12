@@ -10,6 +10,7 @@ copyright: |
 #theme : readthedocs --- Optional to use if we don't like to use material theme
 theme: 
   name: material
+  custom_dir: docs/overrides
   icon:
     annotation: material/arrow-right-circle-outline
     logo: material/bullseye-arrow
@@ -50,8 +51,8 @@ theme:
     text: Roboto
     code: Roboto Mono
 
-# extra_css:
-#  - stylesheets/extra.css
+extra_css:
+  - stylesheets/home.css
 extra_javascript:
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
   - https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js
