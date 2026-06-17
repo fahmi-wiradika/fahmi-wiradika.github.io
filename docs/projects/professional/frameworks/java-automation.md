@@ -2,7 +2,7 @@
 
 A comprehensive test automation framework built with Java, Selenium WebDriver, REST Assured, JUnit 5, and Allure reporting. This framework supports both UI and API testing with advanced features like parallel execution, cross-browser testing, and detailed reporting.
 
-## 🚀 Features
+## Features
 
 ### Core Capabilities
 - **UI Testing**: Selenium WebDriver with cross-browser support
@@ -19,7 +19,7 @@ A comprehensive test automation framework built with Java, Selenium WebDriver, R
 - **Validation Utilities**: Flexible validation framework with detailed reporting
 - **Configuration Management**: Environment-based configuration support
 
-## 📈 Framework Metrics
+## Framework Metrics
 
 - **Languages**: Java 19
 - **Test Framework**: JUnit 5
@@ -30,7 +30,7 @@ A comprehensive test automation framework built with Java, Selenium WebDriver, R
 - **CI/CD**: GitHub Actions
 - **Browsers Supported**: Chrome, Firefox, Edge, Safari, IE
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 fahmi-java-framework/
@@ -61,7 +61,7 @@ fahmi-java-framework/
 └── README.md                             # This file
 ```
 
-## 🛠️ Technologies & Dependencies
+## Technologies & Dependencies
 
 ### Core Technologies
 
@@ -81,7 +81,7 @@ fahmi-java-framework/
 - **Hamcrest 3.0**: Matchers for testing
 - **Lombok 1.18.30**: Boilerplate code reduction
 
-## 🚦 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -136,7 +136,7 @@ junit.jupiter.execution.parallel.enabled=true
 junit.jupiter.execution.parallel.mode.classes.default=concurrent
 ```
 
-## 📊 Test Reporting
+## Test Reporting
 
 ### Allure Reports
 
@@ -158,7 +158,7 @@ allure serve target/allure-results
 Reports are automatically deployed to GitHub Pages after each CI run. Access via:
 `https://<username>.github.io/<repository-name>/`
 
-## 🌐 Cross-Browser Support
+## Cross-Browser Support
 
 ### Supported Browsers
 ```java
@@ -187,7 +187,7 @@ Each browser includes optimized settings:
 - **Edge**: InPrivate mode, automation compatibility
 - **Safari**: macOS-specific configurations
 
-## 🔧 Framework Components
+## Framework Components
 
 ### SafeAction Utility
 Enhanced element interactions with automatic retry and highlighting:
@@ -237,7 +237,7 @@ screenshot.attachScreenshotToAllure("Step 1 - Login Form");
 screenshot.takeHighlightedElementScreenshot(By.id("error-message"), "error-state");
 ```
 
-## 🔄 CI/CD Pipeline
+## CI/CD Pipeline
 
 ### GitHub Actions Workflow
 The framework includes a complete CI/CD pipeline (`.github/workflows/ci.yml`) that:
@@ -276,7 +276,7 @@ threadCount: 2
 ```
 
 
-## 🎯 Best Practices
+## Best Practices
 
 ### Test Organization
 - **Base Classes**: Extend `BaseTests` for standard UI tests
@@ -296,7 +296,7 @@ threadCount: 2
 - **Resource Cleanup**: Proper driver cleanup after tests
 - **Caching**: Maven dependency caching in CI
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -331,7 +331,7 @@ EventReporter listener = new EventReporter(
 );
 ```
 
-## 🤝 Contributing
+## Contributing
 
 1. **Fork the repository**
 2. **Create feature branch**: `git checkout -b feature/amazing-feature`
@@ -345,17 +345,17 @@ EventReporter listener = new EventReporter(
 - Update documentation as needed
 - Ensure all tests pass before submitting PR
 
-## 🔗 Quick Links
+## Quick Links
 
 - **Framework Repository**: [https://github.com/fahmi-wiradika/java-automation](https://github.com/fahmi-wiradika/java-automation)
 - **Live Test Results**: [https://fahmi-wiradika.github.io/java-automation](https://fahmi-wiradika.github.io/java-automation)
 
 
-## 📄 License
+## License
 
 This project is licensed under the Apache 2.0 License.
 
-## 📞 Support
+## Support
 
 For questions and support:
 
@@ -365,4 +365,4 @@ For questions and support:
 
 ---
 
-**Happy Testing! 🎉**
+**Happy Testing!**

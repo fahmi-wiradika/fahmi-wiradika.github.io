@@ -9,7 +9,7 @@ Currently includes suites for **Simple CRUD Apps** (`simple-crud-apps.vercel.app
 
 ---
 
-## 🚀 Features
+## Features
 
 ### Core Capabilities
 - **UI Testing**: Cross-browser automation via Playwright's native browser engine bindings
@@ -30,7 +30,7 @@ Currently includes suites for **Simple CRUD Apps** (`simple-crud-apps.vercel.app
 
 ---
 
-## 📈 Framework Metrics
+## Framework Metrics
 
 | Item | Value |
 |---|---|
@@ -43,7 +43,7 @@ Currently includes suites for **Simple CRUD Apps** (`simple-crud-apps.vercel.app
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 playwright-automation/
@@ -103,7 +103,7 @@ playwright-automation/
 
 ---
 
-## 🗂️ Directory Overview
+## Directory Overview
 
 | Directory | Purpose |
 |---|---|
@@ -122,7 +122,7 @@ playwright-automation/
 
 ---
 
-## 🧪 Test Coverage
+## Test Coverage
 
 | Module | File | Tags |
 |---|---|---|
@@ -141,7 +141,7 @@ playwright-automation/
 
 ---
 
-## 🛠️ Technologies & Dependencies
+## Technologies & Dependencies
 
 | Package | Purpose |
 |---|---|
@@ -150,7 +150,7 @@ playwright-automation/
 
 ---
 
-## 🚦 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -184,7 +184,7 @@ npx playwright --version
 
 ---
 
-## ▶️ Running Tests
+## Running Tests
 
 ### Run the Full Suite
 
@@ -256,7 +256,7 @@ npx playwright test tests/ci/ui/crud-ui.spec.js
 
 ---
 
-## 📊 Test Reporting
+## Test Reporting
 
 ### Playwright Built-in HTML Report
 
@@ -293,7 +293,7 @@ https://<your-username>.github.io/<your-repo-name>/
 
 ---
 
-## 🔧 Framework Components
+## Framework Components
 
 ### Page Object Model — `pages/productPage.js`
 
@@ -355,7 +355,7 @@ const rows = loadCsv('data/csv/list_of_product.csv');
 
 ---
 
-## 🤖 AI Agent System
+## AI Agent System
 
 Three agent definitions live in `.github/agents/` and use the Playwright MCP server (`npx playwright run-test-mcp-server`) for live browser interaction during test authoring.
 
@@ -374,7 +374,7 @@ The `.vscode/mcp.json` file registers the Playwright MCP server so the agents ca
 
 ---
 
-## ⚙️ Configuration — `playwright.config.js`
+## Configuration — `playwright.config.js`
 
 Key configuration highlights:
 
@@ -400,7 +400,7 @@ Key configuration highlights:
 
 ---
 
-## 🔄 CI/CD Pipeline — `.github/workflows/playwright.yml`
+## CI/CD Pipeline — `.github/workflows/playwright.yml`
 
 The workflow triggers automatically on every push to `main` / `master`.
 
@@ -433,7 +433,7 @@ Push
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Browser Binaries Not Found
 Run the install command to download all required browsers:
@@ -458,7 +458,7 @@ The CI suites (`tests/ci/`) use `test.describe.serial`. Do not run individual te
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 1. **Fork the repository**
 2. **Create a feature branch**: `git checkout -b feature/your-feature`
@@ -477,7 +477,7 @@ The CI suites (`tests/ci/`) use `test.describe.serial`. Do not run individual te
 
 ---
 
-## 📜 npm Scripts
+## npm Scripts
 
 | Script | Command | Purpose |
 |---|---|---|
@@ -491,7 +491,7 @@ The CI suites (`tests/ci/`) use `test.describe.serial`. Do not run individual te
 
 ---
 
-## 🔗 Quick Links
+## Quick Links
 
 - **Live Test Report**: [https://fahmi-wiradika.github.io/playwright-js/](https://fahmi-wiradika.github.io/playwright-js/)
 - **Simple CRUD Apps**: [https://simple-crud-apps.vercel.app](https://simple-crud-apps.vercel.app)
@@ -501,10 +501,10 @@ The CI suites (`tests/ci/`) use `test.describe.serial`. Do not run individual te
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the ISC License.
 
 ---
 
-**Happy Testing! 🎉**
+**Happy Testing!**

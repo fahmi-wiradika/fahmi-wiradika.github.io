@@ -7,7 +7,7 @@ A test automation repository built with Robot Framework covering:
 
 Currently includes suites for **SauceDemo** (`saucedemo.com`) and **Simple CRUD Apps** (`simple-crud-apps.vercel.app`). Results are published automatically to GitHub Pages via GitHub Actions.
 
-## 🚀 Features
+## Features
 
 ### Core Capabilities
 - **UI Testing**: Selenium WebDriver through Robot Framework SeleniumLibrary
@@ -24,7 +24,7 @@ Currently includes suites for **SauceDemo** (`saucedemo.com`) and **Simple CRUD 
 - **Noise-Free Logging**: `Get Element Count` and direct `IF` comparisons avoid false `[ FAIL ]` log entries
 - **Screenshot on Failure**: Automatic page screenshot captured before browser closes on failure
 
-## 📈 Framework Metrics
+## Framework Metrics
 
 - **Language**: Robot Framework DSL
 - **Browser Automation**: SeleniumLibrary + Selenium WebDriver
@@ -33,7 +33,7 @@ Currently includes suites for **SauceDemo** (`saucedemo.com`) and **Simple CRUD 
 - **CI/CD**: GitHub Actions
 - **Report Hosting**: GitHub Pages
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 robot-framework/
@@ -82,7 +82,7 @@ robot-framework/
     └── report.html
 ```
 
-## 🗂️ Directory Overview
+## Directory Overview
 
 | Directory | Purpose |
 |---|---|
@@ -91,7 +91,7 @@ robot-framework/
 | `tests/` | Test cases grouped by application |
 | `results/` | Robot Framework output files generated after execution — excluded from version control |
 
-## 🧪 Test Coverage
+## Test Coverage
 
 | Module | Test IDs | Tags |
 |---|---|---|
@@ -102,7 +102,7 @@ robot-framework/
 | Simple CRUD UI (E2E) | TC_CRUD_001 – TC_CRUD_004 | crud, smoke, regression, e2e |
 | Simple CRUD API | TC_API_001 – TC_API_006 | api, smoke, regression, negative |
 
-## 🛠️ Technologies & Dependencies
+## Technologies & Dependencies
 
 | Package | Purpose |
 |---|---|
@@ -112,7 +112,7 @@ robot-framework/
 | `webdriver-manager` | Automatic ChromeDriver version management |
 | `robotframework-pabot` | Parallel test execution support (in development) |
 
-## 🚦 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -159,7 +159,7 @@ pip install -r requirements.txt
 robot --version
 ```
 
-## ▶️ Running Tests
+## Running Tests
 
 ### Run the Full Suite
 
@@ -223,7 +223,7 @@ open results/report.html      # macOS
 xdg-open results/report.html  # Linux
 ```
 
-## 📊 Test Reporting
+## Test Reporting
 
 ### Robot Framework Built-in Reports
 
@@ -242,7 +242,7 @@ Access the live report at:
 https://<your-username>.github.io/<your-repo-name>/
 ```
 
-## 🔧 Framework Components
+## Framework Components
 
 ### Simple CRUD Apps — UI components (SeleniumLibrary)
 
@@ -289,7 +289,7 @@ API design in this repo:
 
 > Note: the API suite stores `${PRODUCT_ID}` from `TC_API_002` and all subsequent tests depend on it, so run the suite as a whole.
 
-## 🌐 Browser Configuration
+## Browser Configuration
 
 Tests run in **headless Chrome** with the following arguments configured in each app’s `common_keywords.robot` (for example `resources/simple-crud-apps/keywords/common_keywords.robot`):
 
@@ -302,7 +302,7 @@ Tests run in **headless Chrome** with the following arguments configured in each
 
 To run with a **visible browser window** locally, remove `add_argument("--headless=new")` from `Open Browser To Simple CRUD App` in `resources/simple-crud-apps/keywords/common_keywords.robot` (and/or the equivalent browser-open keyword in other suites).
 
-## 🔄 CI/CD Pipeline
+## CI/CD Pipeline
 
 The workflow at `.github/workflows/robot-runner.yml` triggers automatically on every push or pull request to `main` / `master`, and can also be triggered manually via `workflow_dispatch`.
 
@@ -333,7 +333,7 @@ Push
 1. Go to **Settings → Pages → Source** and select **GitHub Actions**.
 2. Go to **Settings → Actions → General → Workflow permissions** and enable **Read and write permissions**.
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Virtual Environment Not Activating
 Ensure you are using the correct path for your OS. On Windows, you may need to allow script execution first:
@@ -359,7 +359,7 @@ pip install -r requirements.txt
 pip install --upgrade webdriver-manager
 ```
 
-## 🤝 Contributing
+## Contributing
 
 1. **Fork the repository**
 2. **Create a feature branch**: `git checkout -b feature/your-feature`
@@ -373,17 +373,17 @@ pip install --upgrade webdriver-manager
 - Ensure the full suite passes locally before opening a PR
 - Update this README if adding new modules or changing the project structure
 
-## 🔗 Quick Links
+## Quick Links
 
 - **Live Test Report**: [https://fahmi-wiradika.github.io/robot-framework/](https://fahmi-wiradika.github.io/robot-framework/)
 - **SauceDemo Site**: [https://www.saucedemo.com](https://www.saucedemo.com)
 - **Robot Framework Docs**: [https://robotframework.org](https://robotframework.org)
 - **SeleniumLibrary Docs**: [https://robotframework.org/SeleniumLibrary/](https://robotframework.org/SeleniumLibrary/)
 
-## 📄 License
+## License
 
 This project is licensed under the Apache 2.0 License.
 
 ---
 
-**Happy Testing! 🎉**
+**Happy Testing!**

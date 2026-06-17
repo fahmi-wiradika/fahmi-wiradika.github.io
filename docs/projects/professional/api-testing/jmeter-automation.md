@@ -2,11 +2,11 @@
 
 A comprehensive performance testing suite for the [ Simple CRUD Apps - Full-Stack Product Management System](https://simple-crud-apps.vercel.app/) API using Apache JMeter. This project includes automated CI/CD pipelines, custom test runners, and detailed performance reporting.
 
-## 🎯 Overview
+## Overview
 
 This repository contains JMeter test plans and automation scripts for load testing and performance monitoring of the Product Management API. The tests simulate real-world CRUD operations and provide detailed metrics on application performance under various load conditions.
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 performance-test/
@@ -27,7 +27,7 @@ performance-test/
 └── README.md
 ```
 
-## 🚀 Features
+## Features
 
 - **Automated CRUD Testing**: Complete Create, Read, Update, Delete operation tests
 - **Parameterized Test Execution**: Flexible configuration for threads, ramp-up time, duration, and loops
@@ -39,7 +39,7 @@ performance-test/
 - **Performance Test Live Report**: [Performance Test](https://fahmi-wiradika.github.io/performance-test/)
 
 
-## 📊 Test Configuration
+## Test Configuration
 
 ### Default Test Parameters
 
@@ -60,7 +60,7 @@ The test plan supports the following configurable parameters:
 3. **Update Product**: PUT request to modify product data
 4. **Delete Product**: DELETE request to remove product
 
-## 🛠️ Local Setup
+## Local Setup
 
 ### Prerequisites
 
@@ -86,7 +86,7 @@ cd performance-test
 jmeter -v
 ```
 
-## 🏃‍♂️ Running Tests
+## Running Tests
 
 ### Option 1: Simple Test Runner
 
@@ -125,7 +125,7 @@ jmeter -n -t jmeter-test-plan/simple-crud.jmx \
   -Jthreads=5 -Jrampup=10 -Jloop=5 -Jduration=60 -Jstartup_delay=5
 ```
 
-## 🔄 CI/CD Integration
+## CI/CD Integration
 
 ### GitHub Actions Workflows
 
@@ -162,7 +162,7 @@ jmeter -n -t jmeter-test-plan/simple-crud.jmx \
 
 **Live Reports**: The latest test reports are automatically deployed to GitHub Pages.
 
-## 📈 Understanding Reports
+## Understanding Reports
 
 ### Key Metrics
 
@@ -183,7 +183,7 @@ The HTML reports include comprehensive performance metrics:
 5. **Response Times**: Distribution and percentile analysis
 6. **Errors**: Error counts and types
 
-## 🔧 Test Plan Configuration
+## Test Plan Configuration
 
 ### User Defined Variables
 
@@ -209,7 +209,7 @@ Startup Delay: ${__P(startup_delay,5)}
 Loop Count: ${__P(loop,1)}
 ```
 
-## 🎯 Performance Benchmarks
+## Performance Benchmarks
 
 ### Recommended Load Profiles
 
@@ -233,7 +233,7 @@ Loop Count: ${__P(loop,1)}
 -Jthreads=500 -Jrampup=120 -Jloop=100 -Jduration=1800
 ```
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -262,7 +262,7 @@ type reports\jmeter.log
 # Adjust timeout settings in test plan
 ```
 
-## 📊 Best Practices
+## Best Practices
 
 ### Load Testing Guidelines
 
@@ -280,14 +280,14 @@ type reports\jmeter.log
 - Archive historical reports for trend analysis
 - Validate API responses in test assertions
 
-## 🔗 Related Resources
+## Related Resources
 
 - **Target API**: [Simple CRUD Apps](https://simple-crud-apps.vercel.app)
 - **API Repository**: [GitHub - simple-crud-apps](https://github.com/fahmi-wiradika/simple-crud-apps)
 - **API Testing Suite**: [Newman Automation](https://github.com/fahmi-wiradika/newman-automation)
 - **JMeter Documentation**: [Apache JMeter User Manual](https://jmeter.apache.org/usermanual/index.html)
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please follow these steps:
 
@@ -297,11 +297,11 @@ Contributions are welcome! Please follow these steps:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📝 License
+## License
 
 This project is licensed under the MIT License.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Apache JMeter team for the excellent testing tool
 - Simple CRUD Apps project for providing the API to test
@@ -309,4 +309,4 @@ This project is licensed under the MIT License.
 
 ---
 
-**Happy Performance Testing! 🚀**
+**Happy Performance Testing!**

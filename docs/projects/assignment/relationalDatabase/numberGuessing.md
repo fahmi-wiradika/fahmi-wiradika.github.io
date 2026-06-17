@@ -2,7 +2,7 @@
 
 This project is part of the **FreeCodeCamp Relational Database Certification** course. It demonstrates the creation and manipulation of a PostgreSQL database for a number guessing game that tracks user statistics and game history.
 
-## 📋 Project Overview
+## Project Overview
 
 The Number Guessing Game Database project involves:
 
@@ -11,7 +11,7 @@ The Number Guessing Game Database project involves:
 - Managing user authentication and game history tracking
 - Writing SQL queries to retrieve user statistics and performance data
 
-## 🗄️ Database Schema
+## Database Schema
 
 The database consists of two main tables with a one-to-many relationship:
 
@@ -51,7 +51,7 @@ Constraints
 - **Unique Constraint**: Username must be unique
 - **Not Null**: All essential fields are required
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 fcc-rdb-numberguessdb/
@@ -60,7 +60,7 @@ fcc-rdb-numberguessdb/
 └── README.md           # Project documentation
 ```
 
-## 🚀 Setup Instructions
+## Setup Instructions
 
 - Prerequisites
     - PostgreSQL installed and running
@@ -84,7 +84,7 @@ fcc-rdb-numberguessdb/
     ./number_guess.sh
     ```
 
-## 🎮 Game Mechanics
+## Game Mechanics
 
 - Core Gameplay
     - **Objective**: Guess a randomly generated number between 1 and 1000
@@ -102,7 +102,7 @@ fcc-rdb-numberguessdb/
     5. **Game End**: Victory message with guess count
     6. **Data Recording**: Game statistics saved to database
 
-## 🔧 Script Analysis
+## Script Analysis
 
 number_guess.sh Features
 
@@ -129,7 +129,7 @@ number_guess.sh Features
         fi
         ```
 
-        **Key Logic:**
+        - **Key Logic:**
 
         - Checks if username exists in database
         - Creates new user if not found
@@ -166,7 +166,7 @@ number_guess.sh Features
         done
         ```
 
-        **Validation Features:**
+        - **Validation Features:**
 
         - Regular expression validation for integer input
         - Comparative logic for directional hints
@@ -182,7 +182,7 @@ number_guess.sh Features
         - Retrieves user ID for foreign key relationship
         - Records game result in games table
 
-## 📊 Database Queries and Statistics
+## Database Queries and Statistics
 
 - User Statistics Queries
 
@@ -229,7 +229,7 @@ number_guess.sh Features
     FROM games;
     ```
 
-## 🏆 Sample Data Analysis
+## Sample Data Analysis
 
 Based on the provided database dump, the system contains:
 
@@ -244,7 +244,7 @@ Notable Statistics
 - **Most Active**: Users with multiple game sessions
 - **Efficiency Range**: Demonstrates wide variation in guessing strategies
 
-## 🎯 Learning Objectives
+## Learning Objectives
 
 This project demonstrates proficiency in:
 
@@ -274,7 +274,7 @@ This project demonstrates proficiency in:
     - Performance metrics
     - Data persistence
 
-## 🔍 Key Technical Concepts
+## Key Technical Concepts
 
 - Database Integration
     - **PSQL Command Line**: Direct database interaction from bash
@@ -291,7 +291,7 @@ This project demonstrates proficiency in:
     - **Algorithmic Thinking**: Efficient number guessing feedback system
     - **Performance Tracking**: Recording and analyzing game metrics
 
-## 📈 Potential Extensions
+## Potential Extensions
 
 Future enhancements could include:
 
@@ -303,7 +303,7 @@ Future enhancements could include:
 - **Data Export**: CSV or JSON export of game statistics
 - **Web Interface**: Browser-based version of the game
 
-## 🛠️ Technical Improvements
+## Technical Improvements
 
 - Code Optimizations
     - **Error Handling**: More robust database connection error management
@@ -317,7 +317,7 @@ Future enhancements could include:
     - **Achievement System**: Badges for various accomplishments
     - **Social Features**: Friend systems and challenges
 
-## 🏅 Course Context
+## Course Context
 
 This project is part of the **FreeCodeCamp Relational Database Certification**, specifically the "Build a Number Guessing Game" project. It serves as a practical application of:
 

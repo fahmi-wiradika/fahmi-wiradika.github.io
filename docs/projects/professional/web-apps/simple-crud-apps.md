@@ -1,8 +1,8 @@
-# Simple CRUD Apps - Full-Stack Product Management System
+# Full-Stack AUT - Built to be Tested
 
-A complete full-stack CRUD (Create, Read, Update, Delete) application featuring both a REST API backend and an interactive web frontend. Built with Node.js, Express.js, MongoDB (Mongoose), and vanilla JavaScript, deployed on Vercel. The codebase uses a lightweight separation of concerns (routes → controllers → models) while serving the frontend as static files from the same Express app.
+A full-stack CRUD (Create, Read, Update, Delete) application built as an **Application Under Test (AUT)** for automation testing development. Hosted in Fahmi's own environment, it provides a dedicated target for API, performance, and end-to-end test suites—allowing unrestricted experimentation without depending on third-party sandboxes or shared demo sites. The stack combines a REST API backend and an interactive web frontend using Node.js, Express.js, MongoDB (Mongoose), and vanilla JavaScript, deployed on Vercel with a lightweight routes → controllers → models structure.
 
-## 🚀 Overview
+## Overview
 
 This project demonstrates a complete full-stack development workflow:
 
@@ -13,11 +13,11 @@ This project demonstrates a complete full-stack development workflow:
 - **Architecture**: Single Express app serves both API routes and static frontend assets
 - **Features**: Real-time CRUD operations, responsive design, modal dialogs, notifications, basic client/server validation
 
-## 💡 Inspiration
+## Inspiration
 
 This project was inspired by the YouTube tutorial: [Build Node.js API from Scratch](https://youtu.be/_7UQPve99r4?si=KfoqN55VkY3Kg59l)
 
-## 🏃‍♂️ Running the Project Locally
+## Running the Project Locally
 
 ### Prerequisites
 - [Node.js](https://nodejs.org/) (v16 or higher)
@@ -54,10 +54,10 @@ npm run serve
 ```
 
 5. **Verify Installation**
-- Server runs on: `http://localhost:3000`
-- Web interface: `http://localhost:3000` (opens the frontend application)
-- API endpoint: `GET http://localhost:3000/api/products`
-- Test the full application by adding, updating, and deleting products through the web interface
+    - Server runs on: `http://localhost:3000`
+    - Web interface: `http://localhost:3000` (opens the frontend application)
+    - API endpoint: `GET http://localhost:3000/api/products`
+    - Test the full application by adding, updating, and deleting products through the web interface
 
 ### Project Structure
 ```
@@ -79,7 +79,7 @@ npm run serve
 └── README.md
 ```
 
-## 🧩 Architecture (Current)
+## Architecture (Current)
 
 ### Request Flow (Local + Production)
 - **Single runtime**: One Express app (`index.js`) handles both the REST API and the static frontend.
@@ -102,7 +102,7 @@ npm run serve
   - **Frontend assets** under `/public/*` (via Express static middleware)
 - **Local vs production**: In non-production, the app listens on port `3000`; in production it only exports the Express app for Vercel.
 
-## 🏗️ CRUD Application Structure
+## CRUD Application Structure
 
 ### API Endpoints
 
@@ -158,7 +158,7 @@ The application provides a complete REST API for product management:
 }
 ```
 
-## 🗄️ MongoDB Integration
+## MongoDB Integration
 
 ### Database Configuration
 - **Provider**: MongoDB Atlas (Cloud)
@@ -198,7 +198,7 @@ The application provides a complete REST API for product management:
 - **Validation**: Required field validation with custom messages
 - **MongoDB ObjectId**: Automatic ID generation and validation
 
-## 🎨 Frontend Features
+## Frontend Features
 
 ### User Interface
 - **Modern Design**: Clean, responsive interface with gradient backgrounds
@@ -220,7 +220,7 @@ The application provides a complete REST API for product management:
 - **Delete Products**: Confirmation dialog to prevent accidental deletion
 - **Product Display**: Organized table view with all product details
 
-## 🌐 Deployment on Vercel
+## Deployment on Vercel
 
 ### Live Application
 - **URL**: [https://simple-crud-apps.vercel.app](https://simple-crud-apps.vercel.app)
@@ -235,7 +235,7 @@ The application provides a complete REST API for product management:
 - **Static File Serving**: Frontend files are served by Express from the `/public` directory
 - **Mixed Content**: Both API and UI are served from the same domain/runtime
 
-## 🌐 Frontend Application
+## Frontend Application
 
 ### Web Interface Features
 - **Live Demo**: Visit [https://simple-crud-apps.vercel.app](https://simple-crud-apps.vercel.app) to see the application in action
@@ -251,7 +251,7 @@ The application provides a complete REST API for product management:
 - **Delete Confirmation**: Safe deletion with confirmation dialogs
 - **Notifications**: Real-time feedback for all operations
 
-## 🧪 API Testing
+## API Testing
 
 For comprehensive API testing and automation, check out the dedicated testing repository:
 
@@ -264,7 +264,7 @@ The testing repository includes:
 - Performance reporting and monitoring
 - Both local and production environment testing
 
-## 🛠️ Development Scripts
+## Development Scripts
 
 ```json
 {
@@ -276,7 +276,7 @@ The testing repository includes:
 }
 ```
 
-## 🧰 Tech Stack
+## Tech Stack
 
 ### Backend
 - **Runtime**: Node.js
@@ -298,26 +298,26 @@ The testing repository includes:
 - **Domain**: Custom Vercel domain
 - **Static Files**: Served from `/public` directory
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
 1. **Database Connection Failed**
-   - Verify MongoDB Atlas credentials
-   - Check IP whitelist in MongoDB Atlas
-   - Ensure environment variables are set correctly
+    - Verify MongoDB Atlas credentials
+    - Check IP whitelist in MongoDB Atlas
+    - Ensure environment variables are set correctly
 
 2. **Local Server Won't Start**
-   - Check if port 3000 is available
-   - Verify Node.js installation
-   - Install dependencies with `npm install`
+    - Check if port 3000 is available
+    - Verify Node.js installation
+    - Install dependencies with `npm install`
 
 3. **Environment Variables Not Loading**
-   - Create `.env` file in root directory
-   - Check `.env` file syntax
-   - Restart server after adding variables
+    - Create `.env` file in root directory
+    - Check `.env` file syntax
+    - Restart server after adding variables
 
-## 📊 API Usage Examples
+## API Usage Examples
 
 ### Using cURL
 
@@ -325,7 +325,7 @@ The testing repository includes:
 # Get all products
 curl -X GET https://simple-crud-apps.vercel.app/api/products
 
-# Create a product  
+# Create a product
 curl -X POST https://simple-crud-apps.vercel.app/api/products \
   -H "Content-Type: application/json" \
   -d '{"name":"Smartphone","quantity":5,"price":8000000}'
@@ -361,7 +361,7 @@ const newProduct = await fetch('https://simple-crud-apps.vercel.app/api/products
 });
 ```
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
@@ -369,7 +369,7 @@ const newProduct = await fetch('https://simple-crud-apps.vercel.app/api/products
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 🔗 Quick Links
+## Quick Links
 
 - **Live API**: [https://simple-crud-apps.vercel.app](https://simple-crud-apps.vercel.app)
 - **API Testing Repository**: [https://github.com/fahmi-wiradika/newman-automation](https://github.com/fahmi-wiradika/newman-automation)
@@ -380,4 +380,4 @@ const newProduct = await fetch('https://simple-crud-apps.vercel.app/api/products
 
 ---
 
-**Happy Coding! 🚀**
+**Happy Coding!**

@@ -2,7 +2,7 @@
 
 A mobile test automation project built with **Robot Framework** and **Appium** targeting **Android** (emulator & real device), using the [Sauce Labs My Demo App](https://github.com/saucelabs/my-demo-app-android/releases/tag/2.2.0) as the application under test.
 
-## 🚀 Features
+## Features
 
 - **Mobile UI Automation**: Robot Framework + AppiumLibrary for Android app testing
 - **Emulator & Real Device Support**: configurable device targets via capabilities
@@ -12,7 +12,7 @@ A mobile test automation project built with **Robot Framework** and **Appium** t
 - **Visual Testing (Cloud)**: Applitools Eyes integration via `eyes-robotframework`
 - **Visual Testing (Local)**: RobotEyes integration via ImageMagick pixel diffing — no cloud required
 
-## 📈 Framework Metrics
+## Framework Metrics
 
 - **Language**: Python (Robot Framework DSL)
 - **Test Runner**: Robot Framework
@@ -20,7 +20,7 @@ A mobile test automation project built with **Robot Framework** and **Appium** t
 - **Device Target**: Android Emulator (`emulator-5554`) / Real Device (USB)
 - **App Under Test**: Sauce Labs My Demo App Android v2.2.0
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 robot-appium/
@@ -50,7 +50,7 @@ robot-appium/
 └── README.md
 ```
 
-## 🗂️ Directory Overview
+## Directory Overview
 
 | Directory / File | Purpose |
 |---|---|
@@ -67,7 +67,7 @@ robot-appium/
 | `applitools.yaml` | Applitools SDK config (api key, app name, batch, runner type) |
 | `results/` | Robot Framework output (XML, HTML log, report) — gitignored |
 
-## 🛠️ Technologies & Dependencies
+## Technologies & Dependencies
 
 | Package | Purpose |
 |---|---|
@@ -77,7 +77,7 @@ robot-appium/
 | `eyes-robotframework` | Applitools Eyes visual testing SDK |
 | `robotframework-eyes` | RobotEyes local visual regression via ImageMagick |
 
-## ✅ Test Cases
+## Test Cases
 
 | ID | Test Case | Description |
 |---|---|---|
@@ -89,7 +89,7 @@ Each suite variant (standard / Applitools / RobotEyes) runs the same three cases
 
 ---
 
-## 🚦 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -143,7 +143,7 @@ adb devices
 
 ---
 
-## ▶️ Running Tests
+## Running Tests
 
 ### Standard Tests (no visual testing)
 
@@ -161,7 +161,7 @@ Reports are generated under `results/`:
 
 ---
 
-## 👁️ Visual Testing — Applitools Eyes
+## Visual Testing — Applitools Eyes
 
 Applitools Eyes is used for cloud-based AI-powered visual testing. Checkpoints are compared against a baseline stored on the Applitools dashboard.
 
@@ -204,7 +204,7 @@ The suite uses `EyesLibrary` with `runner=mobile_native`. Visual checkpoints are
 
 ---
 
-## 🔍 Visual Testing — RobotEyes (Free / Local)
+## Visual Testing — RobotEyes (Free / Local)
 
 RobotEyes is a free, open-source alternative to cloud visual testing. It uses **ImageMagick** for pixel-level diff comparison with no external service required. Baseline images are stored locally in `visual_images/baseline/` and committed to the repository.
 
@@ -284,7 +284,7 @@ Each test case calls:
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
 Device and server settings are centralized in `sauce-labs-mobile/resources/config/capabilities.robot`:
 
@@ -302,7 +302,7 @@ To switch to a real device, replace `${DEVICE_NAME}` with your device UDID from 
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### `SecurityException: Permission Denial` on app launch
 
@@ -338,7 +338,7 @@ Use the activity shown in the resolver table (e.g. `SplashActivity`) as your `${
 
 ---
 
-## 🔗 Quick Links
+## Quick Links
 
 - **Appium Docs**: [Appium Server](https://appium.io/docs/en/latest/)
 - **AppiumLibrary (Robot Framework)**: [Robot Appium](https://serhatbolsu.github.io/robotframework-appiumlibrary/AppiumLibrary.html)

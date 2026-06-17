@@ -2,7 +2,7 @@
 
 This project is part of the **freeCodeCamp Quality Assurance Certification Program** and demonstrates comprehensive full-stack web development skills with a focus on API testing, translation algorithms, and test-driven development practices.
 
-## 📋 Project Overview
+## Project Overview
 
 The American British Translator project involves:
 
@@ -12,7 +12,7 @@ The American British Translator project involves:
 - Developing robust error handling and input validation
 - Demonstrating quality assurance best practices
 
-## 🎯 Learning Objectives
+## Learning Objectives
 
 This project demonstrates proficiency in:
 
@@ -40,7 +40,7 @@ This project demonstrates proficiency in:
       - Documentation and maintainability
       - Security best practices
 
-## 🏗️ Application Architecture
+## Application Architecture
 
 - Base URL
     ```
@@ -55,7 +55,7 @@ This project demonstrates proficiency in:
     - **American to British**: `"american-to-british"`
     - **British to American**: `"british-to-american"`
 
-## 📁 Project Structure
+## Project Structure
 
     ```
     fcc-american-british-translator/
@@ -75,7 +75,7 @@ This project demonstrates proficiency in:
     └── package.json              # Dependencies and scripts
     ```
 
-## 🚀 Setup Instructions
+## Setup Instructions
 
 - Prerequisites
     - Node.js (v14 or higher)
@@ -90,7 +90,7 @@ This project demonstrates proficiency in:
     4. Run tests: `npm test`
     5. Access application at `http://localhost:3000`
 
-## 📊 Testing Implementation
+## Testing Implementation
 
 ### Unit Tests (24 Tests) - `1_unit-tests.js`
 
@@ -505,7 +505,7 @@ The functional tests validate the API endpoints and complete request-response cy
         });
         ```
 
-## 🔧 Technical Implementation Details
+## Technical Implementation Details
 
 - Translation Algorithm Patterns
 
@@ -586,7 +586,7 @@ The functional tests validate the API endpoints and complete request-response cy
     npm run coverage
     ```
 
-## 📈 Test Coverage Summary
+## Test Coverage Summary
 
 - Test Statistics
     - **Total Tests**: 30 tests
@@ -606,7 +606,7 @@ The functional tests validate the API endpoints and complete request-response cy
     - **Memory Usage**: Efficient dictionary-based lookups
     - **Coverage**: 100% of critical translation paths
 
-## 🎓 Skills Demonstrated
+## Skills Demonstrated
 
 - Quality Assurance Expertise
     - Test-driven development (TDD) methodology
@@ -632,32 +632,32 @@ The functional tests validate the API endpoints and complete request-response cy
     - Documentation and maintainability
     - Version control and collaboration
 
-## 🔍 Project Requirements Validation
+## Project Requirements Validation
 
 freeCodeCamp User Stories Compliance
 
 - Translation Functionality
-    - ✅ Text input area for user content
-    - ✅ Locale selection dropdown
-    - ✅ Translation button functionality
-    - ✅ Output display with highlighting
-    - ✅ Clear button for resetting interface
+    - Text input area for user content
+    - Locale selection dropdown
+    - Translation button functionality
+    - Output display with highlighting
+    - Clear button for resetting interface
 
 - API Endpoints
-    - ✅ POST /api/translate endpoint
-    - ✅ JSON request/response format
-    - ✅ Text and locale field validation
-    - ✅ Proper error handling and messages
-    - ✅ Translation highlighting implementation
+    - POST /api/translate endpoint
+    - JSON request/response format
+    - Text and locale field validation
+    - Proper error handling and messages
+    - Translation highlighting implementation
 
 - Testing Requirements
-    - ✅ 24 unit tests covering translation logic
-    - ✅ 6 functional tests covering API endpoints
-    - ✅ All tests passing (30/30)
-    - ✅ Comprehensive error scenario coverage
-    - ✅ Highlighting validation tests
+    - 24 unit tests covering translation logic
+    - 6 functional tests covering API endpoints
+    - All tests passing (30/30)
+    - Comprehensive error scenario coverage
+    - Highlighting validation tests
 
-## 🏆 Project Outcomes
+## Project Outcomes
 
 - Certification Achievement
     - Successful completion of freeCodeCamp Quality Assurance project
@@ -676,14 +676,14 @@ freeCodeCamp User Stories Compliance
     - API design and documentation
     - Quality assurance best practices
 
-## 📚 Resources and References
+## Resources and References
 
 - **freeCodeCamp Project**: [American British Translator](https://www.freecodecamp.org/learn/quality-assurance/quality-assurance-projects/american-british-translator)
 - **GitHub Repository**: [fcc-american-british-translator](https://github.com/fahmi-wiradika/fcc-american-british-translator)
 - **Testing Framework**: [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/)
 - **HTTP Testing**: [Chai-HTTP](https://www.chaijs.com/plugins/chai-http/)
 
-## 🌟 Course Context
+## Course Context
 
 This project represents a comprehensive application of quality assurance principles in full-stack web development. It demonstrates practical implementation of:
 
