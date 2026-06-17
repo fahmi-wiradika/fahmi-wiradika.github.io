@@ -1,8 +1,8 @@
-# Fahmi's Project Library 📚
+# Fahmi's Project Library
 
 A comprehensive online portfolio showcasing projects, certifications, and professional experience, built with MkDocs Material and deployed automatically via GitHub Actions.
 
-## 🌟 Features
+## Features
 
 - **Modern Documentation Site**: Built with MkDocs Material theme for a professional, responsive design
 - **Automatic Deployment**: CI/CD pipeline using GitHub Actions for seamless updates
@@ -11,7 +11,7 @@ A comprehensive online portfolio showcasing projects, certifications, and profes
 - **Dark/Light Theme**: Toggle between themes with custom color schemes
 - **Social Integration**: Links to GitHub, LinkedIn, Instagram, and Postman profiles
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Documentation Generator**: [MkDocs](https://www.mkdocs.org/) with [Material Theme](https://squidfunk.github.io/mkdocs-material/)
 - **Deployment**: GitHub Actions + GitHub Pages
@@ -19,7 +19,7 @@ A comprehensive online portfolio showcasing projects, certifications, and profes
 - **Markdown Extensions**: Enhanced with PyMdown Extensions for advanced formatting
 - **Version Control**: Git with automated revision dates
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -54,7 +54,7 @@ A comprehensive online portfolio showcasing projects, certifications, and profes
 3. Update styles in `docs/stylesheet/extra.css` if needed
 4. Commit and push changes - GitHub Actions will handle deployment automatically
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ├── .github/workflows/
@@ -73,7 +73,7 @@ A comprehensive online portfolio showcasing projects, certifications, and profes
 └── README.md                 # This file
 ```
 
-## 🔧 Configuration
+## Configuration
 
 ### MkDocs Configuration (`mkdocs.yml`)
 
@@ -91,7 +91,7 @@ The `docs/stylesheet/extra.css` file contains:
 - Admonition (callout) box formatting
 - Image centering utilities
 
-## 🚀 Deployment
+## Deployment
 
 ### Automatic Deployment (CI/CD)
 
@@ -113,7 +113,7 @@ If needed, you can deploy manually:
 mkdocs gh-deploy --force
 ```
 
-## 📖 Content Sections
+## Content Sections
 
 ### Introduction
 - **About Fahmi**: Personal background and skills
@@ -129,7 +129,7 @@ mkdocs gh-deploy --force
 - **Academic Research**: Bachelor's degree research work
 - **Work Samples**: Professional automation tools and scripts
 
-## 🎨 Customization
+## Customization
 
 ### Adding New Projects
 
@@ -147,7 +147,7 @@ mkdocs gh-deploy --force
 
 Add new MkDocs plugins in `requirements.txt` and configure them in `mkdocs.yml`
 
-## 📝 Writing Documentation
+## Writing Documentation
 
 This portfolio uses extended Markdown with additional features:
 
@@ -158,21 +158,21 @@ This portfolio uses extended Markdown with additional features:
 - **Tabbed content** for organized information
 - **Footnotes** and cross-references
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License. See the repository for full license details.
 
-## 🔗 Links
+## Links
 
 - **Live Site**: [Fahmi's Project Library](https://fahmi-wiradika.github.io)
 - **GitHub Repository**: [docs-portfolio](https://github.com/fahmi-wiradika/fahmi-wiradika.github.io)
 - **LinkedIn**: [Fahmi Wahyu Wiradika](https://www.linkedin.com/in/fahmiwiradika96/)
 - **Postman**: [API Collections](https://www.postman.com/fahmi-wiradika)
 
-## 📧 Contact
+## Contact
 
 For questions or collaboration opportunities, feel free to reach out through any of the social media links provided in the portfolio.
 
 ---
 
-*Built with ❤️ using MkDocs Material and deployed with GitHub Actions*
+*Built with MkDocs Material and deployed with GitHub Actions*

@@ -124,9 +124,9 @@ nav:
     - Framework:
       - Cypress for Visual Testing: projects/professional/frameworks/cypress.md
       - Java Automation Test: projects/professional/frameworks/java-automation.md
+      - Playwright MCP Framework: projects/professional/frameworks/playwright.md
       - Robot Framework Appium: projects/professional/frameworks/appium.md
       - Robot Framework Selenium: projects/professional/frameworks/robot-framework.md
-      - Playwright MCP Framework: projects/professional/frameworks/playwright.md
     # - Python Automation Test: projects/workSample/pythonAutomation.md
   - Academic Project:
     - Research :

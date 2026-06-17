@@ -2,7 +2,7 @@
 
 This project is part of the **FreeCodeCamp Relational Database Certification** course. It demonstrates the creation and management of a PostgreSQL database for a salon appointment scheduling system with an interactive bash script interface.
 
-## 📋 Project Overview
+## Project Overview
 
 The Salon Appointment Scheduler project involves:
 
@@ -11,7 +11,7 @@ The Salon Appointment Scheduler project involves:
 - Building an interactive bash script for customer appointment booking
 - Handling customer registration and appointment scheduling logic
 
-## 🗄️ Database Schema
+## Database Schema
 
 The database consists of three main tables with proper foreign key relationships:
 
@@ -61,7 +61,7 @@ Relationships
 - `appointments.service_id` → `services.service_id`
 - `customers.phone` has UNIQUE constraint for data integrity
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 fcc-rdb-salondb/
@@ -70,7 +70,7 @@ fcc-rdb-salondb/
 └── README.md          # Project documentation
 ```
 
-## 🚀 Setup Instructions
+## Setup Instructions
 
 - Prerequisites
     - PostgreSQL installed and running
@@ -95,31 +95,31 @@ fcc-rdb-salondb/
     ./salon.sh
     ```
 
-## 🔧 Application Features
+## Application Features
 
 - Interactive Menu System
     The salon.sh script provides a user-friendly interface with:
 
-    **Welcome Screen:**
+    - **Welcome Screen:**
     ```
     ~~~~~ WAZZALON ~~~~~
 
     Welcome to Wazzalon, how can I help you?
     ```
 
-    **Service Selection:**
+    - **Service Selection:**
 
     - Displays all available services with numbered options
     - Validates user input (numbers 1-5 only)
     - Handles invalid selections with appropriate error messages
 
-    **Customer Management:**
+    - **Customer Management:**
 
     - Phone number-based customer lookup
     - Automatic new customer registration
     - Maintains customer data consistency
 
-    **Appointment Booking:**
+    - **Appointment Booking:**
 
     - Service selection validation
     - Time input flexibility
@@ -153,7 +153,7 @@ fcc-rdb-salondb/
         - **New Customer Insert**: `INSERT INTO customers(name, phone) VALUES('$CUSTOMER_NAME','$CUSTOMER_PHONE')`
         - **Appointment Booking**: `INSERT INTO appointments(customer_id, service_id, time) VALUES('$CUSTOMER_ID','$SERVICE_ID_SELECTED','$SERVICE_TIME')`
 
-## 📊 Sample Data
+## Sample Data
 
 - Available Services
 Based on the database dump, the salon offers:
@@ -182,7 +182,7 @@ Based on the database dump, the salon offers:
 | 75 | 113 | 2 | 3AM |
 | 76 | 114 | 4 | 5AM |
 
-## 🎯 User Experience Flow
+## User Experience Flow
 
 - New Customer Journey
     1. **Service Selection**: Customer selects from numbered menu
@@ -221,7 +221,7 @@ Based on the database dump, the salon offers:
     I have put you down for a Cukur Jenggot at 10:30AM, John Doe.
     ```
 
-## 🔍 Technical Implementation Details
+## Technical Implementation Details
 
 - Database Connection
     ```bash
@@ -246,7 +246,7 @@ Based on the database dump, the salon offers:
     - Input validation prevents basic injection attempts
     - Phone number serves as natural unique identifier
 
-## 🏆 Key Features
+## Key Features
 
 - Database Design
     - **Normalized Structure**: Separate entities for services, customers, and appointments
@@ -263,7 +263,7 @@ Based on the database dump, the salon offers:
     - **Automatic Registration**: Seamless onboarding for new customers
     - **Flexible Scheduling**: Text-based time input allows various formats
 
-## 📈 Potential Extensions
+## Potential Extensions
 
 Future enhancements could include:
 
@@ -275,7 +275,7 @@ Future enhancements could include:
 - **Time Validation**: Implement proper time format validation
 - **Conflict Detection**: Prevent double-booking of time slots
 
-## 🎓 Learning Objectives
+## Learning Objectives
 
 This project demonstrates proficiency in:
 
@@ -303,7 +303,7 @@ This project demonstrates proficiency in:
     - User-friendly interface design
     - Maintainable code structure
 
-## 🏅 Course Context
+## Course Context
 
 This project is part of the **FreeCodeCamp Relational Database Certification**, specifically the "Build a Salon Appointment Scheduler" project. It serves as a practical application of:
 
@@ -321,21 +321,21 @@ The project simulates a real salon management system, demonstrating skills appli
 - Interactive command-line tools
 - Database-driven applications
 
-## 🔧 Technical Requirements Met
+## Technical Requirements Met
 
 - FreeCodeCamp Specifications
-    - ✅ Interactive bash script named `salon.sh`
-    - ✅ PostgreSQL database with proper schema
-    - ✅ Service selection with numbered menu
-    - ✅ Customer phone number identification
-    - ✅ New customer registration
-    - ✅ Appointment scheduling functionality
-    - ✅ Proper error handling and validation
-    - ✅ Confirmation messages with customer details
+    - Interactive bash script named `salon.sh`
+    - PostgreSQL database with proper schema
+    - Service selection with numbered menu
+    - Customer phone number identification
+    - New customer registration
+    - Appointment scheduling functionality
+    - Proper error handling and validation
+    - Confirmation messages with customer details
 
 - Database Constraints
-    - ✅ Primary keys on all tables
-    - ✅ Foreign key relationships
-    - ✅ Unique constraint on customer phone
-    - ✅ Proper data types and lengths
-    - ✅ Auto-incrementing ID sequences
+    - Primary keys on all tables
+    - Foreign key relationships
+    - Unique constraint on customer phone
+    - Proper data types and lengths
+    - Auto-incrementing ID sequences

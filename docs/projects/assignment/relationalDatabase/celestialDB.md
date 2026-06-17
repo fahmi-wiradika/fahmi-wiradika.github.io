@@ -2,7 +2,7 @@
 
 This project is part of the **FreeCodeCamp Relational Database Certification** course. It demonstrates the creation and management of a PostgreSQL database containing information about celestial objects including galaxies, stars, planets, and moons.
 
-## 📋 Project Overview
+## Project Overview
 
 The Celestial Bodies Database project involves:
 
@@ -11,7 +11,7 @@ The Celestial Bodies Database project involves:
 - Storing information about galaxies, stars, planets, and moons
 - Demonstrating advanced SQL concepts and database design principles
 
-## 🗄️ Database Schema
+## Database Schema
 
 The database consists of five main tables with hierarchical relationships:
 
@@ -134,7 +134,7 @@ Relationships
 - `planet.star_id` → `star.star_id`
 - `moon.planet_id` → `planet.planet_id`
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 fcc-rdb-celestialdb/
@@ -145,7 +145,7 @@ fcc-rdb-celestialdb/
 └── README.md          # Project documentation
 ```
 
-## 🚀 Setup Instructions
+## Setup Instructions
 
 - Prerequisites
     - PostgreSQL installed and running
@@ -175,37 +175,37 @@ fcc-rdb-celestialdb/
         psql --username=freecodecamp --dbname=universe < universe.sql
         ```
 
-## 🔧 Key Features and Requirements
+## Key Features and Requirements
 
 1. Database Structure Requirements
 
-    ✅ **Database Creation**: Database named `universe`  
-    ✅ **Table Creation**: Tables named `galaxy`, `star`, `planet`, and `moon`  
-    ✅ **Primary Keys**: Auto-incrementing primary keys in all tables  
-    ✅ **Naming Convention**: Primary keys follow `table_name_id` format  
-    ✅ **Foreign Keys**: Proper foreign key relationships established  
+     - **Database Creation**: Database named `universe`  
+     - **Table Creation**: Tables named `galaxy`, `star`, `planet`, and `moon`  
+     - **Primary Keys**: Auto-incrementing primary keys in all tables  
+     - **Naming Convention**: Primary keys follow `table_name_id` format  
+     - **Foreign Keys**: Proper foreign key relationships established  
 
 2. Data Type Requirements
 
-    ✅ **VARCHAR Columns**: Name columns in all tables  
-    ✅ **INT Data Type**: Used for age, temperature, and distance fields  
-    ✅ **NUMERIC Data Type**: Used for mass, radius, and orbital data  
-    ✅ **TEXT Data Type**: Used for descriptions and characteristics  
-    ✅ **BOOLEAN Data Type**: Used for classification flags  
+     - **VARCHAR Columns**: Name columns in all tables  
+     - **INT Data Type**: Used for age, temperature, and distance fields  
+     - **NUMERIC Data Type**: Used for mass, radius, and orbital data  
+     - **TEXT Data Type**: Used for descriptions and characteristics  
+     - **BOOLEAN Data Type**: Used for classification flags  
 
 3. Relationship Requirements
 
-    ✅ **Star-Galaxy**: Each star references a galaxy  
-    ✅ **Planet-Star**: Each planet references a star  
-    ✅ **Moon-Planet**: Each moon references a planet  
+     - **Star-Galaxy**: Each star references a galaxy  
+     - **Planet-Star**: Each planet references a star  
+     - **Moon-Planet**: Each moon references a planet  
 
 4. Data Requirements
 
-    ✅ **Table Count**: Five tables total (including galaxy_type)  
-    ✅ **Column Count**: Minimum three columns per table  
-    ✅ **Galaxy/Star Columns**: Five+ columns each  
-    ✅ **Planet/Moon Columns**: Five+ columns each  
-    ✅ **Row Requirements**:
+     - **Table Count**: Five tables total (including galaxy_type)  
+     - **Column Count**: Minimum three columns per table  
+     - **Galaxy/Star Columns**: Five+ columns each  
+     - **Planet/Moon Columns**: Five+ columns each  
+     - **Row Requirements**:
           
       - Galaxy table: 6+ rows
       - Star table: 6+ rows  
@@ -214,10 +214,10 @@ fcc-rdb-celestialdb/
 
 5. Constraint Requirements
 
-    ✅ **NOT NULL**: Multiple NOT NULL constraints per table  
-    ✅ **UNIQUE**: Unique constraints on name columns  
+     - **NOT NULL**: Multiple NOT NULL constraints per table  
+     - **UNIQUE**: Unique constraints on name columns  
 
-## 📊 Usage Examples and Queries
+## Usage Examples and Queries
 
 - Basic Data Retrieval
 
@@ -317,7 +317,7 @@ fcc-rdb-celestialdb/
         ORDER BY avg_mass DESC;
         ```
 
-## 🎯 Learning Objectives
+## Learning Objectives
 
 This project demonstrates proficiency in:
 
@@ -347,7 +347,7 @@ This project demonstrates proficiency in:
      - Hierarchical data structures
      - Constraint implementation
 
-## 🔍 Key Technical Concepts
+## Key Technical Concepts
 
 - **Normalization**: Separating different celestial object types into related tables
 - **Foreign Keys**: Maintaining referential integrity across the hierarchy
@@ -355,7 +355,7 @@ This project demonstrates proficiency in:
 - **Constraints**: Implementing NOT NULL and UNIQUE constraints
 - **Relationships**: One-to-many relationships throughout the hierarchy
 
-## 🏆 Data Coverage
+## Data Coverage
 
 The database contains:
 
@@ -366,7 +366,7 @@ The database contains:
 - **Galaxy Types**: Classification system for different galaxy morphologies
 
 
-## 📈 Testing and Validation
+## Testing and Validation
 
 - FreeCodeCamp Test Verification
     ```sql
@@ -404,7 +404,7 @@ The database contains:
     pg_dump -cC --inserts -U freecodecamp universe > universe.sql
     ```
 
-## 🚀 Potential Extensions
+## Potential Extensions
 
 Future enhancements could include:
 
@@ -415,7 +415,7 @@ Future enhancements could include:
 - Space mission and observation data
 - Constellation and star pattern mapping
 
-## 🏅 Course Context
+## Course Context
 
 This project is part of the **FreeCodeCamp Relational Database Certification**, specifically the "Build a Celestial Bodies Database" project. It serves as a comprehensive application of database concepts including:
 

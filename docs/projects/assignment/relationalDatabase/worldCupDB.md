@@ -2,7 +2,7 @@
 
 This project is part of the **FreeCodeCamp Relational Database Certification** course. It demonstrates the creation and manipulation of a PostgreSQL database containing World Cup tournament data from 2014 and 2018.
 
-## 📋 Project Overview
+## Project Overview
 
 The World Cup Database project involves:
 
@@ -11,7 +11,7 @@ The World Cup Database project involves:
 - Importing data from CSV files using shell scripts
 - Writing complex SQL queries to extract meaningful insights
 
-## 🗄️ Database Schema
+## Database Schema
 
 The database consists of two main tables:
 
@@ -53,7 +53,7 @@ Relationships
 - `games.winner_id` → `teams.team_id`
 - `games.opponent_id` → `teams.team_id`
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 fcc-rdb-worldcupdb/
@@ -64,7 +64,7 @@ fcc-rdb-worldcupdb/
 └── README.md           # This documentation
 ```
 
-## 🚀 Setup Instructions
+## Setup Instructions
 
 - Prerequisites
    - PostgreSQL installed and running
@@ -96,13 +96,13 @@ fcc-rdb-worldcupdb/
       - Insert unique team names into the teams table
       - Insert game records with proper foreign key relationships
 
-## 🔧 Scripts Description
+## Scripts Description
 
 - insert_data.sh
 
       This script processes the CSV file and populates the database:
 
-      **Key Features:**
+      - **Key Features:**
 
       - Handles both test and production environments
       - Truncates existing data before insertion
@@ -110,7 +110,7 @@ fcc-rdb-worldcupdb/
       - Checks for existing teams before insertion
       - Maintains referential integrity
 
-      **Logic Flow:**
+      - **Logic Flow:**
 
       1. Truncate both tables to start fresh
       2. For each CSV row:
@@ -188,7 +188,7 @@ fcc-rdb-worldcupdb/
 
       Contains predefined queries demonstrating various SQL operations:
 
-      **Query Examples:**
+      - **Query Examples:**
 
       - Aggregate functions (SUM, AVG, COUNT, MAX)
       - JOIN operations between tables
@@ -198,7 +198,7 @@ fcc-rdb-worldcupdb/
 
 
 
-## 📊 queries.sh Tasks and SQL Execution
+## queries.sh Tasks and SQL Execution
 
 The `queries.sh` script contains 12 specific database queries required by the FreeCodeCamp assignment. Each query demonstrates different SQL concepts and returns specific tournament statistics.
 
@@ -212,65 +212,65 @@ The `queries.sh` script contains 12 specific database queries required by the Fr
 
     !!! abstract ""
         === "1. Total Goals by Winning Teams"
-            **Task**: Calculate the sum of all goals scored by winning teams
+            - **Task**: Calculate the sum of all goals scored by winning teams
             ```sql
             SELECT SUM(winner_goals) FROM games;
             ```
-            **Expected Output**: `68`
+            - **Expected Output**: `68`
         
         === "2. Total Goals in All Games"
-            **Task**: Calculate the sum of all goals scored by both teams combined
+            - **Task**: Calculate the sum of all goals scored by both teams combined
             ```sql
             SELECT SUM(winner_goals + opponent_goals) FROM games;
             ```
-            **Expected Output**: `90`
+            - **Expected Output**: `90`
         
         === "3. Average Goals by Winning Teams"
-            **Task**: Calculate the average number of goals scored by winning teams
+            - **Task**: Calculate the average number of goals scored by winning teams
             ```sql
             SELECT AVG(winner_goals) FROM games;
             ```
-            **Expected Output**: `2.1250000000000000`
+            - **Expected Output**: `2.1250000000000000`
         
         === "4. Average Goals by Winning Teams (Rounded)"
-            **Task**: Same as above but rounded to 2 decimal places
+            - **Task**: Same as above but rounded to 2 decimal places
             ```sql
             SELECT AVG(winner_goals)::NUMERIC(10,2) FROM games;
             ```
-            **Expected Output**: `2.13`
+            - **Expected Output**: `2.13`
         
         === "5. Average Goals in All Games"
-            **Task**: Calculate the average total goals per game from both teams
+            - **Task**: Calculate the average total goals per game from both teams
             ```sql
             SELECT AVG(winner_goals + opponent_goals) FROM games;
             ```
-            **Expected Output**: `2.8125000000000000`
+            - **Expected Output**: `2.8125000000000000`
         
         === "6. Highest Goals in Single Game"
-            **Task**: Find the maximum goals scored by one team in a single game
+            - **Task**: Find the maximum goals scored by one team in a single game
             ```sql
             SELECT MAX(winner_goals) FROM games;
             ```
-            **Expected Output**: `7`
+            - **Expected Output**: `7`
         
         === "7. High-Scoring Games Count"
-            **Task**: Count games where the winning team scored more than 2 goals
+            - **Task**: Count games where the winning team scored more than 2 goals
             ```sql
             SELECT COUNT(*) FROM games WHERE winner_goals > 2;
             ```
-            **Expected Output**: `6`
+            - **Expected Output**: `6`
         
         === "8. 2018 Tournament Winner"
-            **Task**: Get the name of the team that won the 2018 World Cup
+            - **Task**: Get the name of the team that won the 2018 World Cup
             ```sql
             SELECT name FROM teams 
             INNER JOIN games ON teams.team_id = games.winner_id 
             WHERE round = 'Final' AND year = 2018;
             ```
-            **Expected Output**: `France`
+            - **Expected Output**: `France`
         
         === "9. 2014 Eighth-Final Teams"
-            **Task**: List all teams that played in the 2014 Eighth-Final round
+            - **Task**: List all teams that played in the 2014 Eighth-Final round
             ```sql
             SELECT name FROM teams 
             INNER JOIN games ON teams.team_id = games.winner_id 
@@ -278,7 +278,7 @@ The `queries.sh` script contains 12 specific database queries required by the Fr
             WHERE round = 'Eighth-Final' AND year = 2014 
             ORDER BY name;
             ```
-            **Expected Output**: 
+            - **Expected Output**: 
             ```
             Algeria
             Argentina
@@ -299,34 +299,34 @@ The `queries.sh` script contains 12 specific database queries required by the Fr
             ```
         
         === "10. All Winning Teams"
-            **Task**: List all unique team names that won at least one game
+            - **Task**: List all unique team names that won at least one game
             ```sql
             SELECT DISTINCT(name) FROM teams 
             INNER JOIN games ON teams.team_id = games.winner_id 
             ORDER BY name;
             ```
-            **Expected Output**: All teams that appear as winners (16 teams)
+            - **Expected Output**: All teams that appear as winners (16 teams)
         
         === "11. Tournament Champions"
-            **Task**: Show the year and team name of World Cup winners
+            - **Task**: Show the year and team name of World Cup winners
             ```sql
             SELECT year, name FROM teams 
             INNER JOIN games ON teams.team_id = games.winner_id 
             WHERE round = 'Final' AND (year = 2018 OR year = 2014) 
             ORDER BY year;
             ```
-            **Expected Output**:
+            - **Expected Output**:
             ```
             2014|Germany
             2018|France
             ```
         
         === "12. Teams Starting with 'Co'"
-            **Task**: Find all teams whose names start with 'Co'
+            - **Task**: Find all teams whose names start with 'Co'
             ```sql
             SELECT name FROM teams WHERE name LIKE 'Co%';
             ```
-            **Expected Output**:
+            - **Expected Output**:
             ```
             Colombia
             Costa Rica
@@ -381,7 +381,7 @@ The `queries.sh` script contains 12 specific database queries required by the Fr
     - JOIN operations are efficient due to proper relationship design
     - DISTINCT operations may be slower on larger datasets
 
-## 🏆 Data Coverage
+## Data Coverage
 
 The database contains:
 
@@ -394,7 +394,7 @@ Teams Included
 
 France, Croatia, Belgium, England, Russia, Sweden, Brazil, Uruguay, Colombia, Switzerland, Japan, Mexico, Denmark, Spain, Portugal, Argentina, Germany, Netherlands, Costa Rica, Chile, Nigeria, Algeria, Greece, United States
 
-## 🎯 Learning Objectives
+## Learning Objectives
 
 This project demonstrates proficiency in:
 
@@ -419,7 +419,7 @@ This project demonstrates proficiency in:
      - PostgreSQL integration
      - Environment-specific configurations
 
-## 🔍 Key Technical Concepts
+## Key Technical Concepts
 
 - **Normalization**: Separating teams and games into related tables
 - **Foreign Keys**: Ensuring data integrity across tables
@@ -427,7 +427,7 @@ This project demonstrates proficiency in:
 - **CSV Processing**: Reading and parsing structured data files
 - **Conditional Logic**: Implementing data validation in shell scripts
 
-## 📈 Potential Extensions
+## Potential Extensions
 
 Future enhancements could include:
 
@@ -437,7 +437,7 @@ Future enhancements could include:
 - Tournament bracket visualization
 - Performance analytics and trends
 
-## 🏅 Course Context
+## Course Context
 
 This project is part of the **FreeCodeCamp Relational Database Certification**, specifically the "Build a World Cup Database" project. It serves as a practical application of database concepts including:
 

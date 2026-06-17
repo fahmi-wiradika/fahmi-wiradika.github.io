@@ -2,7 +2,7 @@
 
 This project is part of the **Postman API Test Automation Certification Program** developed by Valentin Despa and available through platforms like freeCodeCamp. It demonstrates comprehensive API testing and automation skills using Postman's testing framework with the Valentino Artisan Coffee House API.
 
-## 📋 Project Overview
+## Project Overview
 
 The Postman API Automation Assignment project involves:
 
@@ -12,7 +12,7 @@ The Postman API Automation Assignment project involves:
 - Integrating with CI/CD pipelines using GitHub Actions
 - Demonstrating real-world API testing scenarios
 
-## 🎯 Learning Objectives
+## Learning Objectives
 
 This project demonstrates proficiency in:
 
@@ -37,7 +37,7 @@ This project demonstrates proficiency in:
       - Comprehensive test coverage
       - Collaborative testing workflows
 
-## 🏗️ API Structure
+## API Structure
 
 The project uses the **Valentino Artisan Coffee House API** with the following endpoints:
 
@@ -55,7 +55,7 @@ https://valentinos-coffee.herokuapp.com
     - `GET /orders` - Get all orders
     - `GET /orders/{id}` - Get specific order details
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 postman-api-automation/
@@ -73,7 +73,7 @@ postman-api-automation/
 └── README.md
 ```
 
-## 🚀 Setup Instructions
+## Setup Instructions
 
 2. Prerequisites
     - Postman application installed
@@ -87,11 +87,11 @@ postman-api-automation/
     - Set up Postman workspace for collaboration
     - Generate Postman API key for CI/CD integration
 
-## 📊 Assignment Tasks and Solutions
+## Assignment Tasks and Solutions
 
 ### Assignment #1: Basic API Testing and Data Extraction
 
-1. 🎯 Objectives
+1. Objectives
     - Implement basic status code validation
     - Parse JSON response bodies
     - Extract and store data in variables
@@ -165,7 +165,7 @@ postman-api-automation/
 
 ### Assignment #2: Comprehensive Status Code Testing
 
-1. 🎯 Objectives
+1. Objectives
     - Implement consistent status code validation across all endpoints
     - Standardize test patterns for maintainability
 
@@ -189,7 +189,7 @@ postman-api-automation/
 
 ### Assignment #3: Advanced Response Validation
 
-1. 🎯 Objectives
+1. Objectives
     - Validate JSON response format
     - Implement property existence checks
     - Test data types and patterns
@@ -247,7 +247,7 @@ postman-api-automation/
 
 ### Assignment #4: JSON Schema Validation
 
-1. 🎯 Objectives
+1. Objectives
     - Implement comprehensive JSON schema validation
     - Define strict data contracts
     - Ensure API response consistency
@@ -325,7 +325,7 @@ postman-api-automation/
 
 ### Assignment #5: CI/CD Integration with GitHub Actions
 
-1. 🎯 Objectives
+1. Objectives
     - Implement automated testing pipeline
     - Configure GitHub Actions workflow
     - Execute Postman collections programmatically
@@ -440,7 +440,7 @@ postman-api-automation/
             - Automated test execution
             - CI/CD pipeline implementation
 
-## 🔧 Technical Implementation Details
+## Technical Implementation Details
 
 1. Test Patterns and Best Practices
 
@@ -510,7 +510,7 @@ postman-api-automation/
     pm.response.to.have.jsonSchema(schema);
     ```
 
-## 📈 Test Coverage Summary
+## Test Coverage Summary
 
 1. Endpoints Tested
     - **7 API endpoints** across 4 resource categories
@@ -531,7 +531,7 @@ postman-api-automation/
     - **Fastest request**: 74ms
     - **Slowest request**: 329ms
 
-## 🎓 Skills Demonstrated
+## Skills Demonstrated
 
 1. API Testing Expertise
     - HTTP status code validation
@@ -557,7 +557,7 @@ postman-api-automation/
     - Reusable test patterns
     - Collaborative testing workflows
 
-## 🔍 Assignment Progression
+## Assignment Progression
 
 1. Assignment #1: Foundation
     - Basic API testing concepts
@@ -588,7 +588,7 @@ postman-api-automation/
     - Production-ready workflows
     - Continuous validation
 
-## 🏆 Project Outcomes
+## Project Outcomes
 
 1. Certification Achievement
     - Completion of Valentin Despa's API Test Automation program
@@ -607,7 +607,7 @@ postman-api-automation/
     - Collaborative development practices
     - Continuous integration expertise
 
-## 📚 References and Resources
+## References and Resources
 
 - **YouTube Tutorial**: [Postman API Test Automation for Beginners](https://www.youtube.com/watch?v=zp5Jh2FIpF0)
 - **Course Notes**: [Postman Course Repository](https://github.com/vdespa/automation-with-postman-course)
@@ -616,7 +616,7 @@ postman-api-automation/
 - **Instructor**: Valentin Despa - Postman Community Expert
 - **Platform**: freeCodeCamp API Testing Certification
 
-## 🌟 Course Context
+## Course Context
 
 This project represents a complete journey through API test automation, from basic validation to production-ready CI/CD integration. It demonstrates the practical application of:
 

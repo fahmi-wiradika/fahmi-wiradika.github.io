@@ -2,7 +2,7 @@
 
 This project is part of the **freeCodeCamp Back End Development and APIs Certification Program** and demonstrates comprehensive back-end development skills with a focus on RESTful API design, MongoDB integration, and data persistence management.
 
-## 📋 Project Overview
+## Project Overview
 
 The Exercise Tracker project involves:
 
@@ -12,7 +12,7 @@ The Exercise Tracker project involves:
 - Developing robust API endpoints with query parameters
 - Demonstrating back-end development best practices
 
-## 🎯 Learning Objectives
+## Learning Objectives
 
 This project demonstrates proficiency in:
 
@@ -40,7 +40,7 @@ This project demonstrates proficiency in:
     - Environment configuration
     - API documentation and testing
 
-## 🏗️ Application Architecture
+## Application Architecture
 
 - Base URL
     ```
@@ -57,7 +57,7 @@ This project demonstrates proficiency in:
     - **User Model**: User account management
     - **Exercise Model**: Exercise tracking and logging
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 fcc-exercise-tracker/
@@ -77,7 +77,7 @@ fcc-exercise-tracker/
 └── README.md                  # Project documentation
 ```
 
-## 🚀 Setup Instructions
+## Setup Instructions
 
 - Prerequisites
     - Node.js (v14 or higher)
@@ -93,7 +93,7 @@ fcc-exercise-tracker/
     5. Start the development server: `npm start`
     6. Access application at `http://localhost:3000`
 
-## 🔧 Technical Implementation Details
+## Technical Implementation Details
 
 ### Application Entry Point
 
@@ -421,7 +421,7 @@ module.exports = {
         - Apply pagination limits
         - Return user object with filtered exercise log
 
-## 📊 API Specification
+## API Specification
 
 Request/Response Examples
 
@@ -512,7 +512,7 @@ Request/Response Examples
     }
     ```
 
-## 🔍 Key Features Implementation
+## Key Features Implementation
 
 - **Date Processing Logic**
     - Accept multiple date formats (YYYY-MM-DD, timestamps)
@@ -538,7 +538,7 @@ Request/Response Examples
     - Duration numeric validation
     - Date format verification
 
-## 📈 Database Schema Design
+## Database Schema Design
 
 - User Collection
 
@@ -569,7 +569,7 @@ Request/Response Examples
 - **Reference Pattern**: Exercise stores user_id string
 - **Query Optimization**: Index on user_id for faster lookups
 
-## 🎓 Skills Demonstrated
+## Skills Demonstrated
 
 - Back-End Development
     - Express.js server architecture and routing
@@ -595,28 +595,28 @@ Request/Response Examples
     - Modular code organization
     - Controller-service layer design
 
-## 🔍 Project Requirements Validation
+## Project Requirements Validation
 
 **freeCodeCamp User Stories Compliance**
 
 - User Management
-    - ✅ Create user with username
-    - ✅ Get list of all users
-    - ✅ Return user object with _id and username
+    - Create user with username
+    - Get list of all users
+    - Return user object with _id and username
 
 - Exercise Tracking
-    - ✅ Add exercises to user by ID
-    - ✅ Handle description, duration, and date
-    - ✅ Default to current date if not provided
-    - ✅ Return user object with exercise data
+    - Add exercises to user by ID
+    - Handle description, duration, and date
+    - Default to current date if not provided
+    - Return user object with exercise data
 
 - Exercise Logs
-    - ✅ Retrieve user's exercise log
-    - ✅ Support from/to date filtering
-    - ✅ Implement limit parameter
-    - ✅ Return count and log array
+    - Retrieve user's exercise log
+    - Support from/to date filtering
+    - Implement limit parameter
+    - Return count and log array
 
-## 🏆 Project Outcomes
+## Project Outcomes
 
 - Certification Achievement
     - Successful completion of freeCodeCamp Back End Development project
@@ -635,7 +635,7 @@ Request/Response Examples
     - Error handling and validation
     - API documentation and testing
 
-## 📚 Resources and References
+## Resources and References
 
 - **freeCodeCamp Project**: [Exercise Tracker](https://www.freecodecamp.org/learn/back-end-development-and-apis/back-end-development-and-apis-projects/exercise-tracker)
 - **GitHub Repository**: [fcc-exercise-tracker](https://github.com/fahmi-wiradika/fcc-exercise-tracker)
@@ -643,7 +643,7 @@ Request/Response Examples
 - **Express.js Guide**: [Express Framework](https://expressjs.com/)
 - **Node.js Documentation**: [Node.js Official Docs](https://nodejs.org/docs/)
 
-## 🌟 Course Context
+## Course Context
 
 This project represents a comprehensive application of back-end development principles in modern web applications. It demonstrates practical implementation of:
 

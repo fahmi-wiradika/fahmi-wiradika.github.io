@@ -2,7 +2,7 @@
 
 This project is part of the **FreeCodeCamp Relational Database Certification** course. It demonstrates the creation and manipulation of a PostgreSQL database containing periodic table data with element properties and atomic information.
 
-## 📋 Project Overview
+## Project Overview
 
 The Periodic Table Database project involves:
 
@@ -12,7 +12,7 @@ The Periodic Table Database project involves:
 - Creating an interactive bash script to query element information
 - Cleaning and reformatting existing data
 
-## 🗄️ Database Schema
+## Database Schema
 
 The database consists of three main tables with proper relationships:
 
@@ -63,7 +63,7 @@ Relationships
 - `properties.atomic_number` → `elements.atomic_number`
 - `properties.type_id` → `types.type_id`
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 fcc-rdb-atomicdb/
@@ -73,7 +73,7 @@ fcc-rdb-atomicdb/
 └── .git/               # Git repository files
 ```
 
-## 🚀 Setup Instructions
+## Setup Instructions
 
 - Prerequisites
     - PostgreSQL installed and running
@@ -98,7 +98,7 @@ fcc-rdb-atomicdb/
     ./element.sh [element_identifier]
     ```
 
-## 🔧 Scripts Description
+## Scripts Description
 
 - element.sh
 
@@ -158,7 +158,7 @@ fcc-rdb-atomicdb/
         fi
         ```
 
-## 🎯 Script Logic Flow
+## Script Logic Flow
 
 - Input Processing
     1. **Argument Validation**: Checks if an argument is provided
@@ -183,7 +183,7 @@ fcc-rdb-atomicdb/
     - Formats data into human-readable sentences
     - Handles edge cases and missing data gracefully
 
-## 📊 Data Coverage
+## Data Coverage
 
 The database contains:
 
@@ -197,7 +197,7 @@ Element Categories:
 - **Nonmetals**: Noble gases, halogens, hydrogen, carbon, etc.
 - **Metalloids**: Boron, silicon, germanium, arsenic, etc.
 
-## 🏗️ Database Modifications Made
+## Database Modifications Made
 
 - Schema Improvements
     1. **Proper Data Types**: Changed atomic_mass to DECIMAL for precision
@@ -211,7 +211,7 @@ Element Categories:
     - Ensured referential integrity across tables
     - Fixed any missing or incorrect data entries
 
-## 🔍 SQL Query Examples
+## SQL Query Examples
 
 - Basic Element Lookup
     ```sql
@@ -252,7 +252,7 @@ Element Categories:
     LIMIT 10;
     ```
 
-## 🎯 Learning Objectives
+## Learning Objectives
 
 This project demonstrates proficiency in:
 
@@ -276,7 +276,7 @@ This project demonstrates proficiency in:
      - Using pattern matching with LIKE
      - Handling different data types effectively
 
-## 🔧 Technical Implementation Details
+## Technical Implementation Details
 
 - PostgreSQL Connection
     ```bash
@@ -297,16 +297,16 @@ This project demonstrates proficiency in:
     - **Text Processing**: IFS for parsing pipe-delimited database output
     - **User-Friendly Output**: Complete sentences with proper grammar
 
-## 🚀 Project Requirements Fulfilled
+## Project Requirements Fulfilled
 
 - User Stories Completed
-    1. ✅ Database contains correct tables with proper relationships
-    2. ✅ Script accepts atomic number, symbol, or name as arguments
-    3. ✅ Returns complete element information in specified format
-    4. ✅ Handles invalid inputs gracefully
-    5. ✅ Data types are properly configured (DECIMAL for precision)
-    6. ✅ All trailing zeros removed from atomic masses
-    7. ✅ Git repository with proper version control
+    1. Database contains correct tables with proper relationships
+    2. Script accepts atomic number, symbol, or name as arguments
+    3. Returns complete element information in specified format
+    4. Handles invalid inputs gracefully
+    5. Data types are properly configured (DECIMAL for precision)
+    6. All trailing zeros removed from atomic masses
+    7. Git repository with proper version control
 
 - Output Format Requirements
     - Atomic number, name, and symbol display
@@ -315,7 +315,7 @@ This project demonstrates proficiency in:
     - Melting and boiling points in Celsius
     - Proper sentence structure and grammar
 
-## 🏅 Course Context
+## Course Context
 
 This project is part of the **FreeCodeCamp Relational Database Certification**, specifically the "Build a Periodic Table Database" project. It serves as a practical application of:
 
@@ -327,7 +327,7 @@ This project is part of the **FreeCodeCamp Relational Database Certification**, 
 
 The project demonstrates real-world database skills applicable to scientific data management, educational software development, and backend application development.
 
-## 🔮 Potential Extensions
+## Potential Extensions
 
 Future enhancements could include:
 

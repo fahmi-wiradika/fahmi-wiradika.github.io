@@ -2,7 +2,7 @@
 
 A comprehensive API testing automation project using Newman (Postman CLI) with CI/CD integration and performance reporting hosted on GitHub Pages.
 
-## 🚀 Overview
+## Overview
 
 This project provides automated API testing for a Node.js CRUD application with the following features:
 
@@ -12,7 +12,7 @@ This project provides automated API testing for a Node.js CRUD application with 
 - **Multiple Environments**: Support for development and production environments
 - **Comprehensive Test Coverage**: Full CRUD operations testing (Create, Read, Update, Delete)
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ├── .github/workflows/
@@ -30,7 +30,7 @@ This project provides automated API testing for a Node.js CRUD application with 
 └── README.md
 ```
 
-## 🛠️ Prerequisites
+## Prerequisites
 
 ### Local Development
 - [Node.js](https://nodejs.org/) (v18 or higher)
@@ -47,7 +47,7 @@ npm install -g newman-reporter-html
 npm install -g newman-reporter-htmlextra
 ```
 
-## 🏃‍♂️ Running Tests 
+## Running Tests
 
 ### Using Postman Collection Runner (GUI)
 
@@ -84,13 +84,13 @@ The Postman Collection Runner provides a powerful GUI interface for executing yo
 3. Click Performance Tab
 4. Set up your performance test:
 
-    **Performance Basic Setup:**
+    - **Performance Basic Setup:**
     
     - **Load profile**: Select `Fixed`, `Ramp up`, `Spike` or `Peak`
     - **Virtual users**: Set to `5` (or desired number)
     - **Test duration**: Set to `1` (in minutes)
     
-    **Performance Metric (Pass test if):**
+    - **Performance Metric (Pass test if):**
     
     - **Metric**: Response Time, Error, Requests per second
     - **Condition**: is greater than, is less than, is less than equal to, is greater than equal to
@@ -150,12 +150,12 @@ After the collection run completes:
     - Choose download location
     - The HTML report includes:
    
-        - ✅ Complete test execution summary
-        - ✅ Request/response details with timing
-        - ✅ Test assertions results
-        - ✅ Performance metrics and charts
-        - ✅ Environment variables used
-        - ✅ Console logs and error details
+        - Complete test execution summary
+        - Request/response details with timing
+        - Test assertions results
+        - Performance metrics and charts
+        - Environment variables used
+        - Console logs and error details
 
 3. **Report Features**:
 
@@ -203,22 +203,22 @@ newman run postman/NODE-E2E.postman_collection.json \
   --iteration-count 1
 ```
 
-## 🔄 CI/CD Pipeline
+## CI/CD Pipeline
 
 The project includes a comprehensive GitHub Actions workflow (`.github/workflows/ci-cd.yml`) that:
 
 ### Test Job
-- ✅ Runs Newman tests automatically on push to master
-- ✅ Uses production environment configuration
-- ✅ Executes 5 iterations with request delays
-- ✅ Generates multiple report formats (CLI, JSON, JUnit)
-- ✅ Uploads test artifacts for 30 days retention
+- Runs Newman tests automatically on push to master
+- Uses production environment configuration
+- Executes 5 iterations with request delays
+- Generates multiple report formats (CLI, JSON, JUnit)
+- Uploads test artifacts for 30 days retention
 
 ### Deploy Job
-- ✅ Deploys test results to GitHub Pages
-- ✅ Creates performance reports dashboard
-- ✅ Runs only after test completion
-- ✅ Updates on every master branch push
+- Deploys test results to GitHub Pages
+- Creates performance reports dashboard
+- Runs only after test completion
+- Updates on every master branch push
 
 ### Workflow Features
 - **Concurrent Control**: Cancels previous deployments
@@ -226,24 +226,24 @@ The project includes a comprehensive GitHub Actions workflow (`.github/workflows
 - **Artifact Management**: Unique naming with run numbers
 - **Environment Flexibility**: Easy switching between dev/prod
 
-## 📊 Test Coverage
+## Test Coverage
 
 The E2E test collection covers complete CRUD operations:
 
-### 🆕 Create Product
+### Create Product
 - **Endpoint**: `POST /api/products`
 - **Validation**: Schema validation, field types, MongoDB ObjectId format
 - **Environment**: Stores created product ID for subsequent tests
 
-### 📖 Read Product
+### Read Product
 - **Endpoint**: `GET /api/products/{id}`
 - **Validation**: Response structure, data integrity, field validation
 
-### ✏️ Update Product
+### Update Product
 - **Endpoint**: `PUT /api/products/{id}`
 - **Validation**: Updated fields, schema compliance, timestamp validation
 
-### 🗑️ Delete Product
+### Delete Product
 - **Endpoint**: `DELETE /api/products/{id}`
 - **Validation**: Deletion confirmation, proper response format
 
@@ -255,7 +255,7 @@ The E2E test collection covers complete CRUD operations:
 - Response key existence verification
 - Business logic validation (positive values, non-empty strings)
 
-## 🌐 Environments
+## Environments
 
 ### Development Environment
 - **Base URL**: `http://localhost:3000`
@@ -267,7 +267,7 @@ The E2E test collection covers complete CRUD operations:
 - **Test Data**: Ketoprak (Indonesian traditional food)
 - **Use Case**: Production API testing and CI/CD
 
-## 📈 Performance Reporting
+## Performance Reporting
 
 ### GitHub Pages Integration
 
@@ -283,7 +283,7 @@ Test results are automatically published to GitHub Pages:
 3. **JUnit Reports**: CI/CD integration compatible
 4. **Performance Dashboard**: Hosted on GitHub Pages
 
-## ⚙️ Configuration
+## Configuration
 
 ### Customizing Test Parameters
 
@@ -312,7 +312,7 @@ Update paths in `script/collection-runner.bat`:
 set BASE_DIR=C:\Your\Project\Path\
 ```
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -336,7 +336,7 @@ set BASE_DIR=C:\Your\Project\Path\
     - Verify repository permissions
     - Ensure GitHub Pages is enabled
 
-## 📝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch
@@ -345,11 +345,11 @@ set BASE_DIR=C:\Your\Project\Path\
 5. Test locally using the batch script
 6. Submit a pull request
 
-## 📄 License
+## License
 
 This project is open source and available under the MIT License.
 
 
 ---
 
-**Happy Testing! 🚀**
+**Happy Testing!**
