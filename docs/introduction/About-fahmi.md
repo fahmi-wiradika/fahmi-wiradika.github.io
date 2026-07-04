@@ -68,11 +68,12 @@ Fahmi's tech stack includes programming languages, version control systems (VCS)
     - :simple-kibana: : Kibana
     - :simple-linux: : Hiware
 
-- :octicons-workflow-16: CI/CD Workflow
+- :octicons-workflow-16: CI/CD & Containerization 
 
     ---
     - :simple-githubactions: : GitHub Action
-    - :simple-jenkins: : Jenkins
+    - :simple-jenkins: : [Jenkins](../projects/professional/ci-cd/docker-jenkins.md)
+    - :simple-docker: : [Docker](../projects/professional/ci-cd/docker-jenkins.md)
 
 - :simple-framework: Testing Framework
 

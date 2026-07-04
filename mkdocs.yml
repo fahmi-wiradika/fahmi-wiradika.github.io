@@ -117,8 +117,8 @@ nav:
     - API Testing:
       - JMeter Automation: projects/professional/api-testing/jmeter-automation.md
       - Newman Automation: projects/professional/api-testing/newman-automation.md
-    - Web Apps:
-      - Simple CRUD Apps: projects/professional/web-apps/simple-crud-apps.md
+    - CI/CD:
+      - Jenkins Docker Orchestration: projects/professional/ci-cd/docker-jenkins.md
     - Documentation:
       - Fahmi's Project Library: projects/professional/documentation/docs-portfolio.md
     - Framework:
@@ -127,6 +127,8 @@ nav:
       - Playwright MCP Framework: projects/professional/frameworks/playwright.md
       - Robot Framework Appium: projects/professional/frameworks/appium.md
       - Robot Framework Selenium: projects/professional/frameworks/robot-framework.md
+    - Web Apps:
+      - Simple CRUD Apps: projects/professional/web-apps/simple-crud-apps.md
     # - Python Automation Test: projects/workSample/pythonAutomation.md
   - Academic Project:
     - Research :
