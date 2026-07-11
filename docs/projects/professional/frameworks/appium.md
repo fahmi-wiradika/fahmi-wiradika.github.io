@@ -87,13 +87,12 @@ robot-appium/
 
 Each suite variant (standard / Applitools / RobotEyes) runs the same three cases with different visual checkpoint strategies.
 
----
-
 ## Getting Started
 
 ### Prerequisites
 
 - Python 3.8+
+- Java JDK (for Android SDK)
 - Node.js (for Appium server)
 - Appium 2 installed globally
 - UiAutomator2 driver installed
@@ -132,16 +131,64 @@ appium
 
 ### Device Setup
 
-**Emulator**: Launch your AVD from Android Studio AVD Manager, then verify it's visible:
+#### **Emulator** 
+Download Android Command Line Tools and SDK Platform Tools. Extract them to a directory
+
+```bash
+export ANDROID_HOME=$HOME/android-sdk
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
+```
+
+Setup Android Platform using sdkmanager command
+
+```bash
+# Accept all licenses first
+sdkmanager --list
+sdkmanager --licenses
+
+# Install essential packages
+sdkmanager "platform-tools"
+sdkmanager "emulator"
+sdkmanager "platforms;android-34"
+sdkmanager "build-tools;34.0.0"
+sdkmanager "system-images;android-34;google_apis;x86_64"
+
+# verify installed package
+sdkmanager --list_installed
+```
+
+Create emulator via AVD Manager
+
+```bash
+# Create AVD
+avdmanager create avd  
+    --name "Pixel_API34"  
+    --package "system-images;android-34;google_apis;x86_64"  
+    --device "pixel_6"
+
+# List available AVDs
+avdmanager list avd
+```
+
+Launch your AVD from Android Studio AVD Manager
+
+```bash
+# Start the emulator (headless = no window, useful for CI)
+emulator -avd Pixel_API34 -no-snapshot-load
+
+# Or with window UI
+emulator -avd Pixel_API34
+```
+
+Finally, verify device visible
 
 ```bash
 adb devices
 # Should show: emulator-5554   device
 ```
 
-**Real Device**: Enable Developer Options + USB Debugging on your device, connect via USB, then verify with `adb devices`.
-
----
+#### **Real Device** 
+Enable Developer Options + USB Debugging on your device, connect via USB, then verify with `adb devices`.
 
 ## Running Tests
 
@@ -158,8 +205,6 @@ robot -d results -t "TC_01 - Login with Valid Credentials" sauce-labs-mobile/tes
 Reports are generated under `results/`:
 - `results/log.html` — detailed step-by-step log
 - `results/report.html` — summary report
-
----
 
 ## Visual Testing — Applitools Eyes
 
@@ -202,7 +247,6 @@ Results are visible on the **Applitools Dashboard** at [eyes.applitools.com](htt
 
 The suite uses `EyesLibrary` with `runner=mobile_native`. Visual checkpoints are added with `Eyes Check Window` at key app states (e.g. Login Screen, Post Login, Logout Dialog). On the first run, these become the baseline. Subsequent runs diff against that baseline and flag any visual deviations.
 
----
 
 ## Visual Testing — RobotEyes (Free / Local)
 
@@ -282,8 +326,6 @@ Each test case calls:
 2. `Capture Full Screen    name=<checkpoint_name>` — take a screenshot at a key state
 3. `Compare Images` — diff all captured images against baseline and fail on mismatch
 
----
-
 ## Configuration
 
 Device and server settings are centralized in `sauce-labs-mobile/resources/config/capabilities.robot`:
@@ -299,8 +341,6 @@ ${AUTOMATION_NAME}      UiAutomator2
 ```
 
 To switch to a real device, replace `${DEVICE_NAME}` with your device UDID from `adb devices`.
-
----
 
 ## Troubleshooting
 
@@ -336,7 +376,6 @@ Use the activity shown in the resolver table (e.g. `SplashActivity`) as your `${
 - On Windows, the installer must add ImageMagick to PATH — verify with `magick --version` in a new terminal
 - If baseline images are missing, run with `images_dir:visual_images/baseline` first to generate them
 
----
 
 ## Quick Links
 
