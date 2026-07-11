@@ -5,6 +5,13 @@ inside **Docker**, orchestrating test execution across **six independent
 automation frameworks** spanning Node.js, Python, and Java ecosystems —
 without relying on any cloud-hosted runner.
 
+Alongside the containerized frameworks, the same Jenkins controller also
+orchestrates **Android mobile automation** (Robot Framework + Appium) via
+a **native Windows agent** running directly on the host — since emulators,
+USB device access, and Appium/ADB tooling cannot run reliably inside a
+Docker container. See [Hybrid Architecture](#hybrid-architecture-containers-native-agent)
+below.
+
 ## Features
 
 ### Core Capabilities
@@ -13,6 +20,7 @@ without relying on any cloud-hosted runner.
 - **Multi-Framework Orchestration**: one Jenkins instance running six structurally distinct pipelines (Newman, Cypress, Playwright, Robot+Selenium, Java+Selenium, JMeter)
 - **Native HTML Reporting**: Mochawesome, Playwright HTML, Robot Framework HTML, Allure, and JMeter Dashboard reports all served directly from Jenkins via HTML Publisher
 - **JUnit Trend Reporting**: pass/fail history tracked natively in Jenkins for API-layer tests
+- **Hybrid Agent Model**: a native Windows Jenkins agent runs alongside the containerized controller for Android emulator + Appium pipelines, which cannot run inside Docker
 
 ### Advanced Features
 
@@ -27,7 +35,8 @@ without relying on any cloud-hosted runner.
 | --- | --- |
 | Orchestrator | Jenkins (Declarative Pipeline, Groovy) |
 | Container Runtime | Docker Desktop (Windows, WSL2 backend) |
-| Frameworks Orchestrated | 6 |
+| Native Agent | Windows agent (`legion-android-agent`), JNLP-connected |
+| Frameworks Orchestrated | 6 containerized + 2 native mobile (functional, visual) |
 | Language Ecosystems | Node.js, Python, Java/Maven |
 | Report Formats | JUnit XML, Mochawesome HTML, Playwright HTML, Robot HTML, Allure HTML, JMeter Dashboard |
 
@@ -56,6 +65,40 @@ Host Machine (Docker Desktop)
 └── [ephemeral] eclipse-temurin      ← JMeter stage
 ```
 
+## Hybrid Architecture: Containers + Native Agent
+
+Android emulator acceleration, USB access to a real device, and the
+Appium/ADB toolchain cannot run reliably inside a Docker container on
+Windows — there's no clean path for nested virtualization or USB
+passthrough into Docker Desktop. Rather than fight that constraint, the
+mobile pipelines run on a **second Jenkins node**: a native Windows agent
+process (`legion-android-agent`) installed directly on the same host,
+connected back to the containerized controller over the existing JNLP
+port.
+
+```
+Host Machine (Windows, Legion)
+│
+├── fahmi-jenkins (Docker container, controller)
+│     └── mounts: jenkins_home volume + /var/run/docker.sock
+│     └── runs: Newman, Cypress, Playwright, Robot+Selenium,
+│                Java+Selenium, JMeter (all agent { label 'built-in' })
+│
+└── legion-android-agent (native Windows process / service)
+      └── connects to controller via JNLP (port 8182)
+      └── runs: Robot Framework + Appium (functional + visual)
+      └── direct host access to:
+            ├── Android SDK / emulator / adb
+            ├── Node.js + Appium server + UiAutomator2 driver
+            └── ImageMagick (RobotEyes visual diffing)
+```
+
+Because both node types register with the same controller, every
+pipeline in this repo pins its `agent` label explicitly — `built-in` for
+the six containerized frameworks, `legion-android-agent` for the two
+mobile pipelines — so Jenkins never opportunistically schedules a job on
+the wrong node type.
+
 ## Frameworks Orchestrated
 
 | Framework | Language | Base Image | Report Format |
@@ -66,6 +109,8 @@ Host Machine (Docker Desktop)
 | Robot Framework + Selenium | Python | `selenium/standalone-chrome` + pip install | Robot HTML |
 | Java + Selenium + Allure | Java/Maven | `selenium/standalone-chrome` + manual JDK 19 | Allure HTML |
 | JMeter | Java (CLI) | `eclipse-temurin:17-jdk` + manual binary | JMeter Dashboard |
+| Robot Framework + Appium (Functional) | Python | native Windows agent, no container | Robot HTML |
+| Robot Framework + Appium (Visual/RobotEyes) | Python | native Windows agent, no container | Visual Diff HTML |
 
 
 ## Pipeline Design Patterns
@@ -171,13 +216,15 @@ itself — everything runs inside ephemeral containers.
 | Robot + Selenium | Clean → Checkout → Install & Run → Post (HTML + Archive) |
 | Java + Selenium | Clean → Checkout → Install & Run → Generate Allure → Post (HTML + Archive) |
 | JMeter | Clean → Checkout → Run JMeter → Generate HTML → Post (HTML + Archive) |
+| Robot + Appium (Functional) | Checkout → Setup Python Env → Start Emulator → Start Appium Server → Run Robot Tests → Post (HTML + Archive) |
+| Robot + Appium (Visual) | Checkout → Setup Python Env → Start Emulator → Start Appium Server → Debug PATH → Run Robot Tests → Post (HTML + Archive) |
 
 ### Jenkins File Sample
 
 === "Newman (Postman)"
     ```groovy
     pipeline {
-        agent any
+        agent { label 'built-in' }
         stages {
             stage('Checkout') {
                 steps {
@@ -214,7 +261,7 @@ itself — everything runs inside ephemeral containers.
 === "Apache JMeter"
     ```groovy
     pipeline {
-        agent any
+        agent { label 'built-in' }
 
         options {
             buildDiscarder(logRotator(numToKeepStr: '10'))
@@ -298,7 +345,7 @@ itself — everything runs inside ephemeral containers.
 === "Cypress"
     ```groovy
     pipeline {
-        agent any
+        agent { label 'built-in' }
         
         options {
             buildDiscarder(logRotator(numToKeepStr: '10'))
@@ -385,7 +432,7 @@ itself — everything runs inside ephemeral containers.
 === "Playwright"
     ```groovy
     pipeline {
-        agent any
+        agent { label 'built-in' }
 
         options {
             buildDiscarder(logRotator(numToKeepStr: '10'))
@@ -457,7 +504,7 @@ itself — everything runs inside ephemeral containers.
 === "Robot Framework - Selenium"
     ```groovy
     pipeline {
-        agent any
+        agent { label 'built-in' }
 
         options {
             buildDiscarder(logRotator(numToKeepStr: '10'))
@@ -522,7 +569,7 @@ itself — everything runs inside ephemeral containers.
 === "Java - Selenium - Allure"
     ```groovy
     pipeline {
-        agent any
+        agent { label 'built-in' }
 
         options {
             buildDiscarder(logRotator(numToKeepStr: '10'))
@@ -628,6 +675,257 @@ itself — everything runs inside ephemeral containers.
         }
     }
     ```
+=== "Robot Framework - Appium (Functional)"
+    ```groovy
+    pipeline {
+        agent { label 'legion-android-agent' }
+
+        options {
+            disableConcurrentBuilds()
+            timestamps()
+        }
+
+        environment {
+            VENV = "${WORKSPACE}\\.venv"
+        }
+
+        stages {
+            stage('Checkout') {
+                steps {
+                    git branch: 'master',
+                        url: 'https://github.com/fahmi-wiradika/robot-appium.git'
+                }
+            }
+
+            stage('Setup Python Env') {
+                steps {
+                    bat '''
+                    python -m venv .venv
+                    call .venv\\Scripts\\activate.bat
+                    pip install -r requirement.txt
+                    '''
+                }
+            }
+
+            stage('Start Emulator') {
+                steps {
+                    bat '''
+                    start /B emulator -avd Pixel_9_Pro_XL_API_35 -no-snapshot-load -dns-server 8.8.8.8,8.8.4.4
+                    adb wait-for-device
+                    '''
+                    powershell '''
+                    $maxWait = 120
+                    $elapsed = 0
+                    do {
+                        $boot = (adb shell getprop sys.boot_completed).Trim()
+                        if ($boot -eq "1") { break }
+                        Start-Sleep -Seconds 2
+                        $elapsed += 2
+                        if ($elapsed -ge $maxWait) {
+                            Write-Error "Emulator boot timed out"
+                            exit 1
+                        }
+                    } while ($true)
+                    Write-Host "Emulator boot completed"
+                    '''
+                }
+            }
+
+            stage('Start Appium Server') {
+                steps {
+                    bat 'start /B appium --log appium.log'
+                    powershell '''
+                    $maxWait = 30
+                    $elapsed = 0
+                    do {
+                        try {
+                            $res = Invoke-WebRequest -Uri "http://127.0.0.1:4723/status" -UseBasicParsing -TimeoutSec 2
+                            if ($res.StatusCode -eq 200) { break }
+                        } catch {}
+                        Start-Sleep -Seconds 2
+                        $elapsed += 2
+                        if ($elapsed -ge $maxWait) {
+                            Write-Error "Appium server did not become ready"
+                            exit 1
+                        }
+                    } while ($true)
+                    Write-Host "Appium server is ready"
+                    '''
+                }
+            }
+
+            stage('Run Robot Tests') {
+                steps {
+                    catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                        bat '''
+                        call .venv\\Scripts\\activate.bat
+                        robot --outputdir results --loglevel INFO sauce-labs-mobile\\tests\\behavior\\sauce_login.robot
+                        '''
+                    }
+                }
+            }
+        }
+
+        post {
+            always {
+                bat '''
+                taskkill /IM node.exe /F /T || exit 0
+                adb emu kill || exit 0
+                '''
+                publishHTML([
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true,
+                    reportDir: 'results',
+                    reportFiles: 'report.html',
+                    reportName: 'Robot Report'
+                ])
+                archiveArtifacts artifacts: 'results/**', allowEmptyArchive: true
+            }
+        }
+    }
+    ```
+=== "Robot Framework - Appium (Visual/RobotEyes)"
+    ```groovy
+    pipeline {
+        agent { label 'legion-android-agent' }
+
+        options {
+            disableConcurrentBuilds()
+            timestamps()
+        }
+
+        environment {
+            VENV = "${WORKSPACE}\\.venv"
+            PATH = "C:\\Program Files\\ImageMagick-7.1.2-Q16;${env.PATH}"
+        }
+
+        stages {
+            stage('Checkout') {
+                steps {
+                    git branch: 'master',
+                        url: 'https://github.com/fahmi-wiradika/robot-appium.git'
+                }
+            }
+
+            stage('Setup Python Env') {
+                steps {
+                    bat '''
+                    python -m venv .venv
+                    call .venv\\Scripts\\activate.bat
+                    pip install -r requirement.txt
+                    '''
+                }
+            }
+
+            stage('Start Emulator') {
+                steps {
+                    bat '''
+                    start /B emulator -avd Pixel_9_Pro_XL_API_35 -no-snapshot-load -dns-server 8.8.8.8,8.8.4.4
+                    adb wait-for-device
+                    '''
+                    powershell '''
+                    $maxWait = 120
+                    $elapsed = 0
+                    do {
+                        $boot = (adb shell getprop sys.boot_completed).Trim()
+                        if ($boot -eq "1") { break }
+                        Start-Sleep -Seconds 2
+                        $elapsed += 2
+                        if ($elapsed -ge $maxWait) {
+                            Write-Error "Emulator boot timed out"
+                            exit 1
+                        }
+                    } while ($true)
+                    Write-Host "Emulator boot completed"
+                    '''
+                }
+            }
+
+            stage('Start Appium Server') {
+                steps {
+                    bat 'start /B appium --log appium.log'
+                    powershell '''
+                    $maxWait = 30
+                    $elapsed = 0
+                    do {
+                        try {
+                            $res = Invoke-WebRequest -Uri "http://127.0.0.1:4723/status" -UseBasicParsing -TimeoutSec 2
+                            if ($res.StatusCode -eq 200) { break }
+                        } catch {}
+                        Start-Sleep -Seconds 2
+                        $elapsed += 2
+                        if ($elapsed -ge $maxWait) {
+                            Write-Error "Appium server did not become ready"
+                            exit 1
+                        }
+                    } while ($true)
+                    Write-Host "Appium server is ready"
+                    '''
+                }
+            }
+
+            stage('Debug PATH') {
+                steps {
+                    bat 'where magick'
+                }
+            }
+
+            stage('Run Robot Tests') {
+                steps {
+                    catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                        bat '''
+                        call .venv\\Scripts\\activate.bat
+                        robot -d results -v images_dir:visual_images/baseline sauce-labs-mobile\\tests\\component\\sauce_login_robot_eyes.robot
+                        '''
+                    }
+                }
+            }
+        }
+
+        post {
+            always {
+                bat '''
+                taskkill /IM node.exe /F /T || exit 0
+                adb emu kill || exit 0
+                '''
+                publishHTML([
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true,
+                    reportDir: 'results',
+                    reportFiles: 'visualReport.html',
+                    reportName: 'Visual Test Report'
+                ])
+                archiveArtifacts artifacts: 'results/**', allowEmptyArchive: true
+            }
+        }
+    }
+    ```
+
+## Mobile Pipeline Requirements (`legion-android-agent`)
+
+Unlike the containerized frameworks above — which need nothing installed
+on the host beyond Docker itself — the mobile pipelines run directly on
+the native agent, so all tooling must be installed and on `PATH` for the
+Windows account/service running that agent:
+
+| Requirement | Used For | Notes |
+| --- | --- | --- |
+| Android SDK + `adb` | Emulator control, device communication | Must be on `PATH`; `ANDROID_HOME` set |
+| Android Emulator + AVD | Test target | AVD name in the pipeline must match an existing image (e.g. `Pixel_9_Pro_XL_API_35`) |
+| Node.js + Appium 2 + UiAutomator2 driver | Appium server + Android driver | `npm install -g appium && appium driver install uiautomator2` |
+| Python 3.8+ | Test execution | Fresh `venv` created per build from `requirement.txt` |
+| ImageMagick 7.x | Visual pipeline only — RobotEyes pixel diffing | Must be on `PATH`; if only in *User* PATH, a Windows service agent won't see it — add to *System* PATH or override `PATH` in the pipeline's `environment` block |
+| Real device (optional) | Alternative to emulator | USB debugging enabled, authorized via `adb devices` |
+
+!!! warning
+    The visual pipeline's `PATH` override (`environment { PATH = "C:\\Program Files\\ImageMagick-7.1.2-Q16;${env.PATH}" }`)
+    is a workaround for the native agent not inheriting the interactive
+    user's PATH when running as a Windows service. Prefer adding
+    ImageMagick to the **System** PATH and restarting the agent service
+    if you want this to apply across all pipelines rather than just this
+    one.
 
 ## Challenges Solved
 
@@ -722,17 +1020,22 @@ the next stage's fresh container. Merge Install and Run into a single
 Root-owned files from a previous build are blocking Git. Move your
 Clean stage *before* Checkout, not after.
 
+### `'magick' is not recognized as an internal or external command` (visual pipeline)
+
+The native agent process doesn't inherit the interactive user's PATH,
+even though `magick --version` works fine in a manual PowerShell session.
+Either override `PATH` directly in the pipeline's `environment` block, or
+add ImageMagick's install directory to the **System** (not User)
+environment variables and restart the `legion-android-agent` service.
+
 
 ## What's Next
 
-- **Custom Dockerfiles** per framework to bake in dependencies and
-  eliminate redundant `apt-get`/`npm install` on every run
-- **Persistent socket/CSP fixes** via a custom Jenkins image with a
-  startup entrypoint script
-- **Selenium Grid** (multi-container pattern) for true parallel
-  cross-browser execution
-- **Robot Framework + Appium** pipeline (real device / emulator bridge
-  via native Windows agent — the remaining unsolved architecture problem)
+- **Custom Dockerfiles** per framework to bake in dependencies and eliminate redundant `apt-get`/`npm install` on every run
+- **Persistent socket/CSP fixes** via a custom Jenkins image with a startup entrypoint script
+- **Selenium Grid** (multi-container pattern) for true parallel cross-browser execution
+- **Real device execution** for the Appium pipelines (currently emulator-only; POCO X6 Pro real-device target planned)
+- **Applitools Eyes pipeline variant** alongside the existing free/local RobotEyes visual pipeline, for cloud-based visual baselines
 
 
 ## Quick Links
