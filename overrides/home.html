@@ -1,0 +1,376 @@
+{% extends "main.html" %}
+
+{% block content %}
+<div class="hp-root" aria-label="Fahmi's Project Library homepage">
+
+  <!-- ════════════════════════════════
+       SECTION 1 · HERO
+       ════════════════════════════════ -->
+  <section class="hp-hero">
+    <!-- animated waveform background -->
+    <canvas class="hp-wave-canvas" id="hpWaveCanvas" aria-hidden="true"></canvas>
+
+    <div class="hp-hero__inner">
+      <p class="hp-eyebrow">QA Engineer · SDET · Embedded AI Researcher</p>
+
+      <h1 class="hp-hero__title">Fahmi's Project Library</h1>
+
+    <p class="hp-hero__tagline">
+    A documented collection of engineering work spanning 
+    <strong>API, Mobile & Web test automation</strong>,<br>
+    <strong>AI-assisted QA tooling</strong>, 
+    <strong>Embedded Systems<br> Research</strong>, 
+    and a <strong>NILM Neural Network</strong> <br>deployed on STM32 hardware.
+    </p>
+
+      <div class="hp-hero__actions">
+        <a href="#featured-project"
+           class="hp-btn hp-btn--primary"
+           aria-label="Explore all project categories">
+          Explore Projects →
+        </a>
+        <a href="introduction/About-fahmi/"
+           class="hp-btn hp-btn--secondary"
+           aria-label="Read about Fahmi Wahyu Wiradika">
+          About Me
+        </a>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- ════════════════════════════════
+       SECTION 2 · PROJECT CATEGORIES
+       ════════════════════════════════ -->
+  <section class="hp-section hp-categories" id="hp-projects">
+    <h2 class="hp-section__title">Explore by Category</h2>
+
+    <div class="hp-category-grid">
+      
+      <!-- Card: Professional Work -->
+      <a href="projects/professional/api-testing/newman-automation/"
+         class="hp-category-card"
+         aria-label="Explore Professional Work projects">
+        <div class="hp-category-card__icon" aria-hidden="true"></div>
+        <h3 class="hp-category-card__title">Professional Work</h3>
+        <p class="hp-category-card__desc">
+          End-to-end test automation frameworks, API and performance testing,
+          CI/CD pipelines, and mobile automation — built and documented across
+          real FinTech projects.
+        </p>
+        <div class="hp-tags" aria-hidden="true">
+          <span class="hp-tag hp-tag--amber">Playwright</span>
+          <span class="hp-tag hp-tag--amber">Robot Framework</span>
+          <span class="hp-tag hp-tag--amber">JMeter</span>
+          <span class="hp-tag hp-tag--amber">Appium</span>
+          <span class="hp-tag hp-tag--indigo">CI/CD</span>
+        </div>
+        <span class="hp-category-card__cta">Explore Work →</span>
+      </a>
+
+      <!-- Card: Academic Research -->
+      <a href="projects/academic/research-project/bachelor-research/"
+         class="hp-category-card"
+         aria-label="Explore Academic Research projects">
+        <div class="hp-category-card__icon" aria-hidden="true"></div>
+        <h3 class="hp-category-card__title">Academic Research</h3>
+        <p class="hp-category-card__desc">
+          Embedded systems, digital signal processing, and machine learning on
+          microcontrollers. From FFT harmonic analysis to PyTorch neural
+          networks — research that bridges hardware and AI.
+        </p>
+        <div class="hp-tags" aria-hidden="true">
+          <span class="hp-tag hp-tag--teal">STM32</span>
+          <span class="hp-tag hp-tag--teal">FFT</span>
+          <span class="hp-tag hp-tag--indigo">Neural Network</span>
+          <span class="hp-tag hp-tag--indigo">PyTorch</span>
+          <span class="hp-tag hp-tag--teal">Signal Processing</span>
+        </div>
+        <span class="hp-category-card__cta">Explore Research →</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       SECTION 3 · FEATURED SPOTLIGHTS
+       ════════════════════════════════ -->
+<section id="featured-project" class="hp-section hp-spotlights">
+  <h2 class="hp-section__title">Featured Projects</h2>
+
+  <div class="hp-spotlight-grid">
+    
+    <!-- Card 3 -->
+    <a href="projects/professional/frameworks/playwright/"
+       class="hp-spotlight-card"
+       aria-label="Playwright MCP Framework — AI-augmented test automation">
+      <div class="hp-spotlight-card__top">
+        <span class="hp-badge hp-badge--professional">Professional</span>
+      </div>
+      <h4 class="hp-spotlight-card__title">Playwright MCP Framework</h4>
+      <p class="hp-spotlight-card__sub">AI-Augmented Test Automation</p>
+      <p class="hp-spotlight-card__desc">
+        End-to-end test automation using Playwright with MCP (Model Context
+        Protocol) and LLM agents for AI-augmented test generation —
+        integrated into CI/CD pipelines.
+      </p>
+      <div class="hp-tags" aria-hidden="true">
+        <span class="hp-tag hp-tag--amber">Playwright</span>
+        <span class="hp-tag hp-tag--amber">MCP</span>
+        <span class="hp-tag hp-tag--indigo">LLM</span>
+        <span class="hp-tag hp-tag--amber">JavaScript</span>
+        <span class="hp-tag hp-tag--indigo">CI/CD</span>
+      </div>
+    </a>
+
+    <!-- Card 4 -->
+    <a href="projects/professional/frameworks/appium/"
+       class="hp-spotlight-card"
+       aria-label="Robot Framework Appium — mobile test automation">
+      <div class="hp-spotlight-card__top">
+        <span class="hp-badge hp-badge--professional">Professional</span>
+      </div>
+      <h4 class="hp-spotlight-card__title">Robot Framework Appium</h4>
+      <p class="hp-spotlight-card__sub">Mobile Test Automation</p>
+      <p class="hp-spotlight-card__desc">
+        Mobile application test automation using Robot Framework with Appium
+        — covering Android automation with keyword-driven test design and
+        CI integration.
+      </p>
+      <div class="hp-tags" aria-hidden="true">
+        <span class="hp-tag hp-tag--amber">Robot Framework</span>
+        <span class="hp-tag hp-tag--amber">Appium</span>
+        <span class="hp-tag hp-tag--indigo">Android</span>
+        <span class="hp-tag hp-tag--indigo">Mobile</span>
+      </div>
+    </a>
+
+    <!-- Card 5 -->
+    <a href="projects/professional/api-testing/jmeter-automation/"
+       class="hp-spotlight-card"
+       aria-label="JMeter Automation — performance and load testing">
+      <div class="hp-spotlight-card__top">
+        <span class="hp-badge hp-badge--professional">Professional</span>
+      </div>
+      <h4 class="hp-spotlight-card__title">JMeter Automation</h4>
+      <p class="hp-spotlight-card__sub">Performance &amp; Load Testing</p>
+      <p class="hp-spotlight-card__desc">
+        API performance and load testing using Apache JMeter — covering test
+        plan design, thread group configuration, and analysis of throughput,
+        latency, and error rates.
+      </p>
+      <div class="hp-tags" aria-hidden="true">
+        <span class="hp-tag hp-tag--amber">JMeter</span>
+        <span class="hp-tag hp-tag--amber">Performance</span>
+        <span class="hp-tag hp-tag--indigo">Load Testing</span>
+        <span class="hp-tag hp-tag--indigo">API</span>
+      </div>
+    </a>
+
+        <!-- Card 1 -->
+    <a href="projects/academic/research-project/bachelor-research/"
+       class="hp-spotlight-card"
+       aria-label="NILM Load Identification on STM32F407 — Bachelor Research">
+      <div class="hp-spotlight-card__top">
+        <span class="hp-badge hp-badge--academic">Academic</span>
+      </div>
+      <h4 class="hp-spotlight-card__title">NILM Load Identification on STM32F407</h4>
+      <p class="hp-spotlight-card__sub">Bachelor of Applied Engineering — EEPIS</p>
+      <p class="hp-spotlight-card__desc">
+        Smart Energy Meter that identifies active household appliances using
+        FFT harmonic fingerprinting and a Backpropagation Neural Network —
+        trained in MATLAB, deployed on a microcontroller in real-time.
+      </p>
+      <div class="hp-tags" aria-hidden="true">
+        <span class="hp-tag hp-tag--teal">STM32</span>
+        <span class="hp-tag hp-tag--teal">FFT</span>
+        <span class="hp-tag hp-tag--teal">BPNN</span>
+        <span class="hp-tag hp-tag--indigo">MATLAB</span>
+        <span class="hp-tag hp-tag--indigo">Embedded AI</span>
+      </div>
+    </a>
+
+    <!-- Card 2 -->
+    <a href="projects/academic/machine-learning/NILM/"
+       class="hp-spotlight-card"
+       aria-label="NILM Load Identification — PyTorch reimplementation">
+      <div class="hp-spotlight-card__top">
+        <span class="hp-badge hp-badge--academic">Academic</span>
+      </div>
+      <h4 class="hp-spotlight-card__title">NILM Load Identification — PyTorch</h4>
+      <p class="hp-spotlight-card__sub">Machine Learning · Python</p>
+      <p class="hp-spotlight-card__desc">
+        Modern Python reimplementation of the Non-Intrusive Load Monitoring classification model using
+        PyTorch, translating the embedded Back Propagation Neural Network research into a contemporary
+        ML pipeline.
+      </p>
+      <div class="hp-tags" aria-hidden="true">
+        <span class="hp-tag hp-tag--indigo">PyTorch</span>
+        <span class="hp-tag hp-tag--indigo">Python</span>
+        <span class="hp-tag hp-tag--teal">NILM</span>
+        <span class="hp-tag hp-tag--teal">Neural Network</span>
+      </div>
+    </a>
+
+    <!-- Card 6 -->
+    <a href="projects/professional/web-apps/simple-crud-apps/"
+       class="hp-spotlight-card"
+       aria-label="Full-Stack AUT built to be tested, live on Vercel">
+      <div class="hp-spotlight-card__top">
+        <span class="hp-badge hp-badge--professional">Professional</span>
+        <span class="hp-badge hp-badge--live">Live ↗</span>
+      </div>
+      <h4 class="hp-spotlight-card__title">Full-Stack AUT — Built to be Tested</h4>
+      <p class="hp-spotlight-card__sub">Application Under Test · Vercel</p>
+      <p class="hp-spotlight-card__desc">
+        A purposefully built CRUD web application deployed on Vercel — designed
+        from the ground up as an Application Under Test (AUT) to serve as the
+        real target for all automation framework development.
+      </p>
+      <div class="hp-tags" aria-hidden="true">
+        <span class="hp-tag hp-tag--amber">Node.js</span>
+        <span class="hp-tag hp-tag--indigo">CRUD</span>
+        <span class="hp-tag hp-tag--indigo">Vercel</span>
+        <span class="hp-tag hp-tag--amber">REST API</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+
+
+  <!-- ════════════════════════════════
+       SECTION 4 · CONNECT CTA
+       ════════════════════════════════ -->
+  <section class="hp-section hp-connect">
+    <h2 class="hp-connect__title">Let's Connect</h2>
+    <p class="hp-connect__sub">
+      Open to collaboration on embedded AI, test automation, and technical
+      documentation projects.
+    </p>
+
+    <nav class="hp-social" aria-label="Social and contact links">
+      <a href="https://github.com/fahmi-wiradika"
+         class="hp-social__link"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="GitHub profile: fahmi-wiradika">
+        <svg class="hp-social__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+        </svg>
+        <span>fahmi-wiradika</span>
+      </a>
+
+      <a href="https://www.linkedin.com/in/fahmi-wiradika/"
+         class="hp-social__link"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="LinkedIn profile: fahmi-wiradika">
+        <svg class="hp-social__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+        <span>fahmi-wiradika</span>
+      </a>
+
+      <a href="https://www.postman.com/fahmi-wiradika"
+         class="hp-social__link"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="Postman profile: fahmi-wiradika">
+        <svg class="hp-social__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M13.527.099C6.955-.744.942 3.9.099 10.473c-.843 6.572 3.8 12.584 10.373 13.428 6.573.843 12.587-3.801 13.428-10.374C24.744 6.955 20.101.943 13.527.099zm2.471 7.485a.855.855 0 0 0-.593.25l-4.453 4.453-.307-.307-.643-.643 4.453-4.453a.855.855 0 0 0-.888-1.404l-5.02 5.02.571.571-1.016 1.017.571.571 4.453-4.454a2.724 2.724 0 0 1 3.842 3.842l-4.453 4.453.571.571-1.016 1.017.571.571 4.453-4.453a4.576 4.576 0 0 0-2.096-7.62z"/>
+        </svg>
+        <span>fahmi-wiradika</span>
+      </a>
+
+      <a href="mailto:fahmi.wiradika96@gmail.com"
+         class="hp-social__link"
+         aria-label="Send email to fahmi.wiradika96@gmail.com">
+        <svg class="hp-social__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+        <span>fahmi.wiradika96@gmail.com</span>
+      </a>
+    </nav>
+  </section>
+
+</div><!-- /.hp-root -->
+
+<script>
+(function () {
+  var canvas = document.getElementById('hpWaveCanvas');
+  if (!canvas) return;
+
+  var ctx = canvas.getContext('2d');
+  var t = 0;
+  var morphT = 0;
+  var raf;
+
+  function resize() {
+    canvas.width  = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+
+  function draw() {
+    var W = canvas.width;
+    var H = canvas.height;
+    if (W === 0 || H === 0) { raf = requestAnimationFrame(draw); return; }
+
+    ctx.clearRect(0, 0, W, H);
+
+    morphT += 0.006;
+    /* morph smoothly 0→1→0 using abs(sin) so it stays in [0,1] */
+    var morph = Math.abs(Math.sin(morphT));
+
+    var pts = 300;
+    var midY = H / 2;
+    var amp  = H * 0.30;
+
+    ctx.beginPath();
+    for (var i = 0; i < pts; i++) {
+      var x  = (i / (pts - 1)) * W;
+      var ph = (i / pts) * Math.PI * 5 + t;
+      var y  = Math.sin(ph)
+             + morph * 0.38 * Math.sin(3 * ph)
+             + morph * 0.22 * Math.sin(5 * ph)
+             + morph * 0.12 * Math.sin(7 * ph);
+      /* normalise to roughly ±1 */
+      var scale = 1 / (1 + morph * 0.72);
+      y = midY - y * scale * amp;
+      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    }
+
+    /* use a CSS variable to stay theme-aware; fall back to teal */
+    var accentRaw = getComputedStyle(document.documentElement)
+                      .getPropertyValue('--md-primary-fg-color') || '#2dd4bf';
+    ctx.strokeStyle = accentRaw.trim();
+    ctx.globalAlpha = 0.18;
+    ctx.lineWidth   = 1.5;
+    ctx.stroke();
+    ctx.globalAlpha = 1;
+
+    t  += 0.018;
+    raf = requestAnimationFrame(draw);
+  }
+
+  resize();
+  window.addEventListener('resize', function () {
+    resize();
+  });
+
+  /* respect prefers-reduced-motion */
+  var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (!mq.matches) {
+    draw();
+  }
+
+  mq.addEventListener('change', function (e) {
+    if (e.matches) {
+      cancelAnimationFrame(raf);
+    } else {
+      draw();
+    }
+  });
+}());
+</script>
+{% endblock %}

@@ -1,0 +1,104 @@
+.md-header{background-color: #2530c9 !important;}
+.md-tabs{background-color: #c6c925 !important;}
+.md-nav__link--active{color: #25c3c9 !important;}
+
+h1 {color: #33c925 !important;}
+.md-footer-copyright a{color: #FFF !important;}
+a:active{color: #c9be25 !important;}
+a:hover:not(.md-source):not(.md-tabs__link){color: #c6c925 !important;}
+a:link:not(.md-nav__link):not(.md-tabs__link){color: #c325c9 !important;}
+.md-content a:visited:not(.md-nav__link):not(.md-tabs__link){color: #2528c9 !important;}
+
+.md-grid {
+    max-width: 98%;
+}
+
+.md-sidebar--secondary {
+    margin-left: 0%;
+}
+/********** Old Table Style ******************************************
+.md-typeset__table {
+    min-width: 100%;
+    max-width: 100%;
+ }
+*/
+ /* Set the width of tables within register list tables */
+/*
+ .md-typeset__table .md-typeset__table table {
+    width: auto;
+ }
+ */
+ /*******************************************************************
+
+/********** New Table Style ****************************************
+th, td {
+    border: 1px solid var(--md-typeset-table-color);
+    border-spacing: 0;
+    border-bottom: none;
+    border-left: none;
+    border-top: none;
+}
+
+.md-typeset__table {
+    line-height: 1;
+}
+
+.md-typeset__table table:not([class]) {
+    font-size: .74rem;
+    border-right: none;
+}
+
+.md-typeset__table table:not([class]) td,
+.md-typeset__table table:not([class]) th {
+    padding: 9px;
+}
+
+/* light mode alternating table bg colors */
+.md-typeset__table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* dark mode alternating table bg colors */
+[data-md-color-scheme="slate"] .md-typeset__table tr:nth-child(2n) {
+  background-color: hsla(var(--md-hue),25%,25%,1)
+}
+/********************************************************************
+
+
+/* Set for Admonitions appearance */
+.md-typeset .admonition {
+  max-width: 1280px; /* adjust to fit */
+  margin-inline: auto;
+}
+.md-typeset details {
+  font-size: 15px  
+}
+
+ .center {
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+   width: 80%;
+ }
+ 
+ .centersmall {
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+   width: 30%;
+ }
+ 
+ #bordered-table table { 
+    width: auto;
+ }
+ 
+ #bordered-table td { 
+        border: 1px solid black; 
+        border-collapse:collapse;
+        text-align:center; 
+        }
+ 
+ #bordered-table th { 
+        text-align:center!important; 
+        }
+ 
