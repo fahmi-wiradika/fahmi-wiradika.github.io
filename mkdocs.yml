@@ -103,9 +103,9 @@ nav:
       - Quality Assurance: 
 #        - Metric-Imperial Converter: projects/assignment/qualityAssurance/metricImperialConverter.md
 #        - Issue Tracker: projects/assignment/qualityAssurance/issueTracker.md
-#        - Personal Library: projects/assignment/qualityAssurance/personalLibrary.md
+        - Personal Library: projects/assignment/quality-assurance/personal-library.md
 #        - Sudoku Solver: projects/assignment/qualityAssurance/sudokuSolver.md
-        - American-British Translator: projects/assignment/qualityAssurance/american-britishTranslator.md
+        - American-British Translator: projects/assignment/quality-assurance/american-british-translator.md
     - Postman :  
       - API Test Automation: projects/assignment/postman/postmanAutomation.md
 #  - Data Structure & Algorithm :
