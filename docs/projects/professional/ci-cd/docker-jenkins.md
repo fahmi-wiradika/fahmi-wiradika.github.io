@@ -112,6 +112,17 @@ the wrong node type.
 | Robot Framework + Appium (Functional) | Python | native Windows agent, no container | Robot HTML |
 | Robot Framework + Appium (Visual/RobotEyes) | Python | native Windows agent, no container | Visual Diff HTML |
 
+???+ example "Jenkins Architecture"
+    === "Dashboard Overview"
+        <figure markdown="span">
+        ![Screenshot](img/Jenkins-Dashboard.jpg){ width="1200" }
+        <figcaption>Jenkins Dashboard</figcaption>
+        </figure>
+    === "Nodes Overview"
+        <figure markdown="span">
+        ![Screenshot](img/Jenkins-Nodes.jpg){ width="1200" }
+        <figcaption>Jenkins Nodes</figcaption>
+        </figure>
 
 ## Pipeline Design Patterns
 
@@ -221,687 +232,688 @@ itself — everything runs inside ephemeral containers.
 
 ### Jenkins File Sample
 
-=== "Newman (Postman)"
-    ```groovy
-    pipeline {
-        agent { label 'built-in' }
-        stages {
-            stage('Checkout') {
-                steps {
-                    git branch: 'master', url: 'https://github.com/fahmi-wiradika/newman-automation.git'
+???+ example "Jenkins Pipeline Sample"
+    === "Newman (Postman)"
+        ```groovy
+        pipeline {
+            agent { label 'built-in' }
+            stages {
+                stage('Checkout') {
+                    steps {
+                        git branch: 'master', url: 'https://github.com/fahmi-wiradika/newman-automation.git'
+                    }
+                }
+                stage('Run Newman') {
+                    steps {
+                        sh '''
+                        COLLECTION=$(find postman -name "*NODE-E2E.postman_collection.json*" | head -1)
+                        ENVIRONMENT=$(find postman -name "*prod-env.postman_environment.json*" | head -1)
+
+                        mkdir -p newman-reports
+
+                        docker run --rm \
+                        -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
+                        -w /var/jenkins_home/workspace/newman-api-test \
+                        postman/newman:latest \
+                        run "$COLLECTION" --environment "$ENVIRONMENT" \
+                        --reporters cli,junit \
+                        --reporter-junit-export newman-reports/newman-report.xml
+                        '''
+                    }
                 }
             }
-            stage('Run Newman') {
-                steps {
-                    sh '''
-                    COLLECTION=$(find postman -name "*NODE-E2E.postman_collection.json*" | head -1)
-                    ENVIRONMENT=$(find postman -name "*prod-env.postman_environment.json*" | head -1)
-
-                    mkdir -p newman-reports
-
-                    docker run --rm \
-                      -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
-                      -w /var/jenkins_home/workspace/newman-api-test \
-                      postman/newman:latest \
-                      run "$COLLECTION" --environment "$ENVIRONMENT" \
-                      --reporters cli,junit \
-                      --reporter-junit-export newman-reports/newman-report.xml
-                    '''
+            post {
+                always {
+                    junit 'newman-reports/newman-report.xml'
+                    archiveArtifacts artifacts: 'newman-reports/*.xml', allowEmptyArchive: true
                 }
             }
         }
-        post {
-            always {
-                junit 'newman-reports/newman-report.xml'
-                archiveArtifacts artifacts: 'newman-reports/*.xml', allowEmptyArchive: true
-            }
-        }
-    }
-    ```
-=== "Apache JMeter"
-    ```groovy
-    pipeline {
-        agent { label 'built-in' }
+        ```
+    === "Apache JMeter"
+        ```groovy
+        pipeline {
+            agent { label 'built-in' }
 
-        options {
-            buildDiscarder(logRotator(numToKeepStr: '10'))
-        }
+            options {
+                buildDiscarder(logRotator(numToKeepStr: '10'))
+            }
 
-        stages {
-            stage('Clean Previous Reports') {
-                steps {
-                    sh '''
-                    docker run --rm \
-                      -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
-                      -w /var/jenkins_home/workspace/jmeter-perf-test \
-                      -u root \
-                      eclipse-temurin:17-jdk \
-                      rm -rf reports
-                    '''
-                }
-            }
-            
-            stage('Checkout') {
-                steps {
-                    git branch: 'master', url: 'https://github.com/fahmi-wiradika/performance-test.git'
-                }
-            }
-            
-            stage('Run JMeter') {
-                steps {
-                    catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+            stages {
+                stage('Clean Previous Reports') {
+                    steps {
                         sh '''
                         docker run --rm \
-                          -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
-                          -w /var/jenkins_home/workspace/jmeter-perf-test \
-                          eclipse-temurin:17-jdk \
-                          sh -c "
-                            mkdir -p reports &&
+                        -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
+                        -w /var/jenkins_home/workspace/jmeter-perf-test \
+                        -u root \
+                        eclipse-temurin:17-jdk \
+                        rm -rf reports
+                        '''
+                    }
+                }
+                
+                stage('Checkout') {
+                    steps {
+                        git branch: 'master', url: 'https://github.com/fahmi-wiradika/performance-test.git'
+                    }
+                }
+                
+                stage('Run JMeter') {
+                    steps {
+                        catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                            sh '''
+                            docker run --rm \
+                            -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
+                            -w /var/jenkins_home/workspace/jmeter-perf-test \
+                            eclipse-temurin:17-jdk \
+                            sh -c "
+                                mkdir -p reports &&
+                                curl -L https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.5.tgz -o jmeter.tgz &&
+                                tar -xzf jmeter.tgz &&
+                                ./apache-jmeter-5.5/bin/jmeter -n \
+                                -t jmeter-test-plan/simple-crud.jmx \
+                                -l reports/report.jtl \
+                                -j reports/jmeter.log \
+                                -Jusers=5 -Jiterations=5 -Jrampup=10
+                            "
+                            '''
+                        }
+                    }
+                }
+
+                stage('Generate HTML Report') {
+                    steps {
+                        sh '''
+                        docker run --rm \
+                        -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
+                        -w /var/jenkins_home/workspace/jmeter-perf-test \
+                        eclipse-temurin:17-jdk \
+                        sh -c "
                             curl -L https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.5.tgz -o jmeter.tgz &&
                             tar -xzf jmeter.tgz &&
-                            ./apache-jmeter-5.5/bin/jmeter -n \
-                              -t jmeter-test-plan/simple-crud.jmx \
-                              -l reports/report.jtl \
-                              -j reports/jmeter.log \
-                              -Jusers=5 -Jiterations=5 -Jrampup=10
-                          "
+                            ./apache-jmeter-5.5/bin/jmeter -g reports/report.jtl -o reports/html
+                        "
                         '''
                     }
                 }
             }
 
-            stage('Generate HTML Report') {
-                steps {
-                    sh '''
-                    docker run --rm \
-                      -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
-                      -w /var/jenkins_home/workspace/jmeter-perf-test \
-                      eclipse-temurin:17-jdk \
-                      sh -c "
-                        curl -L https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.5.tgz -o jmeter.tgz &&
-                        tar -xzf jmeter.tgz &&
-                        ./apache-jmeter-5.5/bin/jmeter -g reports/report.jtl -o reports/html
-                      "
-                    '''
+            post {
+                always {
+                    publishHTML([
+                        allowMissing: true,
+                        alwaysLinkToLastBuild: true,
+                        keepAll: true,
+                        reportDir: 'reports/html',
+                        reportFiles: 'index.html',
+                        reportName: 'JMeter Performance Report'
+                    ])
+                    archiveArtifacts artifacts: 'reports/*.jtl, reports/*.log, reports/html/**', allowEmptyArchive: true
                 }
             }
         }
-
-        post {
-            always {
-                publishHTML([
-                    allowMissing: true,
-                    alwaysLinkToLastBuild: true,
-                    keepAll: true,
-                    reportDir: 'reports/html',
-                    reportFiles: 'index.html',
-                    reportName: 'JMeter Performance Report'
-                ])
-                archiveArtifacts artifacts: 'reports/*.jtl, reports/*.log, reports/html/**', allowEmptyArchive: true
-            }
-        }
-    }
-    ```
-=== "Cypress"
-    ```groovy
-    pipeline {
-        agent { label 'built-in' }
-        
-        options {
-            buildDiscarder(logRotator(numToKeepStr: '10'))
-        }
-
-        stages {
-            stage('Checkout') {
-                steps {
-                    git branch: 'Master', url: 'https://github.com/fahmi-wiradika/cypress-basic.git'
-                }
-            }
-
-            stage('Clean Previous Reports') {
-                steps {
-                    sh '''
-                    docker run --rm \
-                      -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
-                      -w /var/jenkins_home/workspace/cypress-e2e-test \
-                      -u root \
-                      node:22 \
-                      rm -rf cypress/reports
-                    '''
-                }
-            }
-
-            stage('Install Dependencies') {
-                steps {
-                    sh '''
-                    docker run --rm \
-                      -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
-                      -w /var/jenkins_home/workspace/cypress-e2e-test \
-                      node:22 \
-                      npm ci
-                    '''
-                }
-            }
-
-            stage('Run Cypress') {
-                steps {
-                    catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
-                        sh '''
-                        docker run --rm \
-                          --shm-size=1g \
-                          -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
-                          -w /var/jenkins_home/workspace/cypress-e2e-test \
-                          cypress/included:latest \
-                          --spec "cypress/e2e/simple-crud/**/*.cy.js,!cypress/e2e/simple-crud/ui/multiple-crud-e2e-pom.cy.js,!cypress/e2e/simple-crud/ui/product-assertion.cy.js" \
-                          --env version=production \
-                          --reporter mochawesome \
-                          --reporter-options "reportDir=cypress/reports/mocha,overwrite=false,html=false,json=true"
-                        '''
-                    }
-                }
-            }
-
-            stage('Merge & Generate Report') {
-                steps {
-                    sh '''
-                    docker run --rm \
-                      -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
-                      -w /var/jenkins_home/workspace/cypress-e2e-test \
-                      node:22 \
-                      sh -c "npx mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/merged.json && npx marge cypress/reports/merged.json --reportDir cypress/reports/html --inline"
-                    '''
-                }
-            }
-        }
-
-        post {
-            always {
-                publishHTML([
-                    allowMissing: true,
-                    alwaysLinkToLastBuild: true,
-                    keepAll: true,
-                    reportDir: 'cypress/reports/html',
-                    reportFiles: 'merged.html',
-                    reportName: 'Cypress Mochawesome Report'
-                ])
-                archiveArtifacts artifacts: 'cypress/reports/html/**', allowEmptyArchive: true
-            }
-        }
-    }
-    ```
-=== "Playwright"
-    ```groovy
-    pipeline {
-        agent { label 'built-in' }
-
-        options {
-            buildDiscarder(logRotator(numToKeepStr: '10'))
-        }
-
-        stages {
-            stage('Checkout') {
-                steps {
-                    git branch: 'master', url: 'https://github.com/fahmi-wiradika/playwright-js.git'
-                }
-            }
-
-            stage('Clean Previous Reports') {
-                steps {
-                    sh '''
-                    docker run --rm \
-                      -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
-                      -w /var/jenkins_home/workspace/playwright-test \
-                      -u root \
-                      node:22 \
-                      rm -rf playwright-report test-results
-                    '''
-                }
-            }
-
-            stage('Install Dependencies & Browsers') {
-                steps {
-                    sh '''
-                    docker run --rm \
-                      -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
-                      -w /var/jenkins_home/workspace/playwright-test \
-                      mcr.microsoft.com/playwright:v1.58.2-noble \
-                      sh -c "npm install"
-                    '''
-                }
-            }
+        ```
+    === "Cypress"
+        ```groovy
+        pipeline {
+            agent { label 'built-in' }
             
-            stage('Run Playwright Tests') {
-                steps {
-                    catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+            options {
+                buildDiscarder(logRotator(numToKeepStr: '10'))
+            }
+
+            stages {
+                stage('Checkout') {
+                    steps {
+                        git branch: 'Master', url: 'https://github.com/fahmi-wiradika/cypress-basic.git'
+                    }
+                }
+
+                stage('Clean Previous Reports') {
+                    steps {
                         sh '''
                         docker run --rm \
-                          --shm-size=1g \
-                          -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
-                          -w /var/jenkins_home/workspace/playwright-test \
-                          mcr.microsoft.com/playwright:v1.58.2-noble \
-                          npx playwright test tests/ci
+                        -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
+                        -w /var/jenkins_home/workspace/cypress-e2e-test \
+                        -u root \
+                        node:22 \
+                        rm -rf cypress/reports
+                        '''
+                    }
+                }
+
+                stage('Install Dependencies') {
+                    steps {
+                        sh '''
+                        docker run --rm \
+                        -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
+                        -w /var/jenkins_home/workspace/cypress-e2e-test \
+                        node:22 \
+                        npm ci
+                        '''
+                    }
+                }
+
+                stage('Run Cypress') {
+                    steps {
+                        catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                            sh '''
+                            docker run --rm \
+                            --shm-size=1g \
+                            -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
+                            -w /var/jenkins_home/workspace/cypress-e2e-test \
+                            cypress/included:latest \
+                            --spec "cypress/e2e/simple-crud/**/*.cy.js,!cypress/e2e/simple-crud/ui/multiple-crud-e2e-pom.cy.js,!cypress/e2e/simple-crud/ui/product-assertion.cy.js" \
+                            --env version=production \
+                            --reporter mochawesome \
+                            --reporter-options "reportDir=cypress/reports/mocha,overwrite=false,html=false,json=true"
+                            '''
+                        }
+                    }
+                }
+
+                stage('Merge & Generate Report') {
+                    steps {
+                        sh '''
+                        docker run --rm \
+                        -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
+                        -w /var/jenkins_home/workspace/cypress-e2e-test \
+                        node:22 \
+                        sh -c "npx mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/merged.json && npx marge cypress/reports/merged.json --reportDir cypress/reports/html --inline"
                         '''
                     }
                 }
             }
-        }
 
-        post {
-            always {
-                publishHTML([
-                    allowMissing: true,
-                    alwaysLinkToLastBuild: true,
-                    keepAll: true,
-                    reportDir: 'playwright-report',
-                    reportFiles: 'index.html',
-                    reportName: 'Playwright HTML Report'
-                ])
-                archiveArtifacts artifacts: 'playwright-report/**, test-results/**', allowEmptyArchive: true
-            }
-        }
-    }
-    ```
-=== "Robot Framework - Selenium"
-    ```groovy
-    pipeline {
-        agent { label 'built-in' }
-
-        options {
-            buildDiscarder(logRotator(numToKeepStr: '10'))
-        }
-
-        stages {
-            stage('Clean Workspace') {
-                steps {
-                    sh '''
-                    docker run --rm \
-                      -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
-                      -w /var/jenkins_home/workspace/robot-selenium-test \
-                      -u root \
-                      python:3.12-slim \
-                      rm -rf results
-                    '''
+            post {
+                always {
+                    publishHTML([
+                        allowMissing: true,
+                        alwaysLinkToLastBuild: true,
+                        keepAll: true,
+                        reportDir: 'cypress/reports/html',
+                        reportFiles: 'merged.html',
+                        reportName: 'Cypress Mochawesome Report'
+                    ])
+                    archiveArtifacts artifacts: 'cypress/reports/html/**', allowEmptyArchive: true
                 }
             }
+        }
+        ```
+    === "Playwright"
+        ```groovy
+        pipeline {
+            agent { label 'built-in' }
 
-            stage('Checkout') {
-                steps {
-                    git branch: 'main', url: 'https://github.com/fahmi-wiradika/robot-framework.git'
-                }
+            options {
+                buildDiscarder(logRotator(numToKeepStr: '10'))
             }
 
-            stage('Install Dependencies & Run Tests') {
-                steps {
-                    catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+            stages {
+                stage('Checkout') {
+                    steps {
+                        git branch: 'master', url: 'https://github.com/fahmi-wiradika/playwright-js.git'
+                    }
+                }
+
+                stage('Clean Previous Reports') {
+                    steps {
                         sh '''
                         docker run --rm \
-                          --shm-size=1g \
-                          -u root \
-                          -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
-                          -w /var/jenkins_home/workspace/robot-selenium-test \
-                          selenium/standalone-chrome:latest \
-                          bash -c "
-                            apt-get update && apt-get install -y python3-pip &&
-                            pip install -r requirements.txt &&
-                            robot --outputdir results --loglevel INFO tests/
-                          "
+                        -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
+                        -w /var/jenkins_home/workspace/playwright-test \
+                        -u root \
+                        node:22 \
+                        rm -rf playwright-report test-results
                         '''
                     }
                 }
-            }
-        }
 
-        post {
-            always {
-                publishHTML([
-                    allowMissing: true,
-                    alwaysLinkToLastBuild: true,
-                    keepAll: true,
-                    reportDir: 'results',
-                    reportFiles: 'report.html',
-                    reportName: 'Robot Framework Report'
-                ])
-                archiveArtifacts artifacts: 'results/**', allowEmptyArchive: true
-            }
-        }
-    }
-    ```
-=== "Java - Selenium - Allure"
-    ```groovy
-    pipeline {
-        agent { label 'built-in' }
-
-        options {
-            buildDiscarder(logRotator(numToKeepStr: '10'))
-        }
-
-        stages {
-            stage('Clean Workspace') {
-                steps {
-                    sh '''
-                    docker run --rm \
-                      -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
-                      -w /var/jenkins_home/workspace/java-selenium-test \
-                      -u root \
-                      selenium/standalone-chrome:latest \
-                      rm -rf target jdk-19.0.2+7 jdk19.tar.gz
-                    '''
-                }
-            }
-
-            stage('Checkout') {
-                steps {
-                    git branch: 'main', url: 'https://github.com/fahmi-wiradika/java-automation.git'
-                }
-            }
-
-            stage('Install JDK 19 & Maven') {
-                steps {
-                    sh '''
-                    docker run --rm \
-                      -u root \
-                      -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
-                      -w /var/jenkins_home/workspace/java-selenium-test \
-                      selenium/standalone-chrome:latest \
-                      bash -c "
-                        apt-get update && apt-get install -y maven curl &&
-                        curl -L https://api.adoptium.net/v3/binary/version/jdk-19.0.2+7/linux/x64/jdk/hotspot/normal/adoptium -o jdk19.tar.gz &&
-                        tar -xzf jdk19.tar.gz
-                      "
-                    '''
-                }
-            }
-
-            stage('Install Dependencies & Run Tests') {
-                steps {
-                    catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                stage('Install Dependencies & Browsers') {
+                    steps {
                         sh '''
                         docker run --rm \
-                          --shm-size=1g \
-                          -u root \
-                          -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
-                          -w /var/jenkins_home/workspace/java-selenium-test \
-                          selenium/standalone-chrome:latest \
-                          bash -c "
+                        -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
+                        -w /var/jenkins_home/workspace/playwright-test \
+                        mcr.microsoft.com/playwright:v1.58.2-noble \
+                        sh -c "npm install"
+                        '''
+                    }
+                }
+                
+                stage('Run Playwright Tests') {
+                    steps {
+                        catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                            sh '''
+                            docker run --rm \
+                            --shm-size=1g \
+                            -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
+                            -w /var/jenkins_home/workspace/playwright-test \
+                            mcr.microsoft.com/playwright:v1.58.2-noble \
+                            npx playwright test tests/ci
+                            '''
+                        }
+                    }
+                }
+            }
+
+            post {
+                always {
+                    publishHTML([
+                        allowMissing: true,
+                        alwaysLinkToLastBuild: true,
+                        keepAll: true,
+                        reportDir: 'playwright-report',
+                        reportFiles: 'index.html',
+                        reportName: 'Playwright HTML Report'
+                    ])
+                    archiveArtifacts artifacts: 'playwright-report/**, test-results/**', allowEmptyArchive: true
+                }
+            }
+        }
+        ```
+    === "Robot Framework - Selenium"
+        ```groovy
+        pipeline {
+            agent { label 'built-in' }
+
+            options {
+                buildDiscarder(logRotator(numToKeepStr: '10'))
+            }
+
+            stages {
+                stage('Clean Workspace') {
+                    steps {
+                        sh '''
+                        docker run --rm \
+                        -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
+                        -w /var/jenkins_home/workspace/robot-selenium-test \
+                        -u root \
+                        python:3.12-slim \
+                        rm -rf results
+                        '''
+                    }
+                }
+
+                stage('Checkout') {
+                    steps {
+                        git branch: 'main', url: 'https://github.com/fahmi-wiradika/robot-framework.git'
+                    }
+                }
+
+                stage('Install Dependencies & Run Tests') {
+                    steps {
+                        catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                            sh '''
+                            docker run --rm \
+                            --shm-size=1g \
+                            -u root \
+                            -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
+                            -w /var/jenkins_home/workspace/robot-selenium-test \
+                            selenium/standalone-chrome:latest \
+                            bash -c "
+                                apt-get update && apt-get install -y python3-pip &&
+                                pip install -r requirements.txt &&
+                                robot --outputdir results --loglevel INFO tests/
+                            "
+                            '''
+                        }
+                    }
+                }
+            }
+
+            post {
+                always {
+                    publishHTML([
+                        allowMissing: true,
+                        alwaysLinkToLastBuild: true,
+                        keepAll: true,
+                        reportDir: 'results',
+                        reportFiles: 'report.html',
+                        reportName: 'Robot Framework Report'
+                    ])
+                    archiveArtifacts artifacts: 'results/**', allowEmptyArchive: true
+                }
+            }
+        }
+        ```
+    === "Java - Selenium - Allure"
+        ```groovy
+        pipeline {
+            agent { label 'built-in' }
+
+            options {
+                buildDiscarder(logRotator(numToKeepStr: '10'))
+            }
+
+            stages {
+                stage('Clean Workspace') {
+                    steps {
+                        sh '''
+                        docker run --rm \
+                        -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
+                        -w /var/jenkins_home/workspace/java-selenium-test \
+                        -u root \
+                        selenium/standalone-chrome:latest \
+                        rm -rf target jdk-19.0.2+7 jdk19.tar.gz
+                        '''
+                    }
+                }
+
+                stage('Checkout') {
+                    steps {
+                        git branch: 'main', url: 'https://github.com/fahmi-wiradika/java-automation.git'
+                    }
+                }
+
+                stage('Install JDK 19 & Maven') {
+                    steps {
+                        sh '''
+                        docker run --rm \
+                        -u root \
+                        -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
+                        -w /var/jenkins_home/workspace/java-selenium-test \
+                        selenium/standalone-chrome:latest \
+                        bash -c "
                             apt-get update && apt-get install -y maven curl &&
-                            if [ ! -d jdk-19.0.2+7 ]; then
-                              curl -L https://api.adoptium.net/v3/binary/version/jdk-19.0.2+7/linux/x64/jdk/hotspot/normal/adoptium -o jdk19.tar.gz &&
-                              tar -xzf jdk19.tar.gz
-                            fi &&
-                            export JAVA_HOME=\\$(pwd)/jdk-19.0.2+7 &&
-                            export PATH=\\$JAVA_HOME/bin:\\$PATH &&
-                            mvn clean test -Dtest=**/ci/*Test
-                          "
+                            curl -L https://api.adoptium.net/v3/binary/version/jdk-19.0.2+7/linux/x64/jdk/hotspot/normal/adoptium -o jdk19.tar.gz &&
+                            tar -xzf jdk19.tar.gz
+                        "
+                        '''
+                    }
+                }
+
+                stage('Install Dependencies & Run Tests') {
+                    steps {
+                        catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                            sh '''
+                            docker run --rm \
+                            --shm-size=1g \
+                            -u root \
+                            -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
+                            -w /var/jenkins_home/workspace/java-selenium-test \
+                            selenium/standalone-chrome:latest \
+                            bash -c "
+                                apt-get update && apt-get install -y maven curl &&
+                                if [ ! -d jdk-19.0.2+7 ]; then
+                                curl -L https://api.adoptium.net/v3/binary/version/jdk-19.0.2+7/linux/x64/jdk/hotspot/normal/adoptium -o jdk19.tar.gz &&
+                                tar -xzf jdk19.tar.gz
+                                fi &&
+                                export JAVA_HOME=\\$(pwd)/jdk-19.0.2+7 &&
+                                export PATH=\\$JAVA_HOME/bin:\\$PATH &&
+                                mvn clean test -Dtest=**/ci/*Test
+                            "
+                            '''
+                        }
+                    }
+                }
+
+                stage('Generate Allure Report') {
+                    steps {
+                        sh '''
+                        docker run --rm \
+                        -u root \
+                        -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
+                        -w /var/jenkins_home/workspace/java-selenium-test \
+                        selenium/standalone-chrome:latest \
+                        bash -c "
+                            curl -o allure-2.30.0.tgz -Ls https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.30.0/allure-commandline-2.30.0.tgz &&
+                            tar -zxf allure-2.30.0.tgz &&
+                            if [ -d target/allure-results ] && [ \\\"\\$(ls -A target/allure-results)\\\" ]; then
+                            ./allure-2.30.0/bin/allure generate target/allure-results --clean -o target/allure-report
+                            else
+                            mkdir -p target/allure-report
+                            echo '<html><body><h1>No test results found</h1></body></html>' > target/allure-report/index.html
+                            fi
+                        "
                         '''
                     }
                 }
             }
 
-            stage('Generate Allure Report') {
-                steps {
-                    sh '''
-                    docker run --rm \
-                      -u root \
-                      -v 9a456fd0e8e983729cab1ac19b1d959fd3b349081fdf57be1a12ffe8615da89a:/var/jenkins_home \
-                      -w /var/jenkins_home/workspace/java-selenium-test \
-                      selenium/standalone-chrome:latest \
-                      bash -c "
-                        curl -o allure-2.30.0.tgz -Ls https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.30.0/allure-commandline-2.30.0.tgz &&
-                        tar -zxf allure-2.30.0.tgz &&
-                        if [ -d target/allure-results ] && [ \\\"\\$(ls -A target/allure-results)\\\" ]; then
-                          ./allure-2.30.0/bin/allure generate target/allure-results --clean -o target/allure-report
-                        else
-                          mkdir -p target/allure-report
-                          echo '<html><body><h1>No test results found</h1></body></html>' > target/allure-report/index.html
-                        fi
-                      "
-                    '''
+            post {
+                always {
+                    publishHTML([
+                        allowMissing: true,
+                        alwaysLinkToLastBuild: true,
+                        keepAll: true,
+                        reportDir: 'target/allure-report',
+                        reportFiles: 'index.html',
+                        reportName: 'Allure Test Report'
+                    ])
+                    archiveArtifacts artifacts: 'target/allure-report/**, target/surefire-reports/**', allowEmptyArchive: true
                 }
             }
         }
+        ```
+    === "Robot Framework - Appium (Functional)"
+        ```groovy
+        pipeline {
+            agent { label 'legion-android-agent' }
 
-        post {
-            always {
-                publishHTML([
-                    allowMissing: true,
-                    alwaysLinkToLastBuild: true,
-                    keepAll: true,
-                    reportDir: 'target/allure-report',
-                    reportFiles: 'index.html',
-                    reportName: 'Allure Test Report'
-                ])
-                archiveArtifacts artifacts: 'target/allure-report/**, target/surefire-reports/**', allowEmptyArchive: true
+            options {
+                disableConcurrentBuilds()
+                timestamps()
             }
-        }
-    }
-    ```
-=== "Robot Framework - Appium (Functional)"
-    ```groovy
-    pipeline {
-        agent { label 'legion-android-agent' }
 
-        options {
-            disableConcurrentBuilds()
-            timestamps()
-        }
+            environment {
+                VENV = "${WORKSPACE}\\.venv"
+            }
 
-        environment {
-            VENV = "${WORKSPACE}\\.venv"
-        }
-
-        stages {
-            stage('Checkout') {
-                steps {
-                    git branch: 'master',
-                        url: 'https://github.com/fahmi-wiradika/robot-appium.git'
+            stages {
+                stage('Checkout') {
+                    steps {
+                        git branch: 'master',
+                            url: 'https://github.com/fahmi-wiradika/robot-appium.git'
+                    }
                 }
-            }
 
-            stage('Setup Python Env') {
-                steps {
-                    bat '''
-                    python -m venv .venv
-                    call .venv\\Scripts\\activate.bat
-                    pip install -r requirement.txt
-                    '''
-                }
-            }
-
-            stage('Start Emulator') {
-                steps {
-                    bat '''
-                    start /B emulator -avd Pixel_9_Pro_XL_API_35 -no-snapshot-load -dns-server 8.8.8.8,8.8.4.4
-                    adb wait-for-device
-                    '''
-                    powershell '''
-                    $maxWait = 120
-                    $elapsed = 0
-                    do {
-                        $boot = (adb shell getprop sys.boot_completed).Trim()
-                        if ($boot -eq "1") { break }
-                        Start-Sleep -Seconds 2
-                        $elapsed += 2
-                        if ($elapsed -ge $maxWait) {
-                            Write-Error "Emulator boot timed out"
-                            exit 1
-                        }
-                    } while ($true)
-                    Write-Host "Emulator boot completed"
-                    '''
-                }
-            }
-
-            stage('Start Appium Server') {
-                steps {
-                    bat 'start /B appium --log appium.log'
-                    powershell '''
-                    $maxWait = 30
-                    $elapsed = 0
-                    do {
-                        try {
-                            $res = Invoke-WebRequest -Uri "http://127.0.0.1:4723/status" -UseBasicParsing -TimeoutSec 2
-                            if ($res.StatusCode -eq 200) { break }
-                        } catch {}
-                        Start-Sleep -Seconds 2
-                        $elapsed += 2
-                        if ($elapsed -ge $maxWait) {
-                            Write-Error "Appium server did not become ready"
-                            exit 1
-                        }
-                    } while ($true)
-                    Write-Host "Appium server is ready"
-                    '''
-                }
-            }
-
-            stage('Run Robot Tests') {
-                steps {
-                    catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                stage('Setup Python Env') {
+                    steps {
                         bat '''
+                        python -m venv .venv
                         call .venv\\Scripts\\activate.bat
-                        robot --outputdir results --loglevel INFO sauce-labs-mobile\\tests\\behavior\\sauce_login.robot
+                        pip install -r requirement.txt
                         '''
                     }
                 }
-            }
-        }
 
-        post {
-            always {
-                bat '''
-                taskkill /IM node.exe /F /T || exit 0
-                adb emu kill || exit 0
-                '''
-                publishHTML([
-                    allowMissing: false,
-                    alwaysLinkToLastBuild: true,
-                    keepAll: true,
-                    reportDir: 'results',
-                    reportFiles: 'report.html',
-                    reportName: 'Robot Report'
-                ])
-                archiveArtifacts artifacts: 'results/**', allowEmptyArchive: true
-            }
-        }
-    }
-    ```
-=== "Robot Framework - Appium (Visual/RobotEyes)"
-    ```groovy
-    pipeline {
-        agent { label 'legion-android-agent' }
-
-        options {
-            disableConcurrentBuilds()
-            timestamps()
-        }
-
-        environment {
-            VENV = "${WORKSPACE}\\.venv"
-            PATH = "C:\\Program Files\\ImageMagick-7.1.2-Q16;${env.PATH}"
-        }
-
-        stages {
-            stage('Checkout') {
-                steps {
-                    git branch: 'master',
-                        url: 'https://github.com/fahmi-wiradika/robot-appium.git'
-                }
-            }
-
-            stage('Setup Python Env') {
-                steps {
-                    bat '''
-                    python -m venv .venv
-                    call .venv\\Scripts\\activate.bat
-                    pip install -r requirement.txt
-                    '''
-                }
-            }
-
-            stage('Start Emulator') {
-                steps {
-                    bat '''
-                    start /B emulator -avd Pixel_9_Pro_XL_API_35 -no-snapshot-load -dns-server 8.8.8.8,8.8.4.4
-                    adb wait-for-device
-                    '''
-                    powershell '''
-                    $maxWait = 120
-                    $elapsed = 0
-                    do {
-                        $boot = (adb shell getprop sys.boot_completed).Trim()
-                        if ($boot -eq "1") { break }
-                        Start-Sleep -Seconds 2
-                        $elapsed += 2
-                        if ($elapsed -ge $maxWait) {
-                            Write-Error "Emulator boot timed out"
-                            exit 1
-                        }
-                    } while ($true)
-                    Write-Host "Emulator boot completed"
-                    '''
-                }
-            }
-
-            stage('Start Appium Server') {
-                steps {
-                    bat 'start /B appium --log appium.log'
-                    powershell '''
-                    $maxWait = 30
-                    $elapsed = 0
-                    do {
-                        try {
-                            $res = Invoke-WebRequest -Uri "http://127.0.0.1:4723/status" -UseBasicParsing -TimeoutSec 2
-                            if ($res.StatusCode -eq 200) { break }
-                        } catch {}
-                        Start-Sleep -Seconds 2
-                        $elapsed += 2
-                        if ($elapsed -ge $maxWait) {
-                            Write-Error "Appium server did not become ready"
-                            exit 1
-                        }
-                    } while ($true)
-                    Write-Host "Appium server is ready"
-                    '''
-                }
-            }
-
-            stage('Debug PATH') {
-                steps {
-                    bat 'where magick'
-                }
-            }
-
-            stage('Run Robot Tests') {
-                steps {
-                    catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                stage('Start Emulator') {
+                    steps {
                         bat '''
-                        call .venv\\Scripts\\activate.bat
-                        robot -d results -v images_dir:visual_images/baseline sauce-labs-mobile\\tests\\component\\sauce_login_robot_eyes.robot
+                        start /B emulator -avd Pixel_9_Pro_XL_API_35 -no-snapshot-load -dns-server 8.8.8.8,8.8.4.4
+                        adb wait-for-device
+                        '''
+                        powershell '''
+                        $maxWait = 120
+                        $elapsed = 0
+                        do {
+                            $boot = (adb shell getprop sys.boot_completed).Trim()
+                            if ($boot -eq "1") { break }
+                            Start-Sleep -Seconds 2
+                            $elapsed += 2
+                            if ($elapsed -ge $maxWait) {
+                                Write-Error "Emulator boot timed out"
+                                exit 1
+                            }
+                        } while ($true)
+                        Write-Host "Emulator boot completed"
                         '''
                     }
                 }
-            }
-        }
 
-        post {
-            always {
-                bat '''
-                taskkill /IM node.exe /F /T || exit 0
-                adb emu kill || exit 0
-                '''
-                publishHTML([
-                    allowMissing: false,
-                    alwaysLinkToLastBuild: true,
-                    keepAll: true,
-                    reportDir: 'results',
-                    reportFiles: 'visualReport.html',
-                    reportName: 'Visual Test Report'
-                ])
-                archiveArtifacts artifacts: 'results/**', allowEmptyArchive: true
+                stage('Start Appium Server') {
+                    steps {
+                        bat 'start /B appium --log appium.log'
+                        powershell '''
+                        $maxWait = 30
+                        $elapsed = 0
+                        do {
+                            try {
+                                $res = Invoke-WebRequest -Uri "http://127.0.0.1:4723/status" -UseBasicParsing -TimeoutSec 2
+                                if ($res.StatusCode -eq 200) { break }
+                            } catch {}
+                            Start-Sleep -Seconds 2
+                            $elapsed += 2
+                            if ($elapsed -ge $maxWait) {
+                                Write-Error "Appium server did not become ready"
+                                exit 1
+                            }
+                        } while ($true)
+                        Write-Host "Appium server is ready"
+                        '''
+                    }
+                }
+
+                stage('Run Robot Tests') {
+                    steps {
+                        catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                            bat '''
+                            call .venv\\Scripts\\activate.bat
+                            robot --outputdir results --loglevel INFO sauce-labs-mobile\\tests\\behavior\\sauce_login.robot
+                            '''
+                        }
+                    }
+                }
+            }
+
+            post {
+                always {
+                    bat '''
+                    taskkill /IM node.exe /F /T || exit 0
+                    adb emu kill || exit 0
+                    '''
+                    publishHTML([
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: true,
+                        keepAll: true,
+                        reportDir: 'results',
+                        reportFiles: 'report.html',
+                        reportName: 'Robot Report'
+                    ])
+                    archiveArtifacts artifacts: 'results/**', allowEmptyArchive: true
+                }
             }
         }
-    }
-    ```
+        ```
+    === "Robot Framework - Appium (Visual/RobotEyes)"
+        ```groovy
+        pipeline {
+            agent { label 'legion-android-agent' }
+
+            options {
+                disableConcurrentBuilds()
+                timestamps()
+            }
+
+            environment {
+                VENV = "${WORKSPACE}\\.venv"
+                PATH = "C:\\Program Files\\ImageMagick-7.1.2-Q16;${env.PATH}"
+            }
+
+            stages {
+                stage('Checkout') {
+                    steps {
+                        git branch: 'master',
+                            url: 'https://github.com/fahmi-wiradika/robot-appium.git'
+                    }
+                }
+
+                stage('Setup Python Env') {
+                    steps {
+                        bat '''
+                        python -m venv .venv
+                        call .venv\\Scripts\\activate.bat
+                        pip install -r requirement.txt
+                        '''
+                    }
+                }
+
+                stage('Start Emulator') {
+                    steps {
+                        bat '''
+                        start /B emulator -avd Pixel_9_Pro_XL_API_35 -no-snapshot-load -dns-server 8.8.8.8,8.8.4.4
+                        adb wait-for-device
+                        '''
+                        powershell '''
+                        $maxWait = 120
+                        $elapsed = 0
+                        do {
+                            $boot = (adb shell getprop sys.boot_completed).Trim()
+                            if ($boot -eq "1") { break }
+                            Start-Sleep -Seconds 2
+                            $elapsed += 2
+                            if ($elapsed -ge $maxWait) {
+                                Write-Error "Emulator boot timed out"
+                                exit 1
+                            }
+                        } while ($true)
+                        Write-Host "Emulator boot completed"
+                        '''
+                    }
+                }
+
+                stage('Start Appium Server') {
+                    steps {
+                        bat 'start /B appium --log appium.log'
+                        powershell '''
+                        $maxWait = 30
+                        $elapsed = 0
+                        do {
+                            try {
+                                $res = Invoke-WebRequest -Uri "http://127.0.0.1:4723/status" -UseBasicParsing -TimeoutSec 2
+                                if ($res.StatusCode -eq 200) { break }
+                            } catch {}
+                            Start-Sleep -Seconds 2
+                            $elapsed += 2
+                            if ($elapsed -ge $maxWait) {
+                                Write-Error "Appium server did not become ready"
+                                exit 1
+                            }
+                        } while ($true)
+                        Write-Host "Appium server is ready"
+                        '''
+                    }
+                }
+
+                stage('Debug PATH') {
+                    steps {
+                        bat 'where magick'
+                    }
+                }
+
+                stage('Run Robot Tests') {
+                    steps {
+                        catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                            bat '''
+                            call .venv\\Scripts\\activate.bat
+                            robot -d results -v images_dir:visual_images/baseline sauce-labs-mobile\\tests\\component\\sauce_login_robot_eyes.robot
+                            '''
+                        }
+                    }
+                }
+            }
+
+            post {
+                always {
+                    bat '''
+                    taskkill /IM node.exe /F /T || exit 0
+                    adb emu kill || exit 0
+                    '''
+                    publishHTML([
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: true,
+                        keepAll: true,
+                        reportDir: 'results',
+                        reportFiles: 'visualReport.html',
+                        reportName: 'Visual Test Report'
+                    ])
+                    archiveArtifacts artifacts: 'results/**', allowEmptyArchive: true
+                }
+            }
+        }
+        ```
 
 ## Mobile Pipeline Requirements (`legion-android-agent`)
 
