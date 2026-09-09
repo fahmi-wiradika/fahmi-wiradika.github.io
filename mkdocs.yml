@@ -53,6 +53,7 @@ theme:
 
 extra_css:
   - stylesheets/home.css
+  - stylesheets/extra.css
 extra_javascript:
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
   - https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js
@@ -70,13 +71,6 @@ extra:
     link: https://www.linkedin.com/in/fahmi-wiradika
   - icon: fontawesome/brands/instagram
     link: https://www.instagram.com/fahmiwazu
-  # alternate:
-  #   - name: English
-  #     link: /en/ 
-  #     lang: en
-  #   - name: Indonesia
-  #     link: /id/
-  #     lang: id
 
 ### Navigation Settings ###
 ### Please to uncomment the document that ready only !!!! ###
@@ -87,6 +81,7 @@ nav:
     - Experience : introduction/Experience-fahmi.md
     - Certification: introduction/Certification-fahmi.md
   - Assignment Project :
+    - Project Overview: projects/assignment/index.md
     - freeCodeCamp:
       - Relational Database : 
         - Celestial Bodies Database: projects/assignment/relationalDatabase/celestialDB.md
@@ -95,25 +90,14 @@ nav:
         - Periodic Table Database: projects/assignment/relationalDatabase/periodicTable.md
         - Number Guessing Game: projects/assignment/relationalDatabase/numberGuessing.md
       - Back End Development and APIs:
-#        - Timestamp Microservice: projects/assignment/backendAPI/timeStamp.md
-#        - Request Header Parser Microservice: projects/assignment/backendAPI/reqHeaderParser.md
-#        - URL Shortener Microservice: projects/assignment/backendAPI/urlShortener.md
         - Exercise Tracer: projects/assignment/backendAPI/exerciseTable.md
-#        - File Metadata Microservice: projects/assignment/backendAPI/fileMetadata.md
       - Quality Assurance: 
-#        - Metric-Imperial Converter: projects/assignment/qualityAssurance/metricImperialConverter.md
-#        - Issue Tracker: projects/assignment/qualityAssurance/issueTracker.md
         - Personal Library: projects/assignment/quality-assurance/personal-library.md
-#        - Sudoku Solver: projects/assignment/qualityAssurance/sudokuSolver.md
         - American-British Translator: projects/assignment/quality-assurance/american-british-translator.md
     - Postman :  
       - API Test Automation: projects/assignment/postman/postmanAutomation.md
-#  - Data Structure & Algorithm :
-#    - Web Quiz Automation: projects/dataStructureAlgorithm/webQuiz.md
-#    - Flexible FizzBuzz Concat: projects/dataStructureAlgorithm/flexibleFizzBuzz.md
-#    - Fibonacci Indexes Finder: projects/dataStructureAlgorithm/fibonacciIndex.md
-#    - Longest Palindrome : projects/dataStructureAlgorithm/longestPalindrome.md
   - Professional Project:
+    - Project Overview: projects/professional/index.md
     - API Testing:
       - JMeter Automation: projects/professional/api-testing/jmeter-automation.md
       - Newman Automation: projects/professional/api-testing/newman-automation.md
@@ -129,8 +113,8 @@ nav:
       - Robot Framework Selenium: projects/professional/frameworks/robot-framework.md
     - Web Apps:
       - Simple CRUD Apps: projects/professional/web-apps/simple-crud-apps.md
-    # - Python Automation Test: projects/workSample/pythonAutomation.md
   - Academic Project:
+    - Project Overview: projects/academic/index.md
     - Research :
       - Bachelor Research: projects/academic/research-project/bachelor-research.md
     - Machine Learning:
@@ -163,9 +147,6 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
-        # - name: chart
-        #   class: chart
-        #   format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
@@ -173,15 +154,5 @@ markdown_extensions:
 plugins:
   - search
   - autorefs
-  # - i18n:
-  #     docs_structure: suffix
-  #     languages:
-  #       - locale: en
-  #         name: English
-  #         default: true
-  #         build: true
-  #       - locale: id
-  #         name: Bahasa Indonesia
-  #         build: true
   - git-revision-date-localized
   - glightbox

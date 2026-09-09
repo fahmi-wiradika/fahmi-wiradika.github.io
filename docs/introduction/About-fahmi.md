@@ -11,7 +11,7 @@ If you're looking to contact Fahmi regarding his personal or project source code
 - :fontawesome-brands-linkedin: : [fahmi-wiradika](https://www.linkedin.com/in/fahmi-wiradika/)
 - :simple-gmail: : [fahmi.wiradika96@gmail.com](mailto:fahmi.wiradika96@gmail.com)
 - :simple-github: : [fahmi-wiradika](https://github.com/fahmi-wiradika)
-- :simple-postman: : [fahmi-wiradika](https://www.postman.com/fahmi-wiradika)
+- :material-test-tube: : [fahmi-wiradika](https://testautomationu.applitools.com/me.html#fahmi-wiradika)
 
 </div>
 
@@ -26,7 +26,7 @@ Fahmi's tech stack includes programming languages, version control systems (VCS)
     - :material-language-python: : Python
     - :material-language-java: : Java
     - :material-language-javascript: : JavaScript
-    - :material-language-markdown: : Markdown
+    - :material-language-typescript: : Typescript
     - :material-language-csharp: : C#/.NET
 
 - :material-developer-board: Integrated Development Environment
@@ -68,20 +68,21 @@ Fahmi's tech stack includes programming languages, version control systems (VCS)
     - :simple-kibana: : Kibana
     - :simple-linux: : Hiware
 
-- :octicons-workflow-16: CI/CD & Containerization 
-
-    ---
-    - :simple-githubactions: : GitHub Action
-    - :simple-jenkins: : [Jenkins](../projects/professional/ci-cd/docker-jenkins.md)
-    - :simple-docker: : [Docker](../projects/professional/ci-cd/docker-jenkins.md)
-
 - :simple-framework: Testing Framework
 
     ---
     - :simple-robotframework: : [Robot Framework](../projects/professional/frameworks/robot-framework.md)
     - :simple-cypress: : [Cypress](../projects/professional/frameworks/cypress.md)
     - :material-drama-masks: : [Playwright](../projects/professional/frameworks/playwright.md)
+    - :material-drama-masks: : Mobilewright
     - :simple-appium: : [Appium](../projects/professional/frameworks/appium.md)
+
+- :octicons-workflow-16: CI/CD & Containerization 
+
+    ---
+    - :simple-githubactions: : GitHub Action
+    - :simple-jenkins: : [Jenkins](../projects/professional/ci-cd/docker-jenkins.md)
+    - :simple-docker: : [Docker](../projects/professional/ci-cd/docker-jenkins.md)
 
 </div>
 

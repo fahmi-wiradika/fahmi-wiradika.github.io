@@ -1,4 +1,16 @@
-.md-header{background-color: #2530c9 !important;}
+.md-typeset p,
+.md-typeset li,
+.md-typeset blockquote {
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+}
+
+.justify {
+    text-align: justify;
+}
+
+/* .md-header{background-color: #2530c9 !important;}
 .md-tabs{background-color: #c6c925 !important;}
 .md-nav__link--active{color: #25c3c9 !important;}
 
@@ -15,7 +27,7 @@ a:link:not(.md-nav__link):not(.md-tabs__link){color: #c325c9 !important;}
 
 .md-sidebar--secondary {
     margin-left: 0%;
-}
+} */
 /********** Old Table Style ******************************************
 .md-typeset__table {
     min-width: 100%;
@@ -54,27 +66,27 @@ th, td {
 }
 
 /* light mode alternating table bg colors */
-.md-typeset__table tr:nth-child(2n) {
+/* .md-typeset__table tr:nth-child(2n) {
   background-color: #f8f8f8;
-}
+} */
 
 /* dark mode alternating table bg colors */
-[data-md-color-scheme="slate"] .md-typeset__table tr:nth-child(2n) {
+/* [data-md-color-scheme="slate"] .md-typeset__table tr:nth-child(2n) {
   background-color: hsla(var(--md-hue),25%,25%,1)
-}
+} */
 /********************************************************************
 
 
 /* Set for Admonitions appearance */
-.md-typeset .admonition {
-  max-width: 1280px; /* adjust to fit */
-  margin-inline: auto;
-}
-.md-typeset details {
+/* .md-typeset .admonition { */
+  /* max-width: 1280px; adjust to fit */
+  /* margin-inline: auto;
+} */
+/* .md-typeset details {
   font-size: 15px  
-}
+} */
 
- .center {
+ /* .center {
    display: block;
    margin-left: auto;
    margin-right: auto;
@@ -101,4 +113,4 @@ th, td {
  #bordered-table th { 
         text-align:center!important; 
         }
- 
+  */

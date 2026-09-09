@@ -5,8 +5,27 @@ If you're eager to explore Fahmi's professional career and education journey in 
 
 ## Professinoal Career
 
+### Executive Quality Assurance Engineer
+Hitachi Channel Solutions Indonesia <br><small>(August 2026 - Now)</small>
+
+- Built a modular test automation framework from scratch using Playwright + TypeScript, covering UI and API layers across multiple banking monitoring system modules
+- Extended automation to native Android apps using Mobilewright, covering multi-role workflows including ticketing and localization checks
+- Established framework-wide standards: reusable Page/Screen Object patterns, JSON-driven test data, and centralized Allure reporting with custom metadata and Jira/TMS traceability
+- Reviewed and maintained pull requests for the automation framework on GitLab, enforcing code quality and architectural consistency
+- Collaborated with developers to design JMeter test plans for performance testing of banking monitoring applications
+
+### Senior Software Development Engineer in Test
+Inovasi Anak Indonesia (PARKEE) <br><small>(May 2026 - August 2026) · 4 mos</small>
+
+- Refactored and maintained the cross-platform mobile automation framework using Appium + Robot Framework, supporting both Android and iOS with a unified codebase
+- Conducted code reviews for SDET team members' pull requests on GitHub, enforcing code quality standards and automation best practices
+- Designed and maintained a Jenkins CI/CD pipeline for mobile automation on a macOS server with real device execution
+- Delivered weekly automation reports by running scheduled Jenkins pipelines and presenting test coverage results to the engineering team
+- Contributed to 300+ automated test cases covering core mobile app flows across multiple feature modules
+- Proposed and evaluated mobile visual testing strategies, including robot-eyes (local) and Applitools Eyes (cloud) for UI regression detection
+
 ### Quality Assurance Engineer  
-NICPAY Indonesia <br><small>(Aug 2024 - now)</small>
+NICPAY Indonesia <br><small>(Aug 2024 - May 2026) · 2 yrs 10 mos</small>
 
 - Develop and execute comprehensive test plans, test cases, and test scripts for payment gateway applications.
 - Conduct functional, regression, performance, and security testing to identify and resolve issues.
