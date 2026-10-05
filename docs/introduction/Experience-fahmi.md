@@ -14,6 +14,31 @@ Hitachi Channel Solutions Indonesia <br><small>(August 2026 - Now)</small>
 - Reviewed and maintained pull requests for the automation framework on GitLab, enforcing code quality and architectural consistency
 - Collaborated with developers to design JMeter test plans for performance testing of banking monitoring applications
 
+??? abstract "Documentation"
+    === "Fist Day at Hitachi Channel Solutions Indonesia"
+        <figure markdown="span">
+        ![Screenshot](img/Experience/First%20Day.jpeg){ width="750" }
+        <figcaption>First Day at Hitachi</figcaption>
+        </figure>
+        <figure markdown="span">
+        ![Screenshot](img/Experience/Starter%20Pack.jpeg){ width="750" }
+        <figcaption>On Boarding Starter Pack</figcaption>
+        </figure>
+    === "Hitachi Fun Run 5k"
+        <figure markdown="span">
+        ![Screenshot](img/Experience/All%20Hitachi%20Channel%20Solutions%20Member.jpg){ width="750" }
+        <figcaption>All Hitachi Channel Solutions Member</figcaption>
+        </figure>
+        <figure markdown="span">
+        ![Screenshot](img/Experience/Hitachi%20Fun%20Run%20Documentation.jpg){ width="750" }
+        <figcaption>Fun Run Documentation</figcaption>
+        </figure>
+        <figure markdown="span">
+        ![Screenshot](img/Experience/Hitachi%20Fun%20Run%20Finisher%20Medal.jpg){ width="750" }
+        <figcaption>Fun Run Finisher Medal</figcaption>
+        </figure>
+
+
 ### Senior Software Development Engineer in Test
 Inovasi Anak Indonesia (PARKEE) <br><small>(May 2026 - August 2026) · 4 mos</small>
 
