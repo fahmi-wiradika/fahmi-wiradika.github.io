@@ -65,8 +65,8 @@ extra:
   social:
   - icon: fontawesome/brands/github-alt
     link: https://github.com/fahmi-wiradika
-  - icon: simple/postman
-    link: https://www.postman.com/fahmi-wiradika
+  - icon: material/test-tube
+    link: https://testautomationu.applitools.com/me.html#fahmi-wiradika
   - icon: fontawesome/brands/linkedin
     link: https://www.linkedin.com/in/fahmi-wiradika
   - icon: fontawesome/brands/instagram
@@ -108,6 +108,7 @@ nav:
     - Framework:
       - Cypress for Visual Testing: projects/professional/frameworks/cypress.md
       - Java Automation Test: projects/professional/frameworks/java-automation.md
+      - Mobilewright Framework: projects/professional/frameworks/mobilewright.md
       - Playwright MCP Framework: projects/professional/frameworks/playwright.md
       - Robot Framework Appium: projects/professional/frameworks/appium.md
       - Robot Framework Selenium: projects/professional/frameworks/robot-framework.md

@@ -74,7 +74,7 @@ Fahmi's tech stack includes programming languages, version control systems (VCS)
     - :simple-robotframework: : [Robot Framework](../projects/professional/frameworks/robot-framework.md)
     - :simple-cypress: : [Cypress](../projects/professional/frameworks/cypress.md)
     - :material-drama-masks: : [Playwright](../projects/professional/frameworks/playwright.md)
-    - :material-drama-masks: : Mobilewright
+    - :material-drama-masks: : [Mobilewright](../projects/professional/frameworks/mobilewright.md)
     - :simple-appium: : [Appium](../projects/professional/frameworks/appium.md)
 
 - :octicons-workflow-16: CI/CD & Containerization 
