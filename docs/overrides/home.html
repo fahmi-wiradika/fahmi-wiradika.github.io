@@ -47,10 +47,9 @@
     <div class="hp-category-grid">
       
       <!-- Card: Professional Work -->
-      <a href="projects/professional/"
+      <div 
          class="hp-category-card"
          aria-label="Explore Professional Work projects">
-        <div class="hp-category-card__icon" aria-hidden="true"></div>
         <h3 class="hp-category-card__title">Professional Work</h3>
         <p class="hp-category-card__desc">
           End-to-end test automation frameworks, API and performance testing,
@@ -64,14 +63,14 @@
           <span class="hp-tag hp-tag--amber">Appium</span>
           <span class="hp-tag hp-tag--indigo">CI/CD</span>
         </div>
-        <span class="hp-category-card__cta">Explore Work →</span>
-      </a>
+        <a href="projects/professional/"
+           class="hp-category-card__cta"
+           >Explore Work →</a>
+      </div>
 
       <!-- Card: Academic Research -->
-      <a href="projects/academic/"
-         class="hp-category-card"
-         aria-label="Explore Academic Research projects">
-        <div class="hp-category-card__icon" aria-hidden="true"></div>
+      <div class="hp-category-card" 
+           aria-label="Explore Academic Research projects">
         <h3 class="hp-category-card__title">Academic Research</h3>
         <p class="hp-category-card__desc">
           Embedded systems, digital signal processing, and machine learning on
@@ -85,8 +84,10 @@
           <span class="hp-tag hp-tag--indigo">PyTorch</span>
           <span class="hp-tag hp-tag--teal">Signal Processing</span>
         </div>
-        <span class="hp-category-card__cta">Explore Research →</span>
-      </a>
+        <a href="projects/academic/"
+           class="hp-category-card__cta"
+           >Explore Research →</a>
+      </div>
 
     </div>
   </section>
@@ -99,14 +100,17 @@
 
   <div class="hp-spotlight-grid">
     
-    <!-- Card 3 -->
-    <a href="projects/professional/frameworks/playwright/"
-       class="hp-spotlight-card"
+    <!-- Card 1 -->
+    <div class="hp-spotlight-card"
        aria-label="Playwright MCP Framework — AI-augmented test automation">
       <div class="hp-spotlight-card__top">
         <span class="hp-badge hp-badge--professional">Professional</span>
       </div>
-      <h4 class="hp-spotlight-card__title">Playwright MCP Framework</h4>
+      <h4 class="hp-spotlight-card__title">
+        <a href="projects/professional/frameworks/playwright/">
+          Playwright MCP Framework
+        </a>
+      </h4>
       <p class="hp-spotlight-card__sub">AI-Augmented Test Automation</p>
       <p class="hp-spotlight-card__desc">
         End-to-end test automation using Playwright with MCP (Model Context
@@ -120,16 +124,19 @@
         <span class="hp-tag hp-tag--amber">JavaScript</span>
         <span class="hp-tag hp-tag--indigo">CI/CD</span>
       </div>
-    </a>
+    </div>
 
-    <!-- Card 4 -->
-    <a href="projects/professional/frameworks/appium/"
-       class="hp-spotlight-card"
+    <!-- Card 2 -->
+    <div class="hp-spotlight-card"
        aria-label="Robot Framework Appium — mobile test automation">
       <div class="hp-spotlight-card__top">
         <span class="hp-badge hp-badge--professional">Professional</span>
       </div>
-      <h4 class="hp-spotlight-card__title">Robot Framework Appium</h4>
+      <h4 class="hp-spotlight-card__title">
+        <a href="projects/professional/frameworks/appium/">
+        Robot Framework Appium
+        </a>
+      </h4>
       <p class="hp-spotlight-card__sub">Mobile Test Automation</p>
       <p class="hp-spotlight-card__desc">
         Mobile application test automation using Robot Framework with Appium
@@ -142,16 +149,19 @@
         <span class="hp-tag hp-tag--indigo">Android</span>
         <span class="hp-tag hp-tag--indigo">Mobile</span>
       </div>
-    </a>
+    </div>
 
-    <!-- Card 5 -->
-    <a href="projects/professional/api-testing/jmeter-automation/"
-       class="hp-spotlight-card"
+    <!-- Card 3 -->
+    <div class="hp-spotlight-card"
        aria-label="JMeter Automation — performance and load testing">
       <div class="hp-spotlight-card__top">
         <span class="hp-badge hp-badge--professional">Professional</span>
       </div>
-      <h4 class="hp-spotlight-card__title">JMeter Automation</h4>
+      <h4 class="hp-spotlight-card__title">
+        <a href="projects/professional/api-testing/jmeter-automation/">
+          JMeter Automation
+        </a>
+      </h4>
       <p class="hp-spotlight-card__sub">Performance &amp; Load Testing</p>
       <p class="hp-spotlight-card__desc">
         API performance and load testing using Apache JMeter — covering test
@@ -164,16 +174,19 @@
         <span class="hp-tag hp-tag--indigo">Load Testing</span>
         <span class="hp-tag hp-tag--indigo">API</span>
       </div>
-    </a>
+    </div>
 
-        <!-- Card 1 -->
-    <a href="projects/academic/research-project/bachelor-research/"
-       class="hp-spotlight-card"
-       aria-label="NILM Load Identification on STM32F407 — Bachelor Research">
-      <div class="hp-spotlight-card__top">
-        <span class="hp-badge hp-badge--academic">Academic</span>
-      </div>
-      <h4 class="hp-spotlight-card__title">NILM Load Identification on STM32F407</h4>
+    <!-- Card 4 -->
+    <div class="hp-spotlight-card"
+        aria-label="NILM Load Identification on STM32F407 — Bachelor Research">
+        <div class="hp-spotlight-card__top">
+          <span class="hp-badge hp-badge--academic">Academic</span>
+        </div>
+      <h4 class="hp-spotlight-card__title">
+        <a href="projects/academic/research-project/bachelor-research/">
+          NILM Load Identification on STM32F407
+        </a>
+      </h4>
       <p class="hp-spotlight-card__sub">Bachelor of Applied Engineering — EEPIS</p>
       <p class="hp-spotlight-card__desc">
         Smart Energy Meter that identifies active household appliances using
@@ -187,16 +200,19 @@
         <span class="hp-tag hp-tag--indigo">MATLAB</span>
         <span class="hp-tag hp-tag--indigo">Embedded AI</span>
       </div>
-    </a>
+    </div>
 
-    <!-- Card 2 -->
-    <a href="projects/academic/machine-learning/NILM/"
-       class="hp-spotlight-card"
+    <!-- Card 5 -->
+    <div class="hp-spotlight-card"
        aria-label="NILM Load Identification — PyTorch reimplementation">
       <div class="hp-spotlight-card__top">
         <span class="hp-badge hp-badge--academic">Academic</span>
       </div>
-      <h4 class="hp-spotlight-card__title">NILM Load Identification — PyTorch</h4>
+      <h4 class="hp-spotlight-card__title">
+        <a href="projects/academic/machine-learning/NILM/">
+          NILM Load Identification — PyTorch
+        </a>
+      </h4>
       <p class="hp-spotlight-card__sub">Machine Learning · Python</p>
       <p class="hp-spotlight-card__desc">
         Modern Python reimplementation of the Non-Intrusive Load Monitoring classification model using
@@ -209,17 +225,20 @@
         <span class="hp-tag hp-tag--teal">NILM</span>
         <span class="hp-tag hp-tag--teal">Neural Network</span>
       </div>
-    </a>
+    </div>
 
     <!-- Card 6 -->
-    <a href="projects/professional/web-apps/simple-crud-apps/"
-       class="hp-spotlight-card"
-       aria-label="Full-Stack AUT built to be tested, live on Vercel">
+    <div class="hp-spotlight-card">
       <div class="hp-spotlight-card__top">
         <span class="hp-badge hp-badge--professional">Professional</span>
-        <span class="hp-badge hp-badge--live">Live ↗</span>
+        <span class="hp-badge hp-badge--live"><a href="https://simple-crud-apps.vercel.app">Live ↗</a></span>
       </div>
-      <h4 class="hp-spotlight-card__title">Full-Stack AUT — Built to be Tested</h4>
+      <h4 class="hp-spotlight-card__title">
+        <a href="projects/professional/web-apps/simple-crud-apps/"
+           aria-label="Full-Stack AUT built to be tested, live on Vercel">
+          Full-Stack AUT — Built to be Tested
+        </a>
+      </h4>
       <p class="hp-spotlight-card__sub">Application Under Test · Vercel</p>
       <p class="hp-spotlight-card__desc">
         A purposefully built CRUD web application deployed on Vercel — designed
@@ -232,7 +251,7 @@
         <span class="hp-tag hp-tag--indigo">Vercel</span>
         <span class="hp-tag hp-tag--amber">REST API</span>
       </div>
-    </a>
+    </div>
 
   </div>
 </section>
@@ -272,11 +291,11 @@
         <span>fahmi-wiradika</span>
       </a>
 
-      <a href="https://www.postman.com/fahmi-wiradika"
+      <a href="https://testautomationu.applitools.com/me.html#fahmi-wiradika"
          class="hp-social__link"
          target="_blank"
          rel="noopener noreferrer"
-         aria-label="Postman profile: fahmi-wiradika">
+         aria-label="TAU profile: fahmi-wiradika">
         <svg class="hp-social__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M13.527.099C6.955-.744.942 3.9.099 10.473c-.843 6.572 3.8 12.584 10.373 13.428 6.573.843 12.587-3.801 13.428-10.374C24.744 6.955 20.101.943 13.527.099zm2.471 7.485a.855.855 0 0 0-.593.25l-4.453 4.453-.307-.307-.643-.643 4.453-4.453a.855.855 0 0 0-.888-1.404l-5.02 5.02.571.571-1.016 1.017.571.571 4.453-4.454a2.724 2.724 0 0 1 3.842 3.842l-4.453 4.453.571.571-1.016 1.017.571.571 4.453-4.453a4.576 4.576 0 0 0-2.096-7.62z"/>
         </svg>

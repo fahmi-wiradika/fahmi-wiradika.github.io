@@ -57,7 +57,6 @@ Fahmi's tech stack includes programming languages, version control systems (VCS)
     ---
     - :simple-postman: : [Postman](../projects/professional/api-testing/newman-automation.md)
     - :simple-apachejmeter: : [Apache JMeter](../projects/professional/api-testing/jmeter-automation.md)
-    - :octicons-mcp-24: : [Playwright MCP](../projects/professional/frameworks/playwright.md)
     - :simple-selenium: : [Selenium webdriver](../projects/professional/frameworks/java-automation.md)
 
 - :material-file-document-alert: Issue Tracking and Documenation
@@ -65,17 +64,14 @@ Fahmi's tech stack includes programming languages, version control systems (VCS)
     ---
     - :simple-materialformkdocs: : MkDocs
     - :simple-jira: : JIRA
-    - :simple-kibana: : Kibana
-    - :simple-linux: : Hiware
+    - :simple-linear: : Linear
 
-- :simple-framework: Testing Framework
+- :simple-framework: Web & API Framework
 
     ---
     - :simple-robotframework: : [Robot Framework](../projects/professional/frameworks/robot-framework.md)
     - :simple-cypress: : [Cypress](../projects/professional/frameworks/cypress.md)
     - :material-drama-masks: : [Playwright](../projects/professional/frameworks/playwright.md)
-    - :material-drama-masks: : [Mobilewright](../projects/professional/frameworks/mobilewright.md)
-    - :simple-appium: : [Appium](../projects/professional/frameworks/appium.md)
 
 - :octicons-workflow-16: CI/CD & Containerization 
 
@@ -83,6 +79,18 @@ Fahmi's tech stack includes programming languages, version control systems (VCS)
     - :simple-githubactions: : GitHub Action
     - :simple-jenkins: : [Jenkins](../projects/professional/ci-cd/docker-jenkins.md)
     - :simple-docker: : [Docker](../projects/professional/ci-cd/docker-jenkins.md)
+
+- :fontawesome-solid-mobile: Mobile Testing
+
+    ---
+    - :material-drama-masks: : [Mobilewright](../projects/professional/frameworks/mobilewright.md)
+    - :simple-appium: : [Appium](../projects/professional/frameworks/appium.md)
+
+- :material-monitor-eye: Monitoring Tools
+
+    ---
+    - :simple-kibana: : Kibana
+    - :simple-linux: : Hiware
 
 </div>
 
