@@ -57,7 +57,7 @@ Fahmi's tech stack includes programming languages, version control systems (VCS)
     ---
     - :simple-postman: : [Postman](../projects/professional/api-testing/newman-automation.md)
     - :simple-apachejmeter: : [Apache JMeter](../projects/professional/api-testing/jmeter-automation.md)
-    - :simple-selenium: : [Selenium webdriver](../projects/professional/frameworks/java-automation.md)
+    - :simple-selenium: : [Selenium webdriver](../projects/professional/web-api-automation//java-automation.md)
 
 - :material-file-document-alert: Issue Tracking and Documenation
 
@@ -69,9 +69,9 @@ Fahmi's tech stack includes programming languages, version control systems (VCS)
 - :simple-framework: Web & API Framework
 
     ---
-    - :simple-robotframework: : [Robot Framework](../projects/professional/frameworks/robot-framework.md)
-    - :simple-cypress: : [Cypress](../projects/professional/frameworks/cypress.md)
-    - :material-drama-masks: : [Playwright](../projects/professional/frameworks/playwright.md)
+    - :simple-robotframework: : [Robot Framework](../projects/professional/web-api-automation//robot-framework.md)
+    - :simple-cypress: : [Cypress](../projects/professional/web-api-automation/cypress.md)
+    - :material-drama-masks: : [Playwright](../projects/professional/web-api-automation/playwright.md)
 
 - :octicons-workflow-16: CI/CD & Containerization 
 
@@ -83,8 +83,8 @@ Fahmi's tech stack includes programming languages, version control systems (VCS)
 - :fontawesome-solid-mobile: Mobile Testing
 
     ---
-    - :material-drama-masks: : [Mobilewright](../projects/professional/frameworks/mobilewright.md)
-    - :simple-appium: : [Appium](../projects/professional/frameworks/appium.md)
+    - :material-drama-masks: : [Mobilewright](../projects/professional/mobile-automation//mobilewright.md)
+    - :simple-appium: : [Appium](../projects/professional/mobile-automation//appium.md)
 
 - :material-monitor-eye: Monitoring Tools
 

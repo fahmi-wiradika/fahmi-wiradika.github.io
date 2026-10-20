@@ -15,7 +15,13 @@ This is the TypeScript counterpart of [robot-appium](https://github.com/fahmi-wi
 - **Failure Diagnostics**: accessibility view tree attached to the report on failure
 - **HTML Reporting**: Mobilewright HTML report out of the box
 - **Environment-based Config**: app package, APK path, device, and credentials come from `.env`
-- **Faster Execution**: the same login flow runs in 17s vs 44s on Robot Framework + Appium (see [Performance](#performance-mobilewright-vs-robot-framework--appium))
+- **Faster Execution**: the same login flow runs in 17s vs 44s on Robot Framework + Appium 
+
+!!! warning "Performance Benchmark Disclaimer"
+    The 17s vs 44s timings were recorded on a machine with **40 GB RAM**. Mobilewright and
+    `mobilecli`, together with the Android emulator or connected device, use system memory
+    and storage. Execution times may differ on machines with fewer available resources, so
+    treat these numbers as results from the tested setup rather than guaranteed performance.
 
 ## Framework Metrics
 

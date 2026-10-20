@@ -1,26 +1,31 @@
-# Project Overview
+# Academic Projects
 
-This section showcases academic and research-driven work related to machine learning, signal processing, and applied technical investigation. Each project reflects analytical thinking and hands-on implementation in problem-solving contexts.
+Research and applied engineering work spanning embedded systems, machine learning, and digital signal processing.
 
-<div class="grid cards" markdown>
+<div class="hp-spotlight-grid hp-project-grid" markdown>
 
-- Machine Learning - [NILM](machine-learning/NILM.md)
+<article class="hp-spotlight-card" markdown>
+<div class="hp-spotlight-card__top"><span class="hp-badge hp-badge--machine-learning">Machine Learning</span></div>
+<h2 class="hp-spotlight-card__title" markdown="span">[NILM Load Identification — PyTorch](machine-learning/NILM.md)</h2>
+<p class="hp-spotlight-card__sub">Non-Intrusive Load Monitoring · Python</p>
+<p class="hp-spotlight-card__desc">A Python/PyTorch reimplementation and extension of the original energy-monitoring model, comparing neural-network approaches to identify combinations of household appliances from electrical signatures.</p>
+<div class="hp-tags"><span class="hp-tag hp-tag--indigo">Python</span><span class="hp-tag hp-tag--indigo">PyTorch</span><span class="hp-tag hp-tag--teal">NILM</span><span class="hp-tag hp-tag--teal">Neural networks</span></div>
+</article>
 
-    ---
-    Non-Intrusive Load Monitoring using data-driven methods to analyze household energy consumption patterns.
+<article class="hp-spotlight-card" markdown>
+<div class="hp-spotlight-card__top"><span class="hp-badge hp-badge--research-project">Research Project</span></div>
+<h2 class="hp-spotlight-card__title" markdown="span">[Bachelor Research: Smart Energy Meter](research-project/bachelor-research.md)</h2>
+<p class="hp-spotlight-card__sub">Embedded AI · Applied engineering research</p>
+<p class="hp-spotlight-card__desc">A smart meter research project identifying active appliances from harmonic fingerprints, combining electrical measurement, FFT feature extraction, and a backpropagation neural network running on an STM32F407.</p>
+<div class="hp-tags"><span class="hp-tag hp-tag--teal">STM32F407</span><span class="hp-tag hp-tag--teal">FFT</span><span class="hp-tag hp-tag--indigo">MATLAB</span><span class="hp-tag hp-tag--indigo">C</span><span class="hp-tag hp-tag--indigo">BPNN</span></div>
+</article>
 
-- Research Project - [Bachelor Research](research-project/bachelor-research.md)
-
-    ---
-    An undergraduate research project focused on structured investigation, experimentation, and technical analysis.
-
-- Signal Processing - [Frequency Domain Power Analysis](signal-processing/frequency-domain-power-analysis.md)
-
-    ---
-    Analysis of signal behavior and power distribution in the frequency domain to extract meaningful insights.
+<article class="hp-spotlight-card" markdown>
+<div class="hp-spotlight-card__top"><span class="hp-badge hp-badge--signal-processing">Signal Processing</span></div>
+<h2 class="hp-spotlight-card__title" markdown="span">[Parseval-Based Power Analysis](signal-processing/frequency-domain-power-analysis.md)</h2>
+<p class="hp-spotlight-card__sub">Frequency-domain analysis · Embedded DSP</p>
+<p class="hp-spotlight-card__desc">Computes electrical power quantities from FFT bins using Parseval’s theorem, deriving phase-aware results and harmonic information from sampled voltage and current signals.</p>
+<div class="hp-tags"><span class="hp-tag hp-tag--teal">FFT</span><span class="hp-tag hp-tag--teal">Parseval’s theorem</span><span class="hp-tag hp-tag--indigo">CMSIS-DSP</span><span class="hp-tag hp-tag--indigo">STM32</span></div>
+</article>
 
 </div>
-
-## Summary
-
-These academic projects reflect a foundation in research methodology, intelligent systems, and signal-based analysis, highlighting how theoretical learning is applied to practical technical exploration.
