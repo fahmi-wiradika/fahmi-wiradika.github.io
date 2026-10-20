@@ -38,7 +38,6 @@ Hitachi Channel Solutions Indonesia <br><small>(August 2026 - Now)</small>
         <figcaption>Fun Run Finisher Medal</figcaption>
         </figure>
 
-
 ### Senior Software Development Engineer in Test
 Inovasi Anak Indonesia (PARKEE) <br><small>(May 2026 - August 2026) · 4 mos</small>
 
@@ -191,11 +190,6 @@ Paiton Operation and Maintenance Indonesia (POMI)<br><small>(Jan 2018 - Apr 2018
 - Execute unit outages scope of major and critical equipment inspections, repairs and cleaning
 
 ??? abstract "Documentation"
-    === "Internship Certificate"
-        <figure markdown="span">
-        ![Screenshot](img/Certificate/Paiton-INTERNSHIP.jpg){ width="650" }
-        <figcaption>On Job Training Certificate of Completion</figcaption>
-        </figure>
     === "On Job Training Team"
         <figure markdown="span">
         ![Screenshot](img/Experience/Internship-Team.jpg){ width="450" }
@@ -233,6 +227,11 @@ Paiton Operation and Maintenance Indonesia (POMI)<br><small>(Jan 2018 - Apr 2018
         <figure markdown="span">
         ![Screenshot](img/Experience/Brush-Replacement.jpg){ width="450" }
         <figcaption>Brush Generator Replacement Process</figcaption>
+        </figure>
+    === "Internship Certificate"
+        <figure markdown="span">
+        ![Screenshot](img/Certificate/Paiton-INTERNSHIP.jpg){ width="650" }
+        <figcaption>On Job Training Certificate of Completion</figcaption>
         </figure>
 
 ## Education
