@@ -384,4 +384,4 @@ Use the activity shown in the resolver table (e.g. `SplashActivity`) as your `${
 - **Applitools Eyes Robot Framework SDK**:[Applitools Visual Test](https://pypi.org/project/eyes-robotframework/)
 - **RobotEyes (jessezach)**: [Robot Eyes Repository](https://github.com/jessezach/RobotEyes)
 - **Sauce Labs Demo App Releases**: [Sauce Labs Android Apps](https://github.com/saucelabs/my-demo-app-android/releases)
-- **Project Documentation**: [Appium Project](../frameworks/appium.md)
+- **Project Documentation**: [Appium Project](../mobile-automation/appium.md)

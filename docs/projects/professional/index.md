@@ -24,32 +24,32 @@ This section highlights professional work focused on software quality, automatio
     ---
     Building and organizing documentation as a portfolio for technical projects and achievements.
 
-- Mobile Automation - [Appium](frameworks/appium.md)
+- Mobile Automation - [Appium](mobile-automation/appium.md)
     
     ---
     Mobile automation for native and hybrid apps using Appium & Robot Framework
 
-- Mobile Automation - [Mobilewright](frameworks/mobilewright.md)
+- Mobile Automation - [Mobilewright](mobile-automation/mobilewright.md)
     
     ---
     Mobile automation for native and hybrid apps Using mobilecli & TypeScript
 
-- Web & API Automation - [Cypress](frameworks/cypress.md)
+- Web & API Automation - [Cypress](web-api-automation/cypress.md)
     
     ---
     End-to-end UI testing for modern web applications.
 
-- Web & API Automation - [Java Automation](frameworks/java-automation.md)
+- Web & API Automation - [Java Automation](web-api-automation/java-automation.md)
     
     ---
     Automated testing with Java-based frameworks and tooling.
 
-- Web & API Automation - [Playwright](frameworks/playwright.md)
+- Web & API Automation - [Playwright](web-api-automation/playwright.md)
     
     ---
     Browser automation for reliable end-to-end web testing.
 
-- Web Automation - [Robot Framework](frameworks/robot-framework.md)
+- Web Automation - [Robot Framework](web-api-automation/robot-framework.md)
     
     ---
     Keyword-driven test automation for scalable QA workflows.

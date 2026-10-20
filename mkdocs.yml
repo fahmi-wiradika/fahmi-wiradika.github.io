@@ -106,13 +106,13 @@ nav:
     - Documentation:
       - Fahmi's Project Library: projects/professional/documentation/docs-portfolio.md
     - Mobile Automation:
-      - Mobilewright: projects/professional/frameworks/mobilewright.md
-      - Robot Appium: projects/professional/frameworks/appium.md
+      - Mobilewright: projects/professional/mobile-automation/mobilewright.md
+      - Robot Appium: projects/professional/mobile-automation/appium.md
     - Web & API Automation:
-      - Cypress for Visual Testing: projects/professional/frameworks/cypress.md
-      - Java Selenium-Rest Assured: projects/professional/frameworks/java-automation.md
-      - Playwright MCP: projects/professional/frameworks/playwright.md
-      - Robot Selenium: projects/professional/frameworks/robot-framework.md
+      - Cypress for Visual Testing: projects/professional/web-api-automation/cypress.md
+      - Java Selenium-Rest Assured: projects/professional/web-api-automation/java-automation.md
+      - Playwright MCP: projects/professional/web-api-automation/playwright.md
+      - Robot Selenium: projects/professional/web-api-automation/robot-framework.md
     - Web Apps:
       - Simple CRUD Apps: projects/professional/web-apps/simple-crud-apps.md
   - Academic Project:
