@@ -1,178 +1,120 @@
 # Fahmi's Project Library
 
-A comprehensive online portfolio showcasing projects, certifications, and professional experience, built with MkDocs Material and deployed automatically via GitHub Actions.
+Fahmi's Project Library is a documentation-led engineering portfolio. It brings personal background, career experience, certifications, and project write-ups into one browsable site. The portfolio is designed to serve two purposes: help visitors quickly understand the range of work, and provide technical records detailed enough to revisit an implementation or research project later.
 
-## Features
+The project covers both the published content and the documentation system behind it: page organization, custom templates and styling, Markdown authoring features, local development, and automated GitHub Pages deployment.
 
-- **Modern Documentation Site**: Built with MkDocs Material theme for a professional, responsive design
-- **Automatic Deployment**: CI/CD pipeline using GitHub Actions for seamless updates
-- **Project Categorization**: Organized sections for Assignment Projects, Academic Research, and Work Samples
-- **Interactive Elements**: Code highlighting, search functionality, and navigation features
-- **Dark/Light Theme**: Toggle between themes with custom color schemes
-- **Social Integration**: Links to GitHub, LinkedIn, Instagram, and Postman profiles
+## Visitor Experience and Content Structure
 
-## Tech Stack
+The site guides visitors from a short introduction toward either a project category or a specific featured project. Navigation remains available across the site, while the overview pages provide a scan-friendly index and individual pages contain the deeper explanation.
 
-- **Documentation Generator**: [MkDocs](https://www.mkdocs.org/) with [Material Theme](https://squidfunk.github.io/mkdocs-material/)
-- **Deployment**: GitHub Actions + GitHub Pages
-- **Styling**: Custom CSS with Material Design principles
-- **Markdown Extensions**: Enhanced with PyMdown Extensions for advanced formatting
-- **Version Control**: Git with automated revision dates
+| Section | Content and purpose |
+|---|---|
+| Home | Introduces Fahmi's focus areas, links to project categories, highlights selected work, and provides social/profile links. |
+| Introduction | Presents background, work experience, and certifications. Experience and certification pages use supporting images alongside the written history. |
+| Assignment Projects | Collects freeCodeCamp and independent exercises in backend APIs, Postman automation, quality assurance, and relational database design. |
+| Professional Projects | Groups practical work in API and performance testing, CI/CD, documentation, mobile automation, web/API automation, and web applications. |
+| Academic Projects | Documents bachelor research, NILM machine learning, and frequency-domain signal processing. |
 
-## Quick Start
+This structure separates context from technical detail. A reader can scan the assignment, professional, or academic overview, then open a project page for its setup, design, workflow, results, diagrams, or screenshots. The same project can also be featured on the homepage when it is useful as an entry point to the portfolio.
 
-### Prerequisites
+## Homepage Implementation
 
-- Python 3.x
-- Git
+The homepage is authored in `docs/overrides/home.html`, which extends Material's `main.html` template. `docs/index.md` supplies the homepage metadata and selects that template. This lets the homepage use a portfolio layout while the rest of the site continues to use Material's standard documentation page structure.
 
-### Local Development
+The custom homepage has four sections:
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/fahmi-wiradika/fahmi-wiradika.github.io.git
-   cd fahmi-wiradika.github.io
-   ```
+1. **Hero:** States the professional focus areas and summarizes the portfolio's scope. Its calls to action lead to projects and the About page. A canvas and inline script draw the decorative waveform in the background.
+2. **Explore by Category:** Shows summary cards for professional work and academic research, with a short explanation and technology/topic tags on each card.
+3. **Featured Projects:** Presents six selected projects as cards. Examples include the Playwright MCP framework, Robot Framework Appium, JMeter automation, the embedded NILM research, its PyTorch counterpart, and the full-stack application under test. Each card has a category badge, linked title, subtitle, description, and stack tags.
+4. **Connect:** Provides profile links for GitHub, LinkedIn, Test Automation University, and Instagram.
 
-2. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
+The homepage markup and its styling are kept in separate files. `docs/overrides/home.html` controls the page structure and content; `docs/stylesheets/home.css` controls layout, type, card presentation, tags, hover/focus states, and responsive behavior.
 
-3. **Start development server**
-   ```bash
-   mkdocs serve
-   ```
+## Project Overview Cards
 
-4. **View locally**
-   Open your browser to `http://127.0.0.1:8000`
+The assignment, professional, and academic `index.md` files use a shared card pattern based on the homepage spotlight cards. A card contains a category badge, a title linked to the project page, a short context line, a differentiating description, and technology tags. This gives the overview pages a consistent visual language without forcing every project into the same technical narrative.
 
-### Making Changes
+The project overview grid uses two columns on wider screens and a single column on narrow screens. Category badges have distinct colors, including dark-theme variants. Card styles provide a subtle accent edge, soft background, and hover treatment; descriptive copy remains left-aligned for easier reading. The layout and color behavior are defined in `docs/stylesheets/home.css`.
 
-1. Edit markdown files in the `docs/` directory
-2. Modify `mkdocs.yml` for configuration changes
-3. Update styles in `docs/stylesheet/extra.css` if needed
-4. Commit and push changes - GitHub Actions will handle deployment automatically
+The card summaries are intentionally shorter than the project documentation. For example, the academic overview distinguishes the embedded STM32 research from the newer Python/PyTorch model, while the detailed pages explain the hardware pipeline and model approaches. The professional overview similarly separates mobile automation, browser/API frameworks, performance testing, CI/CD, and the app used as an automation target.
 
-## Project Structure
+## Navigation and Source Organization
 
-```
-├── .github/workflows/
-│   └── ci.yml                 # GitHub Actions workflow
-├── docs/
-│   ├── index.md              # Homepage content
-│   ├── introduction/         # About, experience, certifications
-│   ├── projects/             # Project documentation
-│   │   ├── assignment/       # freeCodeCamp projects
-│   │   ├── academic/         # Research projects (coming soon)
-│   │   └── workSample/       # Professional work samples
-│   └── stylesheet/
-│       └── extra.css         # Custom styling
-├── mkdocs.yml                # MkDocs configuration
-├── requirements.txt          # Python dependencies
-└── README.md                 # This file
+`mkdocs.yml` is the source of truth for the site's navigation. It maps the top-level sections and their nested categories to Markdown files under `docs/`. Professional pages are organized by subject area—for example, `mobile-automation/`, `web-api-automation/`, `api-testing/`, and `ci-cd/`—rather than collected in one flat directory. Academic and assignment projects follow the same principle, with subfolders for areas such as `research-project/`, `signal-processing/`, `relationalDatabase/`, and `quality-assurance/`.
+
+The repository's main documentation files are:
+
+```text
+docs/
+├── index.md                         # Homepage metadata and template selection
+├── overrides/
+│   └── home.html                    # Custom homepage sections and markup
+├── stylesheets/
+│   ├── home.css                     # Homepage and shared project-card styles
+│   └── extra.css                    # General typography and content styling
+├── introduction/                    # About, experience, certifications, and images
+└── projects/
+    ├── assignment/                  # Overview and assignment project pages
+    ├── professional/                # Overview and professional project pages
+    └── academic/                    # Overview and academic/research pages
 ```
 
-## Configuration
+Keeping navigation explicit makes the reading order predictable and supports Material's section navigation, breadcrumbs, and table of contents. The `autorefs` plugin also supports references between documentation pages.
 
-### MkDocs Configuration (`mkdocs.yml`)
+## Markdown and Presentation Features
 
-Key features configured:
-- **Navigation**: Hierarchical menu structure
-- **Theme**: Material theme with custom colors and icons
-- **Extensions**: Code highlighting, tables, admonitions, diagrams
-- **Plugins**: Search, auto-references, git revision dates, lightbox gallery
+This is an MkDocs site rather than a static collection of Markdown files. The Material theme and configured extensions turn the source into a searchable, navigable documentation site:
 
-### Custom Styling
+- **Navigation and discovery:** Material tabs and sections, breadcrumbs/path tracking, page search suggestions, and highlighted search matches.
+- **Code examples:** Syntax highlighting, inline code highlighting, line anchors, and copy buttons for code blocks.
+- **Structured explanations:** Tables, footnotes, tabbed content, admonitions, and collapsible detail sections.
+- **Technical media:** Mermaid diagrams, MathJax-rendered equations, and GLightbox image viewing.
+- **Cross-page context:** Table-of-contents links and automatic references between pages.
+- **Theme modes:** Material's light and dark schemes, with project badge colors adjusted to remain visible in dark mode.
 
-The `docs/stylesheet/extra.css` file contains:
-- Custom color schemes for headers, links, and navigation
-- Responsive table styling
-- Admonition (callout) box formatting
-- Image centering utilities
+The Markdown extensions and plugins are configured in `mkdocs.yml`. MathJax and Mermaid are loaded as extra JavaScript assets there; GLightbox, search, and automatic references are enabled as MkDocs plugins.
 
-## Deployment
+## Styling and Theme Configuration
 
-### Automatic Deployment (CI/CD)
+`mkdocs.yml` selects Material for MkDocs, defines the light and dark palettes, fonts, navigation features, social links, and the custom template directory. It loads two stylesheets:
 
-The repository uses GitHub Actions for automatic deployment:
+- `docs/stylesheets/home.css` contains the custom homepage and project card system.
+- `docs/stylesheets/extra.css` adjusts general document presentation, including paragraph alignment and table-related styles.
 
-- **Trigger**: Push to `main` or `master` branch
-- **Process**: 
-  1. Checkout code
-  2. Setup Python environment
-  3. Install dependencies
-  4. Build and deploy to GitHub Pages
-- **Caching**: Weekly cache refresh for faster builds
+The custom CSS is scoped with project-specific class names such as `hp-spotlight-card`, `hp-project-grid`, and `hp-badge--…`. Reusing these classes lets the homepage and overview indexes share card behavior, while page-specific selectors can tune the overview grid without changing unrelated Material components.
 
-### Manual Deployment
+## Local Development and Publishing
 
-If needed, you can deploy manually:
+The Python dependencies are listed in `requirements.txt`. To run the documentation locally:
 
 ```bash
-mkdocs gh-deploy --force
+pip install -r requirements.txt
+mkdocs serve
 ```
 
-## Content Sections
+MkDocs serves a local preview and rebuilds as source files change. The GitHub Actions workflow at `.github/workflows/ci.yml` runs on pushes to `main` and `master`. It checks out the repository, sets up Python, caches MkDocs assets, installs the requirements, and publishes the generated site using `mkdocs gh-deploy --force`.
 
-### Introduction
-- **About Fahmi**: Personal background and skills
-- **Experience**: Professional career journey
-- **Certification**: Technical certifications and achievements
+## Adding or Updating a Project
 
-### Projects
-- **Assignment Projects**: freeCodeCamp certifications
-  - Relational Database projects
-  - Backend Development & APIs
-  - Quality Assurance projects
-  - Postman API Test Automation
-- **Academic Research**: Bachelor's degree research work
-- **Work Samples**: Professional automation tools and scripts
+1. Write the detailed project page in the relevant `docs/projects/` subfolder.
+2. Add the page to the appropriate section of `nav` in `mkdocs.yml`.
+3. Add a summary card to the category's `index.md`, using an existing card as the structural reference. Link the title to the detailed page and choose a category badge class defined in `home.css`.
+4. Update the homepage spotlight cards in `docs/overrides/home.html` only when the project should be featured there as well.
+5. Preview with `mkdocs serve` and check the page at desktop and narrow viewport widths, as well as in both theme modes.
 
-## Customization
+This workflow keeps the overview, navigation, and detailed page connected, avoiding orphaned project documentation and stale card links.
 
-### Adding New Projects
+## Technology
 
-1. Create a new markdown file in the appropriate `docs/projects/` subdirectory
-2. Add the page to the navigation in `mkdocs.yml`
-3. Follow the existing documentation structure and formatting
-
-### Modifying Themes
-
-- Update color schemes in `mkdocs.yml` under the `palette` section
-- Modify custom CSS in `docs/stylesheet/extra.css`
-- Add new icons using Material Design icons
-
-### Extending Functionality
-
-Add new MkDocs plugins in `requirements.txt` and configure them in `mkdocs.yml`
-
-## Writing Documentation
-
-This portfolio uses extended Markdown with additional features:
-
-- **Code blocks** with syntax highlighting
-- **Admonitions** for notes, warnings, and tips
-- **Tables** with custom styling
-- **Diagrams** using Mermaid
-- **Tabbed content** for organized information
-- **Footnotes** and cross-references
-
-## License
-
-This project is licensed under the MIT License. See the repository for full license details.
+- [MkDocs](https://www.mkdocs.org/) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/)
+- Python and [PyMdown Extensions](https://facelessuser.github.io/pymdown-extensions/)
+- Custom HTML template, CSS, and JavaScript
+- GitHub Actions and GitHub Pages
 
 ## Links
 
-- **Live Site**: [Fahmi's Project Library](https://fahmi-wiradika.github.io)
-- **GitHub Repository**: [docs-portfolio](https://github.com/fahmi-wiradika/fahmi-wiradika.github.io)
-- **LinkedIn**: [Fahmi Wahyu Wiradika](https://www.linkedin.com/in/fahmiwiradika96/)
-- **Postman**: [API Collections](https://www.postman.com/fahmi-wiradika)
-
-## Contact
-
-For questions or collaboration opportunities, feel free to reach out through any of the social media links provided in the portfolio.
-
----
-
-*Built with MkDocs Material and deployed with GitHub Actions*
+- [Live portfolio](https://fahmi-wiradika.github.io/)
+- [Source repository](https://github.com/fahmi-wiradika/fahmi-wiradika.github.io)
+- [LinkedIn](https://www.linkedin.com/in/fahmi-wiradika/)
+- [Test Automation University](https://testautomationu.applitools.com/me.html#fahmi-wiradika)

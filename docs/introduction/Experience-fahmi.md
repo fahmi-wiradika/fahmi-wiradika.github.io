@@ -17,7 +17,7 @@ Hitachi Channel Solutions Indonesia <br><small>(August 2026 - Now)</small>
 ??? abstract "Documentation"
     === "Fist Day at Hitachi Channel Solutions Indonesia"
         <figure markdown="span">
-        ![Screenshot](img/Experience/First%20Day.jpeg){ width="750" }
+        ![Screenshot](img/Experience/First%20Day.jpeg){ width="500" }
         <figcaption>First Day at Hitachi</figcaption>
         </figure>
         <figure markdown="span">
@@ -30,11 +30,11 @@ Hitachi Channel Solutions Indonesia <br><small>(August 2026 - Now)</small>
         <figcaption>All Hitachi Channel Solutions Member</figcaption>
         </figure>
         <figure markdown="span">
-        ![Screenshot](img/Experience/Hitachi%20Fun%20Run%20Documentation.jpg){ width="750" }
+        ![Screenshot](img/Experience/Hitachi%20Fun%20Run%20Documentation.jpg){ width="600" }
         <figcaption>Fun Run Documentation</figcaption>
         </figure>
         <figure markdown="span">
-        ![Screenshot](img/Experience/Hitachi%20Fun%20Run%20Finisher%20Medal.jpg){ width="750" }
+        ![Screenshot](img/Experience/Hitachi%20Fun%20Run%20Finisher%20Medal.jpg){ width="450" }
         <figcaption>Fun Run Finisher Medal</figcaption>
         </figure>
 
@@ -48,6 +48,13 @@ Inovasi Anak Indonesia (PARKEE) <br><small>(May 2026 - August 2026) · 4 mos</sm
 - Delivered weekly automation reports by running scheduled Jenkins pipelines and presenting test coverage results to the engineering team
 - Contributed to 300+ automated test cases covering core mobile app flows across multiple feature modules
 - Proposed and evaluated mobile visual testing strategies, including robot-eyes (local) and Applitools Eyes (cloud) for UI regression detection
+
+??? abstract "Documentation"
+    === "PARKEE 8th Anniversaty"
+        <figure markdown="span">
+        ![Screenshot](img/Experience/PARKEE%208th%20Anniversary.jpeg){ width="350" }
+        <figcaption>PARKEE Anniversary Gift Card</figcaption>
+        </figure>
 
 ### Quality Assurance Engineer  
 NICPAY Indonesia <br><small>(Aug 2024 - May 2026) · 2 yrs 10 mos</small>
